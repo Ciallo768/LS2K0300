@@ -12,7 +12,10 @@
 #include <unistd.h>
 #include <termios.h>
 #include <sys/select.h>
-
+/*
+ * 文件功能：红色阈值可视化调试程序
+ * 作用：用于手动调整 RGB 红色识别阈值，观察阈值效果
+ */
 static std::string g_config_path = "red_threshold.txt";
 
 static int R_MIN = 120;

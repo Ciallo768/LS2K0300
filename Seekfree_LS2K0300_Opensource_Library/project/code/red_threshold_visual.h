@@ -2,7 +2,10 @@
 #define RED_THRESHOLD_VISUAL_H
 
 #include <opencv2/opencv.hpp>
-
+/*
+ * 文件功能：红色阈值可视化调试程序
+ * 作用：用于手动调整 RGB 红色识别阈值，观察阈值效果
+ */
 
 void RedThresholdNoGui_Init(const char* config_path = "red_threshold.txt");
 

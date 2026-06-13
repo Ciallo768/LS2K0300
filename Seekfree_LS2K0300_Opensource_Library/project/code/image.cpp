@@ -4325,33 +4325,27 @@ struct IpmLutTable
 
 /*引入BEV鸟瞰图变换*/
 // ===================== 固定 IPM 正变换参数：图像坐标 -> BEV 坐标 =====================
-// 这一组先用你前面参考代码里的参数。
-// 后续你自己标定相机后，只需要替换这里。
-constexpr float kStaticIpmRot00 = 17.476780f;
-constexpr float kStaticIpmRot01 = 0.000000f;
-constexpr float kStaticIpmRot02 = -134.643963f;
-constexpr float kStaticIpmRot10 = 15.717234f;
-constexpr float kStaticIpmRot11 = 2.972136f;
-constexpr float kStaticIpmRot12 = -313.803922f;
-constexpr float kStaticIpmRot20 = 0.100619f;
-constexpr float kStaticIpmRot21 = -0.000000f;
-constexpr float kStaticIpmRot22 = 1.000000f;
+constexpr float kStaticIpmRot00 = 1.612538001f;
+constexpr float kStaticIpmRot01 = -0.254463765f;
+constexpr float kStaticIpmRot02 = -224.154440449f;
+constexpr float kStaticIpmRot10 = -0.104520711f;
+constexpr float kStaticIpmRot11 = -3.170461577f;
+constexpr float kStaticIpmRot12 = 388.677685209f;
+constexpr float kStaticIpmRot20 = -0.006968047f;
+constexpr float kStaticIpmRot21 = 0.050865849f;
+constexpr float kStaticIpmRot22 = 1.000000000f;
+
+constexpr float kStaticIpmInv00 = 0.759965484f;
+constexpr float kStaticIpmInv01 = 0.369279406f;
+constexpr float kStaticIpmInv02 = 26.818973095f;
+constexpr float kStaticIpmInv10 = 0.086256536f;
+constexpr float kStaticIpmInv11 = -0.001676870f;
+constexpr float kStaticIpmInv12 = 19.986547448f;
+constexpr float kStaticIpmInv20 = 0.000907964f;
+constexpr float kStaticIpmInv21 = 0.002658452f;
+constexpr float kStaticIpmInv22 = 0.170243164f;
 
 constexpr float kStaticIpmMinDivisor = 1e-4f;
-
-
-// ===================== 固定 IPM 反变换参数：BEV 坐标 -> 图像坐标 =====================
-// 这是根据上面的正变换矩阵求逆得到的。
-// 如果你重新标定 kStaticIpmRotXX，这一组也必须重新计算。
-constexpr float kStaticIpmInv00 = 0.336458359f;
-constexpr float kStaticIpmInv01 = -0.512876420f;
-constexpr float kStaticIpmInv02 = 36.526238729f;
-constexpr float kStaticIpmInv10 = 0.000000000f;
-constexpr float kStaticIpmInv11 = 0.032232569f;
-constexpr float kStaticIpmInv12 = 4.339920780f;
-constexpr float kStaticIpmInv20 = 0.000000000f;
-constexpr float kStaticIpmInv21 = -0.003243209f;
-constexpr float kStaticIpmInv22 = 0.563321511f;
 
 constexpr float StaticAbs(float value)
 {
@@ -4372,16 +4366,15 @@ constexpr IpmLutPoint BuildStaticCamToIpmPoint(int x, int y)
     const float xf = static_cast<float>(x);
     const float yf = static_cast<float>(y);
 
-    const float d = StaticSafeDivisor(kStaticIpmRot20 * yf +
-                                      kStaticIpmRot21 * xf +
+    const float d = StaticSafeDivisor(kStaticIpmRot20 * xf +
+                                      kStaticIpmRot21 * yf +
                                       kStaticIpmRot22);
 
     return IpmLutPoint{
-        (kStaticIpmRot10 * yf + kStaticIpmRot11 * xf + kStaticIpmRot12) / d,
-        (kStaticIpmRot00 * yf + kStaticIpmRot01 * xf + kStaticIpmRot02) / d
+        (kStaticIpmRot00 * xf + kStaticIpmRot01 * yf + kStaticIpmRot02) / d,
+        (kStaticIpmRot10 * xf + kStaticIpmRot11 * yf + kStaticIpmRot12) / d
     };
 }
-
 // 编译期生成查表：原图每个像素点对应一个 BEV 坐标
 constexpr IpmLutTable BuildStaticCamToIpmLut()
 {
@@ -4492,13 +4485,7 @@ inline cv::Point2f BevPointToImagePoint(const cv::Point2f& bev_point,
 }
 
 
-
-
-
-
-
-
-
+//安全性检查 判断 转化到BEV上的点有没有越界
 inline bool IsFinitePoint(const cv::Point2f& p)
 {
     return std::isfinite(p.x) && std::isfinite(p.y);
@@ -4772,7 +4759,7 @@ bool red_detect_rgb(const cv::Mat& src_img, cv::Point& seed)
         static_cast<int>(std::lround((small_search_bottom + 1) * small_to_src_y)) - 1,
         search_top,
         src_img.rows - 1);
-
+  
     const int y_stride = 2;
     const int x_stride = 4;
 
@@ -4869,7 +4856,8 @@ bool red_detect_rgb(const cv::Mat& src_img, cv::Point& seed)
 
             // 再确认种子点附近红色密度，防止单点误判
             if (CountRed3x3(src_img, seed.x, seed.y) >= 3)
-            {
+            {   
+                // printf("粗找到种子点");
                 return true;
             }
         }
@@ -5152,7 +5140,7 @@ while (!stack.empty())
     // }
 //     rotated_rect = cv::minAreaRect(component_points);
 
-
+    // printf("细找到红色轮廓\n");
     return true;
 }
 
@@ -5313,6 +5301,7 @@ bool find_targetROI(const cv::Mat& input_frame, cv::RotatedRect& rotated_rect)
 }
 
 //红条原图四点 在原图中找靠下长边 把红条底边映射到 BEV 在 BEV 中按照红块 12×5、目标图 12×12 的比例生成目标框
+//参数 输入图像 红块的四个角点 输出BEV图像的图片的四个角点 ->通过计算BEV图像的中心坐标 加减宽度得来的
 bool BuildTargetBevQuadFromRedRect(const cv::Mat& input_frame,
                                    const cv::Point2f red_img_pts[4],
                                    cv::Point2f target_bev_pts[4])
@@ -5424,7 +5413,7 @@ bool BuildTargetBevQuadFromRedRect(const cv::Mat& input_frame,
 
     // 6. BEV 中的红条宽度方向
     cv::Point2f v_bev = b_bev - a_bev;
-    float anchor_w_bev = cv::norm(v_bev);
+    float anchor_w_bev = cv::norm(v_bev);//红块的长边变换到BEV后的长度
 
     if (anchor_w_bev < 1e-6f)
     {
@@ -5443,9 +5432,9 @@ bool BuildTargetBevQuadFromRedRect(const cv::Mat& input_frame,
         return false;
     }
 
-    cv::Point2f n_ref_bev = test_up_bev - bottom_mid_bev;
+    cv::Point2f n_ref_bev = test_up_bev - bottom_mid_bev;//计算测试边 - 底边的向量
 
-    float n_ref_len = cv::norm(n_ref_bev);
+    float n_ref_len = cv::norm(n_ref_bev);//计算其长度
     if (n_ref_len < 1e-6f)
     {
         return false;
@@ -5468,8 +5457,8 @@ bool BuildTargetBevQuadFromRedRect(const cv::Mat& input_frame,
     const float RED_H_RATIO    = 5.0f  / 12.0f;
 
     // 框大小缩放
-    const float ROI_W_SCALE = 0.88f;
-    const float ROI_H_SCALE = 0.88f;
+    const float ROI_W_SCALE = 0.92f;
+    const float ROI_H_SCALE = 0.92f;
 
     // 角度补偿，单位：度
     // 先用 0，后面如果图传上角度偏了，再试 2 或 -2
@@ -5478,8 +5467,8 @@ bool BuildTargetBevQuadFromRedRect(const cv::Mat& input_frame,
     // 中心位置补偿，注意这里不是像素，是相对于红条宽度的比例
     // 负数：目标框向红条方向靠近
     // 正数：目标框远离红条
-    const float ROI_CENTER_UP_BIAS_RATIO = -0.05f;
-
+    // const float ROI_CENTER_UP_BIAS_RATIO = -0.05f;
+    const float ROI_CENTER_UP_BIAS_RATIO = 0.1f;
     // 10. 角度补偿
     if (std::fabs(ROI_ANGLE_BIAS_DEG) > 1e-6f)
     {
@@ -5505,32 +5494,52 @@ bool BuildTargetBevQuadFromRedRect(const cv::Mat& input_frame,
     }
 
     // 11. BEV 中目标框宽高
-    float target_w_bev = anchor_w_bev * ROI_W_SCALE;
-    float target_h_bev = anchor_w_bev * TARGET_H_RATIO * ROI_H_SCALE;
+    float target_w_bev = anchor_w_bev * ROI_W_SCALE;//BEV中目标框的宽
+    float target_h_bev = anchor_w_bev * TARGET_H_RATIO * ROI_H_SCALE;//BEV目标框的高
 
-    float red_h_bev = anchor_w_bev * RED_H_RATIO;
+    float red_h_bev = anchor_w_bev * RED_H_RATIO;//红块的宽度
 
     float center_offset_bev =
         red_h_bev +
         target_h_bev * 0.5f +
-        anchor_w_bev * ROI_CENTER_UP_BIAS_RATIO;
+        anchor_w_bev * ROI_CENTER_UP_BIAS_RATIO;//计算BEV中图片的中心的高度
 
     cv::Point2f target_center_bev =
-        bottom_mid_bev + n_up_bev * center_offset_bev;
+        bottom_mid_bev + n_up_bev * center_offset_bev;//计算BEV图像中图片中心的坐标
+
+    //在弯道进行左右补偿 通过红色定位条底边中点的 x 坐标 和 图像中心的 x 坐标 作比较 确定靠左还是靠右
+    float side_norm =
+    (bottom_mid_img.x - input_frame.cols * 0.5f) /
+    (input_frame.cols * 0.5f);
+
+    if (side_norm > 1.0f) side_norm = 1.0f;
+    if (side_norm < -1.0f) side_norm = -1.0f;
+
+    // 左侧 side_norm < 0，往右修
+    // 右侧 side_norm > 0，往左修
+    const float SIDE_COMP_GAIN = 0.5f;
+
+    // 越靠边，越往上修一点
+    const float SIDE_UP_GAIN = 0.06f;
+
+    target_center_bev += v_bev * (-side_norm * anchor_w_bev * SIDE_COMP_GAIN);
+    target_center_bev += n_ref_bev * (std::fabs(side_norm) * anchor_w_bev * SIDE_UP_GAIN);
 
     cv::Point2f half_w = v_bev * (target_w_bev * 0.5f);
     cv::Point2f half_h = n_up_bev * (target_h_bev * 0.5f);
 
     // 顺序：左上、右上、右下、左下
-    target_bev_pts[0] = target_center_bev - half_w + half_h;
-    target_bev_pts[1] = target_center_bev + half_w + half_h;
+    target_bev_pts[0] = target_center_bev - half_w + half_h;//左上角点
+    target_bev_pts[1] = target_center_bev + half_w + half_h;//右上角点
     target_bev_pts[2] = target_center_bev + half_w - half_h;
     target_bev_pts[3] = target_center_bev - half_w - half_h;
 
     return true;
 }
 
-
+//通过固定矩阵映射
+//输入目标区域BEV图像的四个角点的坐标 输出透视图像 ROI区域 (图片区域)
+//valid_ratio 
 bool BuildTargetRoiByFixedIpmRemap(const cv::Mat& input_frame,
                                    const cv::Point2f target_bev_pts[4],
                                    cv::Mat& output_roi,
@@ -5543,8 +5552,8 @@ bool BuildTargetRoiByFixedIpmRemap(const cv::Mat& input_frame,
         return false;
     }
 
-    const int TARGET_ROI_SIZE = 60;
-    const float MIN_VALID_RATIO = 0.60f;
+    const int TARGET_ROI_SIZE = 64;//
+    const float MIN_VALID_RATIO = 0.60f;//
 
     static cv::Mat map_x;
     static cv::Mat map_y;
@@ -5658,7 +5667,7 @@ bool BuildTargetRoiByFixedIpmRemap(const cv::Mat& input_frame,
 }
 
 
-
+//target_roi 输出的目标图片区域
 bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
                              cv::Mat& target_roi,
                              cv::Point2f* debug_target_img_pts = nullptr,
@@ -5690,6 +5699,9 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
     // 3. 获取红条原图四点
     cv::Point2f red_img_pts[4];
     red_rect.points(red_img_pts);
+
+    // 修改:对红条四个角点排序
+    OrderTargetStripQuad(red_img_pts);
 
     if (debug_red_img_pts != nullptr)
     {
@@ -6780,7 +6792,7 @@ cv::Mat target_roi;
 cv::Point2f target_pts[4];
 cv::Point2f red_pts[4];
 float valid_ratio = 0.0f;
-
+static int count = 0;
 /***************************************************图像处理******************************************************/
 void ImageDeal()
 {   
@@ -6788,6 +6800,11 @@ void ImageDeal()
     if(lq_frame.empty()){
         return; 
     }
+    // for(count = 0 ; count < 1 ; count ++){
+    //     cv::imwrite("/home/root/ipm_calib1.jpg",lq_frame);
+    // }
+    
+
       cv::resize(lq_frame,resizedFrame,cv::Size(LCDW_1,LCDH_1),0,0,cv::INTER_AREA);
    // DetectRedBlock(resizedFrame);
     // RedBlockProcess(resizedFrame);
@@ -6821,7 +6838,7 @@ void ImageDeal()
         Draw_BlackSideline(Image_Use);//画边线
 
         Find_Sideline(imgInfo.bottom-1,imgInfo.top+ 1);//找边线
-
+auto start_time = std::chrono::high_resolution_clock::now();
 //  if (find_targetROI(lq_frame, rect1))
 // {
 //     cv::Point2f pts1[4];
@@ -6848,72 +6865,82 @@ void ImageDeal()
 // }
 
 
-if (FindTargetRoiByFixedIpm(lq_frame,
-                            target_roi,
-                            target_pts,
-                            red_pts,
-                            &valid_ratio))
-{
-    // 画红色定位条，蓝色
-    for (int i = 0; i < 4; i++)
-    {
-        cv::line(lq_frame,
-                 red_pts[i],
-                 red_pts[(i + 1) % 4],
-                 cv::Scalar(255, 0, 0),
-                 2,
-                 cv::LINE_AA);
-    }
-
-    // 画目标裁剪框，绿色
-    for (int i = 0; i < 4; i++)
-    {
-        cv::line(lq_frame,
-                 target_pts[i],
-                 target_pts[(i + 1) % 4],
-                 cv::Scalar(0, 255, 0),
-                 2,
-                 cv::LINE_AA);
-    }
-
-    // 左上角显示透视后的 ROI，方便调试
-    if (!target_roi.empty() &&
-        lq_frame.cols >= 80 &&
-        lq_frame.rows >= 80)
-    {
-        cv::Mat show_roi;
-
-        cv::resize(target_roi,
-                   show_roi,
-                   cv::Size(80, 80),
-                   0,
-                   0,
-                   cv::INTER_NEAREST);
-
-        show_roi.copyTo(lq_frame(cv::Rect(0, 0, 80, 80)));
-    }
-
-    // 显示采样有效比例
-    char text[64];
-    std::snprintf(text,
-                  sizeof(text),
-                  "ratio=%.2f",
-                  static_cast<double>(valid_ratio));
-
-    cv::putText(lq_frame,
-                text,
-                cv::Point(5, 100),
-                cv::FONT_HERSHEY_SIMPLEX,
-                0.45,
-                cv::Scalar(0, 255, 0),
-                1,
-                cv::LINE_AA);
-
-    // 这里 target_roi 就是固定 60x60 的透视裁剪结果
-    // 后面可以直接送入你的 NCNN 分类模型
-    //
-    // classify_result = TargetClassify(target_roi);
+if(FindTargetRoiByFixedIpm(lq_frame,target_roi,nullptr,nullptr, nullptr)){
+    camera_server.update_frame_mat(target_roi);
 }
+
+
+// if (FindTargetRoiByFixedIpm(lq_frame,
+//                             target_roi,
+//                             target_pts,
+//                             red_pts,
+//                             &valid_ratio))
+// {
+
+//     // 画红色定位条，蓝色
+//     for (int i = 0; i < 4; i++)
+//     {
+//         cv::line(lq_frame,
+//                  red_pts[i],
+//                  red_pts[(i + 1) % 4],
+//                  cv::Scalar(255, 0, 0),
+//                  2,
+//                  cv::LINE_AA);
+//     }
+
+//     // 画目标裁剪框，绿色
+//     for (int i = 0; i < 4; i++)
+//     {
+//         cv::line(lq_frame,
+//                  target_pts[i],
+//                  target_pts[(i + 1) % 4],
+//                  cv::Scalar(0, 255, 0),
+//                  2,
+//                  cv::LINE_AA);
+//     }
+
+//     // 左上角显示透视后的 ROI，方便调试
+//     if (!target_roi.empty() &&
+//         lq_frame.cols >= 80 &&
+//         lq_frame.rows >= 80)
+//     {
+//         cv::Mat show_roi;
+
+//         cv::resize(target_roi,
+//                    show_roi,
+//                    cv::Size(80, 80),
+//                    0,
+//                    0,
+//                    cv::INTER_NEAREST);
+
+//         show_roi.copyTo(lq_frame(cv::Rect(0, 0, 80, 80)));
+//     }
+
+//     // 显示采样有效比例
+//     char text[64];
+//     std::snprintf(text,
+//                   sizeof(text),
+//                   "ratio=%.2f",
+//                   static_cast<double>(valid_ratio));
+
+//     cv::putText(lq_frame,
+//                 text,
+//                 cv::Point(5, 100),
+//                 cv::FONT_HERSHEY_SIMPLEX,
+//                 0.45,
+//                 cv::Scalar(0, 255, 0),
+//                 1,
+//                 cv::LINE_AA);
+
+//     // 这里 target_roi 就是固定 60x60 的透视裁剪结果
+//     // 后面可以直接送入你的 NCNN 分类模型
+//     //
+//     // classify_result = TargetClassify(target_roi);
+// }
+
+    auto end_time = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> elapsed_ms = end_time - start_time;
+    //printf("函数耗时: %.2f ms\n",elapsed_ms.count());
 
         if(Flag.Huandao_L>0||Flag.Huandao_R>0)
         Find_Guaidian();  //找拐点
@@ -6922,7 +6949,6 @@ if (FindTargetRoiByFixedIpm(lq_frame,
 
         straight_judge();
 
-auto start_time = std::chrono::high_resolution_clock::now();
 // if (red_detect_rgb(lq_frame, red_seed))
 // {
 //     if (get_red_contour(lq_frame, red_seed, red_rect))
@@ -6944,14 +6970,11 @@ auto start_time = std::chrono::high_resolution_clock::now();
 //     }
 // }
     cv::Mat red_debug_show;
- //   RedThresholdNoGui_Update(lq_frame, red_debug_show);
+  //  RedThresholdNoGui_Update(lq_frame, red_debug_show);
 
 // 通过图传显示：原图 + Mask + Result
    // camera_server.update_frame_mat(red_debug_show);
-    auto end_time = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> elapsed_ms = end_time - start_time;
-    printf("函数耗时: %.2f ms\n",elapsed_ms.count());
-     camera_server.update_frame_mat(lq_frame);//打开图传服务器
+    // camera_server.update_frame_mat(lq_frame);//打开图传服务器
         // zebra_corssing();
 
         // if(Flag.Zebra_cross==3)

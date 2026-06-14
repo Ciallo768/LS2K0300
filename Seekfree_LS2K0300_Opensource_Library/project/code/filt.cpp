@@ -217,7 +217,8 @@ void gyroOffset_init(void)
     GyroOffset.Xdata = 0;
     GyroOffset.Ydata = 0;
     GyroOffset.Zdata = 0;
-    for (uint16 i = 0; i < 500; ++i)
+    float num=50;
+    for (uint16 i = 0; i < num; ++i)
     {
         imu660ra_get_acc();                                     // 获取 IMU660RA 加速度计数据
         imu660ra_get_gyro();
@@ -226,15 +227,15 @@ void gyroOffset_init(void)
         GyroOffset.Ydata += imu660ra_gyro_y;
         GyroOffset.Zdata += imu660ra_gyro_z;
 
-        system_delay_ms(1);
+        // system_delay_ms(5);
     }
 
-    GyroOffset.Xdata /= 500;
-    GyroOffset.Ydata /= 500;
-    GyroOffset.Zdata /= 500;
-    GyroOffset.AXdata /= 500;
-    GyroOffset.AYdata /= 500;
-    GyroOffset.AZdata /= 500;
+    GyroOffset.Xdata /= num;
+    GyroOffset.Ydata /= num;
+    GyroOffset.Zdata /= num;
+    GyroOffset.AXdata /= num;
+    GyroOffset.AYdata /= num;
+    GyroOffset.AZdata /= num;
 
     GyroOffset_init = 1;
 }

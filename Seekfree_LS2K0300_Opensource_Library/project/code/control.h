@@ -39,28 +39,28 @@ typedef struct{
 
 }Direction_PID;
 extern Direction_PID Image, Rate,Dis_1,speed_difference;
-extern PID Dis;//差速转向环
+extern PID Dis,picture_distance;//差速转向环
 extern PID Velocity;//速度环
 extern PID Velocity_L;//速度环
 extern PID Velocity_R;//速度环
 extern PID Groy_turn;
 extern PID Image_turn;
 extern int16_t speed_now_left,speed_now_right,speed_now,speed_last_left,speed_last_right,pos_goal,pos_now_left,pos_now_right,PWM_L,PWM_R,expect_angle;
+extern int speed_add;
 extern int8_t run_flag;
 extern float Image_E1, Image_E2, v_left_target,v_right_target,speed_goal,speed_goal1;
-extern float Now_Speed, Kal_Now_Speed, Dis_Speed, Tpm_Dis, G_dis,last_G_dis,Master_Speed;//当前速度
+extern float Now_Speed, Kal_Now_Speed, Dis_Speed, Tpm_Dis, G_dis,last_G_dis,Master_Speed,MaX_Speed;//当前速度
 extern float V_out,V_out1,Image_out,Dis_Out,distance2,distance1;
 float Pos_Cal(PID*pid_t,float expect,float feedback);
 float Inc_Cal(PID *pid_t, float expect, float feedback);
 void PID_Init(PID *pid, float p, float i, float d, float maxI, float maxOut,float K,float q,float f);
-float Speed_PID_Cal(PID *PID,int16_t Target, int16_t feedback);
+float Speed_PID_Cal(PID *PID,float Target, float feedback);
 void Speed_PID_Init(PID *pid, float kf,float kp, float ki, float kd,float maxI, float maxOut, float max_error);
 void Direction_PID_Init(void);
 float Image_PID_Calculate(Direction_PID *pid, float expect, float feedback);
 float Dis_PID_Calculate(Direction_PID *pid, float expect, float feedback);
 float speed_difference_Calculate(Direction_PID *pid, float expect, float feedback);
-
-
+float Speed_PID_Cal1(Direction_PID *pid,float expect, float feedback);
 
 
  #endif

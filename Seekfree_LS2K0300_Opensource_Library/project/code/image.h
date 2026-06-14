@@ -20,8 +20,6 @@
 #define FPS 120
 #define white 255 // 白点像素值
 #define black 0   // 黑点像素值
-
-
 extern uint8_t Image_Zip[LCDH_1][LCDW_1] ; //压缩后的图像数组
 extern uint8_t Image_Use[LCDH_1][LCDW_1] ;//(经过大津法，膨胀，腐蚀后的)二值化的图像
 extern unsigned char Image_IFS[LCDH_1][LCDW_1];
@@ -96,7 +94,6 @@ struct YuanSu
 
     uint8 infer = 0;//推理开关
     uint8_t jiansu = 0;//减速标志位
-    uint8_t red_num = 0;
 
     uint8 supply = 0;//物资
     uint8 weapon = 0;//武器
@@ -112,21 +109,19 @@ extern PID steering_pid;
 extern float Dir_err, Last_Dir_err, Dir_Err[60],D_ERR; // 图像误差
 extern char txt[80];
 extern float real_distance[60];
-extern float curvature,distance,distance_picture,ramp_err;
+extern float curvature,distance,distance_picture,ramp_err,recognize_distance2;
 extern uint16_t jump_point,maxkuan_line;
 extern int avoid_state,x_err_red;
 extern int forward,forward1, red_x_mid,red_y_mid;; 
-
+extern unsigned char Left_Sideline_flag[LCDH_0] ;   //左边线标志位
 extern float Yaw_Huandao,Yaw_Huandao_err,yaw_correct,distance_HUAN1,black_ratio,err_picture,real_picture_distance;
-extern int right_num ,r_num,left_num ,l_num ,R_l_lsoe,L_l_lose,picture_first_num,picture_second_num,maxlong_colume,long_max,jump_point1,picture_white,picture_black,red_find_x,red_find_y,red_find_y1;;
+extern int right_num ,ramp_white_num,r_num,left_num ,l_num ,R_l_lsoe,L_l_lose,red_points_num,picture_first_num,picture_second_num,maxlong_colume,long_max,jump_point1,picture_white,picture_black,red_find_x,red_find_y,red_find_y1;;
 extern cv::Point center;
 extern cv::Mat lq_frame;
 void ImageDeal(void);
 void image_init(void);
 void distance_judge(void);
-//void DetectRedBlock(cv::Mat &src,int roi_x,int roi_y,int width,int height);
-void DetectRedBlock(cv::Mat &src);
-bool findRedrect(cv::Mat &src,cv::RotatedRect &rect);
+ void DetectRedBlock(cv::Mat &src,int roi_x,int roi_y,int width,int height);
 bool InTrack(int x,int y);
 bool GenerateROI(const cv::Point &center, cv::Rect &roi, const cv::Mat &src);
 void RedBlockProcess(cv::Mat &src);
@@ -140,5 +135,5 @@ float Yaw_correct(float current_yaw,float target_yaw);
 int real_distance_to_row(float distance) ;
 extern float real_distance[60];
 float actan_err(float err);
-double maxEdgeRatio(const std::vector<cv::Point2f>& pts);
+
 #endif

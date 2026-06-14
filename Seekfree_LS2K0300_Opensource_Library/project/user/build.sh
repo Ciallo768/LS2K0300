@@ -7,13 +7,12 @@ export PATH=/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-lin
 WORK_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"  # 脚本所在绝对路径（关键修复）
 OUT_DIR="${WORK_DIR}/../out"                              # out目录绝对路径
 USER_DIR="${WORK_DIR}/../user"                            # user目录绝对路径
-REMOTE_IP="192.168.3.93"                                  # 远程设备IP
+REMOTE_IP="192.168.3.92"                                  # 远程设备IP
 REMOTE_USER="root"                                        # 远程登录用户
 REMOTE_PATH="/home/root/"                                 # 远程上传路径
 MAKE_JOBS=$(nproc)                                        # make编译线程数
 RESERVE_FILE="本文件夹作用.txt"                            # 保留的文件，不删除
 
-# ===================== 全局通用函数（复用性强，减少冗余代码） ===s==================
 # 错误退出函数：打印错误信息 + 退出脚本（退出码1）
 error_exit() {
     echo -e "\033[31m[ERROR] $1\033[0m"

@@ -1,9 +1,9 @@
 CMakeFiles/project.dir/main.cpp.o: \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/main.cpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/main.cpp \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/stdc-predef.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_headfile.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_font.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_typedef.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_headfile.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_font.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_typedef.hpp \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/stdio.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/bits/libc-header-start.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/features.h \
@@ -300,23 +300,23 @@ CMakeFiles/project.dir/main.cpp.o: \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/backward/auto_ptr.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/cstring \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/inttypes.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_function.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_fifo.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_delay.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_typedef.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_file_string.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_file_buffer.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_encoder.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_file_buffer.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_gpio.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_pwm.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_pit.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_adc.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_udp.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_tcp_client.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_device/zf_device_imu.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_device/zf_device_ips200_fb.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_device/zf_device_uvc.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_function.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_fifo.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_delay.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_typedef.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_file_string.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_file_buffer.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_encoder.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_file_buffer.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_gpio.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_pwm.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_pit.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_adc.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_udp.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_driver/zf_driver_tcp_client.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_device/zf_device_imu.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_device/zf_device_ips200_fb.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_device/zf_device_uvc.hpp \
  /opt/ls_2k0300_env/opencv_4_10_build/include/opencv4/opencv2/imgproc/imgproc.hpp \
  /opt/ls_2k0300_env/opencv_4_10_build/include/opencv4/opencv2/imgproc.hpp \
  /opt/ls_2k0300_env/opencv_4_10_build/include/opencv4/opencv2/core.hpp \
@@ -506,132 +506,132 @@ CMakeFiles/project.dir/main.cpp.o: \
  /opt/ls_2k0300_env/opencv_4_10_build/include/opencv4/opencv2/video.hpp \
  /opt/ls_2k0300_env/opencv_4_10_build/include/opencv4/opencv2/video/tracking.hpp \
  /opt/ls_2k0300_env/opencv_4_10_build/include/opencv4/opencv2/video/background_segm.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_device/zf_device_tft180_fb.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_device/zf_device_uvc.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_device/zf_device_dl1x.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/seekfree_assistant/seekfree_assistant.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/net.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/blob.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/mat.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/allocator.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/platform.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/ncnn_export.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_device/zf_device_tft180_fb.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_device/zf_device_uvc.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_device/zf_device_dl1x.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/seekfree_assistant/seekfree_assistant.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/net.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/blob.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/mat.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/allocator.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/platform.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/ncnn_export.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/stack \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/bits/stl_stack.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/fenv.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/fenv.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/bits/fenv.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/bits/fenvinline.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/option.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/layer.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/modelbin.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/paramdict.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/option.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/layer.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/modelbin.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/ncnn/include/ncnn/paramdict.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/fstream \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/bits/basic_file.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/bits/c++io.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/bits/fstream.tcc \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/core/c/common.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/core/c/c_api_types.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/compiler/mlir/lite/core/c/tflite_types.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_interpreter.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/flatbuffers.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/array.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/base.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/core/c/common.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/core/c/c_api_types.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/compiler/mlir/lite/core/c/tflite_types.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_interpreter.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/flatbuffers.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/array.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/base.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/iterator \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/bits/stream_iterator.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/stl_emulation.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/vector.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/buffer.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/buffer_ref.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/verifier.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/detached_buffer.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/allocator.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/default_allocator.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/flatbuffer_builder.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/string.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/struct.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/table.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/vector_downward.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/c/c_api_types.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/c/common.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/core/api/error_reporter.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/compiler/mlir/lite/core/api/error_reporter.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/stl_emulation.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/vector.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/buffer.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/buffer_ref.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/verifier.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/detached_buffer.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/allocator.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/default_allocator.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/flatbuffer_builder.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/string.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/struct.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/table.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/vector_downward.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/c/c_api_types.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/c/common.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/core/api/error_reporter.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/compiler/mlir/lite/core/api/error_reporter.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/cstdarg \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/tensor_ctypes.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/core/macros.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/types.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/compatibility.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/op_macros.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_log.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/runtime_shape.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_allocator.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/arena_allocator/single_arena_buffer_allocator.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/arena_allocator/ibuffer_allocator.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/compatibility.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/flatbuffer_utils.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/flexbuffers.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/util.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/schema/schema_generated.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/memory_planner/micro_memory_planner.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_common.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/tflite_bridge/flatbuffer_conversions_bridge.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/core/api/flatbuffer_conversions.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_interpreter_context.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_context.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_graph.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_resource_variable.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_profiler_interface.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_interpreter_graph.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_op_resolver.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/portable_type_to_tflitetype.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_mutable_op_resolver.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/add.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/c/builtin_op_data.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/core/c/builtin_op_data.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/compiler/mlir/lite/core/c/builtin_op_data.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/batch_matmul.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/conv.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/depthwise_conv.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/ethosu.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/fully_connected.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/maximum_minimum.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/common.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/gemmlowp/fixedpoint/fixedpoint.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/tensor_ctypes.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/core/macros.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/types.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/compatibility.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/op_macros.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_log.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/runtime_shape.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_allocator.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/arena_allocator/single_arena_buffer_allocator.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/arena_allocator/ibuffer_allocator.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/compatibility.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/flatbuffer_utils.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/flexbuffers.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/flatbuffers/include/flatbuffers/util.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/schema/schema_generated.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/memory_planner/micro_memory_planner.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_common.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/tflite_bridge/flatbuffer_conversions_bridge.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/core/api/flatbuffer_conversions.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_interpreter_context.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_context.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_graph.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_resource_variable.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_profiler_interface.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_interpreter_graph.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_op_resolver.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/portable_type_to_tflitetype.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_mutable_op_resolver.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/add.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/c/builtin_op_data.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/core/c/builtin_op_data.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/compiler/mlir/lite/core/c/builtin_op_data.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/batch_matmul.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/conv.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/depthwise_conv.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/ethosu.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/fully_connected.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/maximum_minimum.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/common.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/gemmlowp/fixedpoint/fixedpoint.h \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/c++/8.3.0/cassert \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/gemmlowp/fixedpoint/../internal/detect_platform.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/cppmath.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/optimized/neon_check.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/quantization_util.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/reference/maximum_minimum.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/kernel_util.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/kernel_util.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/micro_ops.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/signal/micro/kernels/irfft.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/signal/micro/kernels/rfft.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/mul.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/pooling.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/reference/integer_ops/pooling.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/reference/pooling.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/padding.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/reduce.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/softmax.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/svdf.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/transpose_conv.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/unidirectional_sequence_lstm.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_profiler.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/recording_micro_interpreter.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/recording_micro_allocator.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/arena_allocator/recording_single_arena_buffer_allocator.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/system_setup.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/cortex_m_generic/debug_log_callback.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../model/loong_cnn_model_simple.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../code/init.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../code/filt.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../code/flash.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../code/control.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../code/image.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../code/show.h \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../code/lq_ncnn.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../code/lq_camera_ex.hpp \
- /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/../code/red_threshold_visual.h
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/third_party/gemmlowp/fixedpoint/../internal/detect_platform.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/cppmath.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/optimized/neon_check.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/quantization_util.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/reference/maximum_minimum.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/kernel_util.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/kernel_util.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/micro_ops.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/signal/micro/kernels/irfft.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/signal/micro/kernels/rfft.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/mul.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/pooling.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/reference/integer_ops/pooling.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/internal/reference/pooling.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/kernels/padding.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/reduce.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/softmax.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/svdf.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/transpose_conv.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/kernels/unidirectional_sequence_lstm.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/micro_profiler.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/recording_micro_interpreter.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/recording_micro_allocator.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/arena_allocator/recording_single_arena_buffer_allocator.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/system_setup.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_components/tflm/tensorflow/lite/micro/cortex_m_generic/debug_log_callback.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../model/loong_cnn_model_simple.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../code/init.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../code/filt.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../code/flash.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../code/control.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../code/image.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../code/show.h \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../code/lq_ncnn.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../code/lq_camera_ex.hpp \
+ /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/../code/red_threshold_visual.h

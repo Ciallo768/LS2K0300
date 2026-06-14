@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user
+CMAKE_SOURCE_DIR = /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out
+CMAKE_BINARY_DIR = /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out
 
 # Include any dependencies generated for this target.
 include CMakeFiles/project.dir/depend.make
@@ -70,507 +70,507 @@ include CMakeFiles/project.dir/progress.make
 include CMakeFiles/project.dir/flags.make
 
 CMakeFiles/project.dir/main.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/main.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/main.cpp
+CMakeFiles/project.dir/main.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/main.cpp
 CMakeFiles/project.dir/main.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/project.dir/main.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/main.cpp.o -MF CMakeFiles/project.dir/main.cpp.o.d -o CMakeFiles/project.dir/main.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/project.dir/main.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/main.cpp.o -MF CMakeFiles/project.dir/main.cpp.o.d -o CMakeFiles/project.dir/main.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/main.cpp
 
 CMakeFiles/project.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/main.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/main.cpp > CMakeFiles/project.dir/main.cpp.i
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/main.cpp > CMakeFiles/project.dir/main.cpp.i
 
 CMakeFiles/project.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/main.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user/main.cpp -o CMakeFiles/project.dir/main.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.s
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o: CMakeFiles/project.dir/flags.make
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o: /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o -MF CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o.d -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o -c /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.i"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp > CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.i
-
-CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.s"
-	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp -o CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.s
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user/main.cpp -o CMakeFiles/project.dir/main.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.s
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o: CMakeFiles/project.dir/flags.make
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o: /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o: CMakeFiles/project.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o -MF CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o.d -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o -c /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.i"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp > CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.i
+
+CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.s"
+	/opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/bin/loongarch64-linux-gnu-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp -o CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.s
 
 # Object files for target project
 project_OBJECTS = \
 "CMakeFiles/project.dir/main.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o" \
-"CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o"
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o" \
+"CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o"
 
 # External object files for target project
 project_EXTERNAL_OBJECTS =
 
 project: CMakeFiles/project.dir/main.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o
-project: CMakeFiles/project.dir/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/filt.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/flash.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/image.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/init.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/lq_ncnn.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/show.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/code/ww_transmission.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_fifo.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_font.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_common/zf_common_function.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_dl1x.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_imu.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_ips200_fb.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_tft180_fb.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_device/zf_device_uvc.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_adc.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_delay.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_encoder.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_buffer.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_file_string.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_gpio.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pit_fd.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_pwm.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_tcp_client.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_driver/zf_driver_udp.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant.cpp.o
+project: CMakeFiles/project.dir/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/libraries/zf_components/seekfree_assistant/seekfree_assistant_interface.cpp.o
 project: CMakeFiles/project.dir/build.make
 project: /opt/ls_2k0300_env/opencv_4_10_build/lib/libopencv_gapi.so.4.10.0
 project: /opt/ls_2k0300_env/opencv_4_10_build/lib/libopencv_highgui.so.4.10.0
@@ -588,7 +588,7 @@ project: /opt/ls_2k0300_env/opencv_4_10_build/lib/libopencv_flann.so.4.10.0
 project: /opt/ls_2k0300_env/opencv_4_10_build/lib/libopencv_imgproc.so.4.10.0
 project: /opt/ls_2k0300_env/opencv_4_10_build/lib/libopencv_core.so.4.10.0
 project: CMakeFiles/project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Linking CXX executable project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Linking CXX executable project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/project.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -600,6 +600,6 @@ CMakeFiles/project.dir/clean:
 .PHONY : CMakeFiles/project.dir/clean
 
 CMakeFiles/project.dir/depend:
-	cd /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/user /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out /home/zhy/6.1/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles/project.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/user /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out /home/zhy/project/6.13/Seekfree_LS2K0300_Opensource_Library/project/out/CMakeFiles/project.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/project.dir/depend
 

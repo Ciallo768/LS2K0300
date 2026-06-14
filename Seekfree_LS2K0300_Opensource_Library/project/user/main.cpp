@@ -19,39 +19,13 @@ void pit_callback()
 
     // run_flag=1;
     if(run_flag==1)
-    {   //33100/2 16550         15*35   
-        forward1 = 43-Now_Speed/20;//23
-
-        // forward1 = 35;//23
-    //    forward1 = 32;
-        speed_goal=10*30;
-    //      Image.Kp=3.5*(0.2143*imgInfo.top+0.4286);
-    //  if(Image.Kp<=1.3)Image.Kp=1.3;
-    //  if(Image.Kp>=3.5)Image.Kp=3.5;
-    //   //  speed_goal=10*30;
-        if(Flag.picture==2)speed_goal=100;
+    {   //33100/2 16550         15*35  
 
 
 
-
-        if(Flag.ramp==2)
-        speed_goal=150;
-
-    // if(Flag.picture == 1)
-    //     speed_goal = 100;
-
-
-       int speed_add;
 
     //     //printf("pit!\n");
-        // if(imgInfo.top<=12&&Flag.Huandao_L==0&&Flag.Huandao_R==0)
-        // {
-        //     speed_add=(real_distance[imgInfo.top]-100)*0.6;
 
-        //     if(speed_add>=0)
-        //     speed_goal+=speed_add;
-
-        // }
 
 
        
@@ -60,7 +34,7 @@ void pit_callback()
  
 
     //    float K_turn=2;
-    //     V_out=Speed_PID_Cal(&Velocity,speed_goal,Master_Speed);
+    //     V_out=Speed_PID_Cal(&Velocity,speed_goal,MaX_Speed);
 
     //    if(Dis_Out>0)
     //  {
@@ -85,11 +59,12 @@ void pit_callback()
            v_right_target=speed_goal-Dis_Out*(2-K_turn);//
            v_left_target=speed_goal+Dis_Out*K_turn;//S
      }
+
         PWM_R = Speed_PID_Cal(&Velocity_R,v_right_target,encoder_R.speed)+D_ERR*0+0* (encoder_L.D_speed - encoder_R.D_speed)+0*Dis_1.Integral;//
         PWM_L = Speed_PID_Cal(&Velocity_L,v_left_target,encoder_L.speed)-D_ERR*0-0* (encoder_L.D_speed - encoder_R.D_speed)-0*Dis_1.Integral;//
         
 
-        set_pwm(PWM_L,-PWM_R);
+        set_pwm(PWM_L,PWM_R); 
         //printf("Yaw:%f\n",icm_data.yaw);
     //set_pwm(1000,1000);
     //    sprintf((char*)Tcp_buffer,"%d,%f,%f,%f\n",(encoder_L.count_now - encoder_R.count_now),Tpm_Dis,G_dis,Dis_Speed);
@@ -108,9 +83,10 @@ void pit_callback()
    
     if(it_time%20==0)
     {
-       // printf("Yaw:%.3f   dl1x_distance_raw:%d  Flag.picture:%d   Flag.Zebra_cross:%d  jump_point:%d  imgInfo.top:%d    Flag.ramp:%d  Image.Kp:%.2f Dir_Err:%.1f   Huandao_R:%d    Huandao_L:%d   V_max:%.1f\n"
-            //,icm_data.yaw,dl1x_distance_raw,Flag.picture,Flag.Zebra_cross,jump_point,imgInfo.top,Flag.ramp,Image.Kp,Dir_err,Flag.Huandao_R,Flag.Huandao_L,Master_Speed);
+        printf("Yaw:%.3f   v_right_target:%.1f  Flag.picture:%d   Flag.Zebra_cross:%d  v_left_target:%.1f  imgInfo.top:%d    Flag.ramp:%d  real_distance[red_y_mid]:%.2f Dir_Err:%.1f   Huandao_R:%d    Huandao_L:%d   V_max:%.1f\n"
+            ,icm_data.yaw,v_right_target,Flag.picture,Flag.Zebra_cross,v_left_target,imgInfo.top,Flag.ramp,real_distance[red_y_mid],Dir_err,Flag.Huandao_R,Flag.Huandao_L,MAX(encoder_L.speed,encoder_R.speed));
         // printf("PWM_L:%d.PWM_R:%d\n",PWM_L,-PWM_R);
+                        //    printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
     }
 
 }
@@ -124,44 +100,46 @@ int main(int, char**)
     image_init();
 //    tcp_client_dev.init(SERVER_IP, PORT);
     //Flag.picture = 2;
-    //pit_timer.init_ms(5, pit_callback);//5ms定时器初始化
+    pit_timer.init_ms(5, pit_callback);//5ms定时器初始化
+
     //set_pwm(1000,1000);
+
     Param_Init();
-    RedThresholdNoGui_Init("red_threshold.txt");
     while(1)
-        //  system_delay_ms(500);
-        //  esc_pwm.set_duty(1000);
+
     {
-        // set_pwm(1000,-1000);
-            // if(Flag.picture>0||Flag.small_rock!=0||Flag.ramp!=0||Flag.Zebra_cross==1||Flag.Zebra_cross==4
-            //     )//||Flag.Huandao_L==1||Flag.Huandao_R==1 ||Flag.Huandao_L==3||Flag.Huandao_R==3 ||Flag.Huandao_L==5||Flag.Huandao_R==5
-            // {beep.set_level(1);}
-            //  else{beep.set_level(0);} 
+
+            if(Flag.picture>0||Flag.small_rock!=0||Flag.ramp!=0||Flag.Zebra_cross==1||Flag.Zebra_cross==4
+                ||Flag.Huandao_L==2||Flag.Huandao_R==2 ||Flag.Huandao_L==4||Flag.Huandao_R==4 ||Flag.Huandao_L==6||Flag.Huandao_R==6
+                )//
+            {beep.set_level(1);}
+             else{beep.set_level(0);} 
+
                 // printf("Yaw:%f   distance_picture:%f   Flag.picture:%d   Flag.Huandao_R:%d  Flag.Huandao_L:%d\n",icm_data.yaw,distance_picture,Flag.picture,Flag.Huandao_R,Flag.Huandao_L);
             // printf("Flag.Redblock:%d   err:%d\n",FlaZXg.Redblock,abs((Right_Sideline[center.y]+Left_Sideline[center.y])-center.x));
             //  printf("center.y:%dcenter.x:%derr:%d    mid:%d\n",red_y_mid,red_x_mid,abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid),(Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2);
             //         printf("Flag.Redblock:%d   err_picture:%f    x_err_red:%d\n",Flag.Redblock,err_picture,x_err_red);
-            // frame_count++;
+             frame_count++;
         // 5. 每秒统计一次帧率s
-        // auto current_time = std::chrono::steady_clock::now();
-        // std::chrono::duration<double, std::milli> elapsed = current_time - last_print_time;
+        auto current_time = std::chrono::steady_clock::now();
+        std::chrono::duration<double, std::milli> elapsed = current_time - last_print_time;
         
-        // if (elapsed.count() >= PRINT_INTERVAL)
-        // {
-        //     // 计算实际帧率：帧数 / 耗时（秒）
-        //     double fps = frame_count / (elapsed.count() / 1000.0);
-        //     // printf("top:%d,Dir_err:%.1f\n",imgInfo.top,Dir_err);
-        //     //         printf("Yaw:%f,distance=%f\n",icm_data.yaw,distance);
-        //            printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
+        if (elapsed.count() >= PRINT_INTERVAL)
+        {
+            // 计算实际帧率：帧数 / 耗时（秒）
+            double fps = frame_count / (elapsed.count() / 1000.0);
+            // printf("top:%d,Dir_err:%.1f\n",imgInfo.top,Dir_err);
+            //         printf("Yaw:%f,distance=%f\n",icm_data.yaw,distance);
+                   printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
     
             
-        //     // 输出帧率信息
-        //     std::cout << "实时帧率：" << fps << " FPS | 累计帧数：" << frame_count << std::endl;
+            // 输出帧率信息
+            std::cout << "实时帧率：" << fps << " FPS | 累计帧数：" << frame_count << std::endl;
             
-        //     // 重置统计变量
-        //     frame_count = 0;
-        //     last_print_time = current_time;
-        // }
+            // 重置统计变量
+            frame_count = 0;
+            last_print_time = current_time;
+        }
 
          
         if(run_flag==2||run_flag==0)
@@ -171,8 +149,6 @@ int main(int, char**)
         }
         // //auto start = std::chrono::high_resolution_clock::now();
          ImageDeal();
-
-         
         // frame_cnt++;
 
 
@@ -184,6 +160,4 @@ int main(int, char**)
 
         
     }
-    RedThresholdNoGui_Deinit();
-    return 0;
 }

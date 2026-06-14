@@ -4,7 +4,7 @@ uint16_t key7_state, key8_state,key7_last_state,key8_last_state;
 uint8_t key1_last_state,key2_last_state,key3_last_state,key4_last_state,key5_last_state,key6_last_state;
 int8_t oled_flag,last_oled_flag;
 int16_t Parameter_flag = 1;
-uint16_t esc_duty = 550;
+int esc_duty = 0;
 void key_scan(void)
 {
     key1_state=key_1.get_level();//下
@@ -53,13 +53,12 @@ void key_scan(void)
     {
          ips200.clear();
          system_delay_ms(1000);
-         for(int i=550;i<=00;i++)
+         for(int i=550;i<=(int)esc_duty;i++)
 {
 
-        esc_pwm.set_duty(i);
-        system_delay_ms(4);
+        esc_pwm.set_duty(i); 
+        system_delay_ms(3);
 }
-
 
         //  esc_pwm.set_duty(700);
         //  system_delay_ms(500);
@@ -126,32 +125,27 @@ if(oled_flag == 4)
             return;
         }
 
-        // for(int y = 0; y < resizedFrame.rows; y++)
-        // {
-        //     const cv::Vec3b* ptr = resizedFrame.ptr<cv::Vec3b>(y);
-        //     uchar* mask_ptr = debug_mask.ptr<uchar>(y);
+        for(int y = 0; y < resizedFrame.rows; y++)
+        {
+            const cv::Vec3b* ptr = resizedFrame.ptr<cv::Vec3b>(y);
+            uchar* mask_ptr = debug_mask.ptr<uchar>(y);
             
-        //     for(int x = 0; x < resizedFrame.cols; x++)
-        //     {
-        //         int b = ptr[x][0];
-        //         int g = ptr[x][1];
-        //         int r = ptr[x][2];
+            for(int x = 0; x < resizedFrame.cols; x++)
+            {
+                int b = ptr[x][0];
+                int g = ptr[x][1];
+                int r = ptr[x][2];
 
-        //         if (r > Flash.debug_rgb_r_min && (r - g) > Flash.debug_rgb_rg_diff && (r - b) > Flash.debug_rgb_rb_diff)
-        //         {
-        //             mask_ptr[x] = 255; // 白色表示检测到红色
-        //         }
-        //     }
-        // }
-
-            cv::inRange(debug_hsv, cv::Scalar(0, 120, 70), cv::Scalar(10, 255, 255), debug_mask1);
-            cv::inRange(debug_hsv, cv::Scalar(160, 120, 70), cv::Scalar(179, 255, 255), debug_mask2);
-
-            debug_mask = debug_mask1 | debug_mask2;
-
+                // 这里必须与 DetectRedBlock 中的逻辑完全一致
+                if (r > Flash.debug_rgb_r_min && (r - g) > Flash.debug_rgb_rg_diff && (r - b) > Flash.debug_rgb_rb_diff)
+                {
+                    mask_ptr[x] = 255; // 白色表示检测到红色
+                }
+            }
+        }
             for(int i = 0; i < LCDH_1; i++)
             {
-                
+                // 直接拷贝一行数据，效率比逐像素遍历高
                 memcpy(Image_IFS[i], debug_mask.ptr<uint8_t>(i), LCDW_1);
             }
             
@@ -161,31 +155,6 @@ if(oled_flag == 4)
         printf("resizedFrame is empty\n");
         return;
     }
-    // sprintf(txt, "R_Min : %d  ", Flash.debug_rgb_r_min);
-    // ips200.show_string(0, 60, txt);
-
-    // sprintf(txt, "R-G Diff : %d  ", Flash.debug_rgb_rg_diff);
-    // ips200.show_string(0, 80, txt);
-        
-    // sprintf(txt, "R-B Diff: %d ", Flash.debug_rgb_rb_diff);
-    // ips200.show_string(0, 100, txt);
-        
-
-    // sprintf(txt,"L_h_guai:%d",L_h_guai.flag);
-    // ips200.show_string(0,140,txt);
-
-    // sprintf(txt,"R_h_guai:%d",R_h_guai.flag);
-    // ips200.show_string(120,140,txt);
-
-    // sprintf(txt,"red_find_x:%d",red_find_x);
-    // ips200.show_string(0,160,txt);
-
-    // sprintf(txt,"Flag.picture:%d",Flag.picture);
-    // ips200.show_string(120,160,txt);
-
-    // sprintf(txt,"red_find_y:%d",red_find_y);
-    // ips200.show_string(0,180,txt);
-
     sprintf(txt, "R_Min : %d  ", Flash.debug_rgb_r_min);
     ips200.show_string(0, 60, txt);
 
@@ -591,17 +560,17 @@ if(oled_flag == 0){
                       sprintf(txt,"top:%d ",imgInfo.top);
                       ips200.show_string(110,200,txt);
 
-                      sprintf(txt,"Rh.row1:%d ",R_h_guai1.row);
+                      sprintf(txt,"real_red:%.1f ",real_distance[red_y_mid]);
                       ips200.show_string(110,220,txt);
 
                       sprintf(txt,"Lh.row1:%d ",L_h_guai1.row);
                       ips200.show_string(0,220,txt);
 
 
-                      sprintf(txt,"Rh.column1:%d ",R_h_guai1.column);
+                      sprintf(txt,"l_num:%d ",l_num);
                       ips200.show_string(110,240,txt);
 
-                      sprintf(txt,"Lh.column1:%d ",L_h_guai1.column);
+                      sprintf(txt,"r_num:%d ",r_num);
                       ips200.show_string(0,240,txt);
 
 

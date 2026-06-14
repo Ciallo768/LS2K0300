@@ -35,12 +35,6 @@ bool first_flag = true;
 int roix1,roiy1 = 0;
 using namespace cv;
 cv::Mat lq_frame;
-unsigned char R_TH = 140;
-unsigned char G_TH = 125;
-unsigned char B_TH = 125;
-unsigned char R_G_TH = 50;
-unsigned char R_B_TH = 50;
-
 //绕行相关
 bool picture_yaw_init = false;//记录第一次进入绕行逻辑的标志位
 float Yaw_picture = 0;//记录检测到图片时的初始yaw值
@@ -49,8 +43,14 @@ float Yaw_picture_err = 0;
 float Yaw_picture_target = 0;//绕行的目标偏差值
 float encoder_val = 0;//用于记录编码器的值 以实现分阶段运行
 int resize_cx,resize_cy = 0;
-Guaidian red_L_L,red_R_L,picture_L_H,picture_R_H;//四个拐点
 
+unsigned char R_TH = 140;
+unsigned char G_TH = 125;
+unsigned char B_TH = 125;
+unsigned char R_G_TH = 50;
+unsigned char R_B_TH = 50;
+
+Guaidian red_L_L,red_R_L,picture_L_H,picture_R_H;//四个拐点
 //处理陀螺仪角度跳变
 float Yaw_correct(float current_yaw,float target_yaw)
 {
@@ -67,6 +67,26 @@ float Yaw_correct(float current_yaw,float target_yaw)
     
 }
 
+int halfside_wan[60] =
+{
+    33, 33, 33, 33, 33, 33, 32, 32, 32, 32,
+    32, 32, 32, 31, 31, 31, 31, 31, 31, 30,
+    30, 30, 30, 29, 29, 29, 30, 30, 31, 31,
+    32, 32, 32, 33, 33, 34, 35, 35, 35, 36,
+    36, 37, 38, 39, 40, 40, 41, 41, 42, 42,
+    43, 43, 43, 44, 44, 45, 46, 46, 46, 46,
+};
+// int halfside_wan[60] =
+// {
+//     33, 33, 33, 33, 33, 33, 32, 32, 32, 32,
+//     32, 32, 32, 31, 31, 31, 31, 31, 31, 30,
+//     30, 30, 30, 29, 29, 29, 30, 30, 31, 31,
+//     32, 32, 32, 33, 33, 34, 35, 1.7, 1.65, 1.5,
+//     1.45, 1.4, 1.35, 1.3, 1.25, 1.2, 1.15, 1.1, 1.05, 1,
+//     0.95, 0.9, 0.85, 0.8, 0.75, 0.7, 0.65, 0.6, 0.55, 0.5,
+// };
+
+
 const float atan_deg_tab[49] = 
 {
     0.00f, 45.00f, 63.43f, 71.57f, 75.96f, 78.69f, 80.54f, 81.87f, 82.87f, 83.66f,
@@ -82,35 +102,6 @@ float actan_err(float err)
     if(err<=0) actan_err=-atan_deg_tab[-(int)err];
   return actan_err;
 }
-// float real_distance[60] =
-// {
-//      536.00, 413.00, 330.50, 276.40, 235.00, 205.80, 179.20, 156.40, 142.40, 132.40,
-//      118.20, 107.40, 99.00, 91.60, 83.50, 78.60, 73.70,  68.00,  62.40,  56.60,
-//      54.80,  51.00,  47.00,  44.00,  42.00,  39.00,  36.20,  34.00,  31.50,  30.40,
-//      28.20,  26.60,  24.80,  23.20,  21.90,  20.60,  19.40,  18.40,  17.40,  16.10,
-//      15.20,  14.20,  13.40,  12.80,  12.00,  11.20,  10.60,  9.80,  8.80,  8.00, 
-//      7.20,  6.70,  6.20,  5.40,  4.60,  4.00,  3.50,  2.80,  2.00,  1.20,
-// };
-
-// float real_distance[60] =
-// {
-//      750.00-3,590.00-3, 460.00-3, 366.00-3, 301.50-3, 262.00-3, 226.00-3, 199.00-3, 177.00-3, 160.0-3,
-//      144.00-3, 132.00-3, 122.00-3, 113.0-30, 103.90-3, 97.00-3, 90.00-3,  82.50-3,  78.00-3,  73.00-3,
-//      67.50-3,  64.00-3,  60.30-3,  55.80-3,  53.40-3,  49.90-3,  46.00-3,  44.30-3,  41.90-3,  38.90-3,
-//      37.10-3,  35.50-3,  33.00-3,  31.80-3,  30.10-3,  28.00-3,  26.60-3,  25.40-3,  23.00-3,  22.10-3,
-//      21.20-3,  19.80-3,  18.80-3,  18.00-3,  16.00-3,  15.20-3,  14.50-3,  13.00-3,  12.80-3,  12.00-3, 
-//      10.70-3,  9.60-3,  9.10-3,  8.80-3,  8.00-3,  7.10-3,  6.50-3,  6.00-3,  5.00-3,  3.80-3,
-// };
-
-// float real_distance[60] =
-// {
-//      500,410, 350, 300.0, 268.0, 226.5, 193.0, 172.0, 153.5, 138.6,
-//      126.0, 115.0, 106.2, 97.8, 90.6, 84.6, 79.0,  73.8,  68.8,  64.9,
-//      60.8,  58.0,  54.0,  51.0,  48.0,  45.7,  42.5,  40.0,  38.0,  36.5,
-//      34.5,  32.4,  30.8,  29.5,  28.1,  26.3,  25.0,  24.0,  22.3,  21.2,
-//      20.4,  19.2,  18.0,  17.0,  16.00,  15.20,  14.4,  13.6,  13.0,  12.0, 
-//      11.2,  10.6,  10.0,  9.5,  8.7,  8.2,  7.8,  7,  6.5,  3.80-3,
-// };
 
 float real_distance[60] =
 {
@@ -301,14 +292,6 @@ void Get01change_dajin() {
 
 //     }
 //   }
-    if(red_L_L.row < 0 || red_L_L.row > 60 ||  red_R_L.column<0 || red_R_L.column > 94) return;
-
-    for(int h = red_L_L.row; h > picture_L_H.row; h--){
-        for(int w = red_L_L.column; w < red_R_L.column; w++)
-        {
-            Image_Use[h][w] = 255;
-        }
-    }
 
     // //图像最小范围 35~60
     // int roi_resize_x = roix1*0.5;
@@ -428,7 +411,7 @@ void my_sobel_dajin(unsigned char imageIn[LCDH_1][LCDW_1], unsigned char imageOu
             //            + (short)2* imageIn[i][j - 1] + (short) imageIn[i][j] + (short) 2*imageIn[i][j + 1]
             //            + (short) imageIn[i + 1][j - 1] + (short) 2*imageIn[i + 1][j] + (short) imageIn[i + 1][j + 1];
 
-               if (temp1 > Threshold*2.0)
+               if (temp1 > Threshold*1.0)
                {
                    imageOut[i][j] = 0;
                }
@@ -808,7 +791,7 @@ void Find_Guaidian(void)
 // && Image_Use[i + 1][Left_Sideline[i] - 2])
                
              )
-             && white_width[i + 2] - white_width[i - 0] > 9
+             && white_width[i + 2] - white_width[i - 0] > 12
              && xielv_sideline(i, Left_Sideline[i], i + 1, Left_Sideline[i + 1], 'k') < 1
              && white_width[i + 3] > white_width[i] && white_width[i + 4] > white_width[i]
              //&& abs(Left_Sideline[i - 1] - Left_Sideline[i + 1]) > 8
@@ -862,7 +845,7 @@ void Find_Guaidian(void)
 // && Image_Use[i + 1][Right_Sideline[i] + 2])
 
              )
-             && white_width[i + 2] - white_width[i - 0] > 9
+             && white_width[i + 2] - white_width[i - 0] > 12
              && white_width[i + 3] > white_width[i] && white_width[i + 4] > white_width[i]
              //&& abs(Right_Sideline[i - 1] - Right_Sideline[i + 1]) > 8
 //             && abs(xielv_sideline(i, Right_Sideline[i], i - 3, Right_Sideline[i - 3], 'k') - xielv_sideline(i, Right_Sideline[i], i + 2, Right_Sideline[i + 2], 'k')) > 0.5
@@ -1011,6 +994,7 @@ if(Flag.Huandao_L == 4)
 
 void Find_Guaidian1(void)
 {
+                        // printf("Fla:%d\n", white_width[37 + 2] - white_width[37 - 0]);
     L_l_guai.flag = 0;
     L_h_guai.flag = 0;
     R_l_guai.flag = 0;
@@ -1061,7 +1045,7 @@ void Find_Guaidian1(void)
 // && Image_Use[i + 1][Left_Sideline[i] - 2])
                
              )
-             && white_width[i + 2] - white_width[i - 0] > 15
+             && white_width[i + 2] - white_width[i - 0] > 12
              && xielv_sideline(i, Left_Sideline[i], i + 1, Left_Sideline[i + 1], 'k') < 1
              && white_width[i + 3] > white_width[i] && white_width[i + 4] > white_width[i]
              //&& abs(Left_Sideline[i - 1] - Left_Sideline[i + 1]) > 8
@@ -1115,7 +1099,7 @@ void Find_Guaidian1(void)
 // && Image_Use[i + 1][Right_Sideline[i] + 2])
 
              )
-             && white_width[i + 2] - white_width[i - 0] > 15
+             && white_width[i + 2] - white_width[i - 0] > 12
              && white_width[i + 3] > white_width[i] && white_width[i + 4] > white_width[i]
              //&& abs(Right_Sideline[i - 1] - Right_Sideline[i + 1]) > 8
 //             && abs(xielv_sideline(i, Right_Sideline[i], i - 3, Right_Sideline[i - 3], 'k') - xielv_sideline(i, Right_Sideline[i], i + 2, Right_Sideline[i + 2], 'k')) > 0.5
@@ -1167,7 +1151,7 @@ void Find_Guaidian1(void)
                        && Image_Use[i - 1][Left_Sideline[i] - 2] && Image_Use[i - 1][Left_Sideline[i] - 3])
                  )
                  /*上面三行的白行都比这一行多*/
-                 && white_width[i - 2] - white_width[i + 1] > 10
+                 && white_width[i - 2] - white_width[i + 1] > 5
                  && white_width[i - 2] > white_width[i] && white_width[i - 3] > white_width[i] && white_width[i - 4] > white_width[i]
                  && i > L_h_guai.row
                  && L_l_guai.flag == 0
@@ -1209,7 +1193,7 @@ void Find_Guaidian1(void)
                  )
                  /*上面三行的白行都比这一行多*/
                  && white_width[i - 2] > white_width[i] && white_width[i - 3] > white_width[i]
-                 && white_width[i - 2] - white_width[i + 1] > 10
+                 && white_width[i - 2] - white_width[i + 1] > 5
 //                 && abs(xielv_sideline(i, Right_Sideline[i], i - 3, Right_Sideline[i - 3], 'k') - xielv_sideline(i, Right_Sideline[i], i + 2, Right_Sideline[i + 2], 'k')) > 0.5
 //                 && xielv_sideline(i, Right_Sideline[i], i - 3, Right_Sideline[i - 3], 'k') > 1
                  && i > R_h_guai.row
@@ -1404,13 +1388,11 @@ float k1,kL,kR;
 uint16_t maxkuan_line;
 void straight_judge(void)
 {
-              if(R_h_guai.flag==1||L_h_guai.flag==1)//&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>25&&imgInfo.Both_lose==0 
-{
-                    Find_right_Sideline(imgInfo.bottom-5,imgInfo.top+1);
-                    Find_left_Sideline(imgInfo.bottom-5,imgInfo.top+1); 
-}
 
+// if(L_h_guai.flag||R_l_guai.flag)
+// {
 
+// }
            maxkuan_line=15;
        uint16_t kuan_max = 0;
         for(int i = imgInfo.top;i < 52; i++)
@@ -1547,7 +1529,7 @@ void straight_judge(void)
 
 
        imgInfo.Both_lose=0;
-       for(int i = imgInfo.top +5;i<=50 ;i++)
+       for(int i = imgInfo.top +5;i<=45 ;i++)
        {
            if(Left_Sideline_flag[i]==0&&Right_Sideline_flag[i]==0)
            {
@@ -1622,7 +1604,7 @@ void Huandao_L_imu()
     if(Flag.Huandao_L == 0 && Flag.Huandao_R == 0&&Flag.picture!=2&&Flag.picture!=3&&Flag.picture!=4&&Flag.picture!=5)
     {
 
-    if(imgInfo.top <= 12&&r_num<3&& imgInfo.L_loselineSum-imgInfo.R_loselineSum > 3&&R_l_guai.flag==0&&R_h_guai.flag==0&&L_l_guai.flag==1&&L_l_guai.row>20)//
+    if(imgInfo.top <= 12&&r_num<3&& imgInfo.L_loselineSum -imgInfo.R_loselineSum >0&&R_l_guai.flag==0&&R_h_guai.flag==0&&L_l_guai.flag==1&&L_l_guai.row>20&&imgInfo.Both_lose==0)//
     {
         distance_HUAN1=real_distance[L_l_guai.row]/100*66;
         Flag.Huandao_L = 1;
@@ -1691,7 +1673,7 @@ void Huandao_L_imu()
                }
                Flag.Buxian = 1;
            }
-           else if(R_l_guai.flag == 1 || R_h_guai.flag == 1 || imgInfo.R_loselineSum > 5)
+           else if(R_l_guai.flag == 1 || R_h_guai.flag == 1 && imgInfo.R_loselineSum > 25)//
            {
                Flag.Huandao_L = 0;
            }
@@ -1813,12 +1795,12 @@ void Huandao_L_imu()
                 }
 
 
-            if(((Left_Sideline_flag[LCDH_1 - 2] == 1 && Left_Sideline_flag[LCDH_1 - 3] == 1 && Left_Sideline_flag[LCDH_1 - 4] == 1
-                    && L_h_guai.flag) )&&distance>13.6)//&&distance>10|| !L_l_guai.flag
+            if(((Left_Sideline_flag[LCDH_1 - 7] == 1 && Left_Sideline_flag[LCDH_1 - 8] == 1 
+                    && L_h_guai.flag) )&&distance>10)//&&distance>10|| !L_l_guai.flag
             {
                 Flag.Huandao_L = 3;
                 distance=0;
-            }
+            }   
             Get_ImageTop();
             Find_Sideline(imgInfo.bottom - 1, imgInfo.top + 1);
         }
@@ -2157,7 +2139,7 @@ void Huandao_R_imu()
     if(Flag.Huandao_R == 0 && Flag.Huandao_L == 0&&Flag.picture!=2&&Flag.picture!=3&&Flag.picture!=4&&Flag.picture!=5)
     {
 
-    if(imgInfo.top <= 12&&l_num<3&& imgInfo.R_loselineSum-imgInfo.L_loselineSum > 3&&L_l_guai.flag==0&&L_h_guai.flag==0&&R_l_guai.flag==1&&R_l_guai.row>20)//
+    if(imgInfo.top <= 12&&l_num<3 && imgInfo.R_loselineSum -imgInfo.L_loselineSum >0&&L_l_guai.flag==0&&L_h_guai.flag==0&&R_l_guai.flag==1&&R_l_guai.row>20&&imgInfo.Both_lose==0)//
     {
         distance_HUAN1=real_distance[R_l_guai.row]/100*66;
         Flag.Huandao_R = 1;
@@ -2226,7 +2208,7 @@ void Huandao_R_imu()
                }
                Flag.Buxian = 1;
            }
-           else if(L_l_guai.flag == 1 || L_h_guai.flag == 1 || imgInfo.L_loselineSum > 5)
+           else if(L_l_guai.flag == 1 || L_h_guai.flag == 1 && imgInfo.L_loselineSum > 25)
            {
                Flag.Huandao_R = 0;
            }
@@ -2348,8 +2330,8 @@ void Huandao_R_imu()
                 }
 
 
-            if(((Right_Sideline_flag[LCDH_1 - 2] == 1 && Right_Sideline_flag[LCDH_1 - 3] == 1 && Right_Sideline_flag[LCDH_1 - 4] == 1
-                    && R_h_guai.flag) )&&distance>13.6)//|| !R_l_guai.flag
+            if(((Right_Sideline_flag[LCDH_1 - 7] == 1 && Right_Sideline_flag[LCDH_1 - 8] == 1 
+                    && R_h_guai.flag) )&&distance>10)//|| !R_l_guai.flag
             {
                 Flag.Huandao_R = 3;
                 distance=0;
@@ -2997,16 +2979,139 @@ if (curvature > 0.12f || fabsf(B_near) > 0.8f) {
 float Dir_err = 0, Last_Dir_err = 0,Dir_Err[60],D_ERR;  //图像误差
 void Err_Sum(void)
 {
+     esc_duty=1000;
+    if(run_flag==1)
+    {   //33100/2 16550         15*35  
+                forward1=35;
+                                // forward1=40;
+                forward = forward1-Now_Speed/40;//23 
+                speed_goal=10*75;
+    //      Image.Kp=3.5*(0.2143*imgInfo.top+0.4286);
+    //  if(Image.Kp<=1.3)Image.Kp=1.3;
+    //  if(Image.Kp>=3.5)Image.Kp=3.5;
+    //   //  speed_goal=10*30;
+        // if(Flag.picture==2)speed_goal=50;
+    //   if(Flag.picture==2&&real_distance[MAX(R_h_guai.row,L_h_guai.row)]>50)speed_goal=(real_distance[MAX(R_h_guai.row,L_h_guai.row)]-25)*9;
+      if(Flag.picture==2)
+      {
+             speed_goal=100;
+    //     if(real_distance[MAX(R_h_guai.row,L_h_guai.row)]<recognize_distance2)
+    //     {
+    //   Pos_Cal(&picture_distance,recognize_distance2,real_distance[MAX(R_h_guai.row,L_h_guai.row)]);
+    //   speed_goal=picture_distance.output;
+    //     }
+ 
+      }
+        if(Flag.ramp==2)speed_goal=150;
+    
+       
+// if(Flag.Zebra_cross>1)
+// {
+// Image.Kp=14;
+//                 Velocity_L.kd=Image.Kp*20;
+//                 Velocity_R.kd=Velocity_L.kd;
+//                 Dis_1.Kp=Velocity_L.kd*0.01;
+//                 Dis_1.Kd=Dis_1.Kp*0.25;
+float image_kp=3.0;
+float image_kd=20;
+if(real_distance[imgInfo.top]<150||Flag.Huandao_R!=0||Flag.Huandao_L!=0||Flag.picture!=0)//
+{
+
+                Image.Kp=3.5*MaX_Speed/400*image_kp/1;//MIN(MaX_Speed,speed_goal)
+                Velocity_L.kd=Image.Kp*image_kd;
+                Velocity_R.kd=Velocity_L.kd;
+                Dis_1.Kp=Velocity_L.kd*0.01;
+                Dis_1.Kd=Dis_1.Kp*0.25;
+               esc_pwm.set_duty(esc_duty); 
+
+                Velocity_L.ki= Velocity_L.kd;
+                 Velocity_R.ki= Velocity_R.kd;
+}
+else
+{
+
+                Image.Kp=3.5*MaX_Speed/400*image_kp/1;//MIN(MaX_Speed,speed_goal)
+                Velocity_L.kd=Image.Kp*image_kd;
+                Velocity_R.kd=Velocity_L.kd;
+                Dis_1.Kp=Velocity_L.kd*0.01;
+                Dis_1.Kd=Dis_1.Kp*0.25;
+                esc_pwm.set_duty(MIN(750,esc_duty));                
+}
+// }
+
+
+if(real_distance[imgInfo.top]>200&&Flag.Huandao_R==0&&Flag.Huandao_L==0)
+{
+
+                Image.Kp=3.5*MaX_Speed/400*image_kp/2;
+                Velocity_L.kd=Image.Kp*image_kd*2;
+                Velocity_R.kd=Velocity_L.kd;
+                Dis_1.Kp=Velocity_L.kd*0.01;
+                Dis_1.Kd=Dis_1.Kp*0.25;
+
+            //         speed_add=0;
+            // speed_add=(real_distance[imgInfo.top]-200)*0;
+            // if(speed_add>0)
+            // speed_goal+=speed_add;
+
+        
+}
+if(Flag.Zebra_cross==0)
+{
+
+                Image.Kp=3.5*MaX_Speed/400*image_kp/2;
+                Velocity_L.kd=Image.Kp*image_kd*2;
+                Velocity_R.kd=Velocity_L.kd;
+                Dis_1.Kp=Velocity_L.kd*0.01;
+                Dis_1.Kd=Dis_1.Kp*0.25;
+                esc_pwm.set_duty(esc_duty);                 
+}
 
 
 
 
-forward=forward1;
+if(  Image.Kp>20)  Image.Kp=20;
+
+
+// if(Flag.Zebra_cross<=1)
+// {     
+//                 Image.Kp=3.5*MaX_Speed/400*1.5/1;
+//                 Velocity_L.kd=Image.Kp*20;
+//                 Velocity_R.kd=Velocity_L.kd;
+//                 Dis_1.Kp=Velocity_L.kd*0.01;
+//                 Dis_1.Kd=Dis_1.Kp*0.2;      
+//                 esc_pwm.set_duty(1000);
+// }
+
+
+
+
+
+    }
+
+
+    //     forward1=33;
+    //     forward = forward1-Now_Speed/40;//23 
+    // if(Flag.Huandao_R==2||Flag.Huandao_L==2)forward=forw ard1-Now_Speed/40-1;
+                // forward1=40+5;
+                // forward = forward1-Now_Speed/20;//23 
+
+                    //  forward = 30-Master_Speed/60;//23
+                //                 forward1=27;
+                // forward = forward1-Now_Speed/60;//23 
+    if(Flag.Huandao_R==2||Flag.Huandao_L==2)forward-=1;
+    if(Flag.Huandao_R==3||Flag.Huandao_L==3)forward-=1;
+    if(Flag.Huandao_R==5||Flag.Huandao_L==5)   forward+=2;
+
 for(int i=imgInfo.top + 1;i<imgInfo.bottom - 1;i++)
 {
-    Dir_Err[i]=(float)(LCDW_1/2-(((float)Left_Sideline[i]+(float)Right_Sideline[i])/2.0f));
+    Dir_Err[i]=(float)(LCDW_1/2-(((float)Left_Sideline[i]+(float)Right_Sideline[i])/2));//*(3-0.05*i)*(2.0-0.025*i)
+    // if(Left_Sideline_flag[i]==0||Right_Sideline_flag[i]==0)Dir_Err[i]*=2;
     //  if(!( Dir_Err[i]<100&& Dir_Err[i]>-100)) Dir_Err[i]=0;
 }
+
+
+
     BA_ratio=0;
     for(int i=imgInfo.top + 1;i<imgInfo.bottom - 1;i++)
     {
@@ -3015,7 +3120,7 @@ for(int i=imgInfo.top + 1;i<imgInfo.bottom - 1;i++)
 
         //  if(Flag.Huandao_R==2||Flag.Huandao_L==2)forward=-1;
         //  if(Flag.Huandao_R==3||Flag.Huandao_L==3)forward=-1;
-         if(Flag.Huandao_R==5||Flag.Huandao_L==5)   forward+=1;
+        //  if(Flag.Huandao_R==5||Flag.Huandao_L==5)   forward+=1;
 
      if(forward<imgInfo.top+1)forward=imgInfo.top+1;
      if(forward>50)forward=50;
@@ -3037,15 +3142,15 @@ for(int i=imgInfo.top + 1;i<imgInfo.bottom - 1;i++)
 
 // Dir_err =(float)(LCDW_1/2-((float)Left_Sideline[forward]));
 
-    if(!(Dir_err<100&&Dir_err>-100))Dir_err=0;
-    if(Dir_err>47)Dir_err=47;    
-    if(Dir_err<-47)Dir_err=-47;
+    // if(!(Dir_err<100&&Dir_err>-100))Dir_err=0;
+    // if(Dir_err>150)Dir_err=150;    
+    // if(Dir_err<-150)Dir_err=-150;
 
 
 
             if(Flag.small_rock ==1)
     {
-        Dir_err-=10;
+        Dir_err-=10;    
     }
 
     if(Flag.small_rock ==2)
@@ -3067,8 +3172,8 @@ for(int i=imgInfo.top + 1;i<imgInfo.bottom - 1;i++)
                 // if(Flag.picture==0)
                 // {
 
-                if((D_ERR)>=4)Dir_err=Last_Dir_err+4.0f;
-                else if((D_ERR)<-4)Dir_err=Last_Dir_err-4.0f;
+                // if((D_ERR)>=5)Dir_err=Last_Dir_err+5.0f;
+                // else if((D_ERR)<-5)Dir_err=Last_Dir_err-5.0f;
                 //                 if(Flag.picture==3)
                 // {
                 // if((D_ERR)>=1)Dir_err=Last_Dir_err+1.0f;
@@ -3087,7 +3192,66 @@ for(int i=imgInfo.top + 1;i<imgInfo.bottom - 1;i++)
         // if(fabs(Dir_err)<10)Image.Kp=3.5*fabs(Dir_err)*0.3;
         // if(MAX(encoder_L.speed,encoder_R.speed)<speed_goal/1)
         // {
-        Image.Kp=3.5*Master_Speed/400*5;
+
+        // if(Image.Kp<3.5*0.5)Image.Kp=3.5*0.5;
+        // Image.Kd=Image.Kp*0.3;
+        // Dis_1.Kp=Image.Kp/3.5/3;
+        //  Dis_1.Kp = Master_Speed/400*60;//
+        // if(MAX(encoder_L.speed,encoder_R.speed)<speed_goal/1.5)Image.Kp=3.5*MAX(encoder_L.speed,encoder_R.speed)/400*2.5;
+        // if(MAX(encoder_L.speed,encoder_R.speed)<speed_goal/2)Image.Kp=3.5*MAX(encoder_L.speed,encoder_R.speed)/400*1.5;
+        // if(MAX(encoder_L.speed,encoder_R.speed)<speed_goal/3)Image.Kp=3.5*MAX(encoder_L.speed,encoder_R.speed)/400*1;
+        // if(MAX(encoder_L.speed,encoder_R.speed)<speed_goal/4)Image.Kp=3.5*MAX(encoder_L.speed,encoder_R.speed)/400*0.5;
+        // if(MAX(encoder_L.speed,encoder_R.speed)<speed_goal/5)Image.Kp=0;
+        // if(fabs(Dir_err)<15)Image.Kp*=0.75;
+        // else if(fabs(Dir_err)<5)Image.Kp*=0.5;
+        // else if(fabs(Dir_err)<5)Image.Kp*=0.25;
+        // }
+        // if(MAX(encoder_L.speed,encoder_R.speed)<speed_goal/2)Image.Kp=3.5*MAX(encoder_L.speed,encoder_R.speed)/speed_goal*3;
+        // if(MAX(encoder_L.speed,encoder_R.speed)<speed_goal/3)Image.Kp=3.5*MAX(encoder_L.speed,encoder_R.speed)/speed_goal*2;
+        // if(MAX(encoder_L.speed,encoder_R.speed)<speed_goal/4)Image.Kp=3.5*MAX(encoder_L.speed,encoder_R.speed)/speed_goal*1;
+//         float K=0.4;
+
+//         Image.Kp=(Master_Speed*0.035+1.5)*K;
+// if(Flag.Huandao_L==0||Flag.Huandao_R==0&&(real_distance[imgInfo.top]<120))
+// {
+//     Image.Kp*=2;
+//         // if(real_distance[imgInfo.top]>70)Image.Kp*=0.85;
+//         // else if(real_distance[imgInfo.top]>90)Image.Kp*=0.7;
+//         // else if(real_distance[imgInfo.top]>120)Image.Kp*=0.55;
+//         // else if(real_distance[imgInfo.top]>160)Image.Kp*=0.4;
+//         // else if(real_distance[imgInfo.top]>210)Image.Kp*=0.25;
+//         // else if(real_distance[imgInfo.top]>270)Image.Kp*=0.10;
+//         // else if(real_distance[imgInfo.top]>340)Image.Kp*=0.3;
+// }
+
+
+        // float K=0.25;
+
+        // Image.Kp=(MaX_Speed*0.03+4)*K;   
+                // if(MaX_Speed>speed_goal)MaX_Speed=speed_goal;
+
+                // if(MaX_Speed>=speed_goal)Image.Kp=3.5*speed_goal/400*3.0/1;
+                // Image.Kp=7;
+// Image.Kp=3.5*Master_Speed/400*2.7;
+// if(Image.Kp<5)Image.Kp=5;
+// if(Image.Kp>15)Image.Kp=15;
+if(Flag.Huandao_L==0||Flag.Huandao_R==0)
+{
+    // Image.Kp*=2;
+        // if(real_distance[imgInfo.top]>100)Image.Kp*=0.85;
+        // else if(real_distance[imgInfo.top]>150)Image.Kp*=0.7;
+        // else if(real_distance[imgInfo.top]>200)Image.Kp*=0.55;
+        // else if(real_distance[imgInfo.top]>250)Image.Kp*=0.4;
+        // else if(real_distance[imgInfo.top]>300)Image.Kp*=0.25;
+        // if(real_distance[imgInfo.top]>120)Image.Kp=3.5*Master_Speed/400*2.75;
+        // // // if(Now_Speed<0)Image.Kp=0;  
+        // if(real_distance[imgInfo.top]>200)Image.Kp=3.5*Master_Speed/400*2.5;
+        // if(real_distance[imgInfo.top]>250)Image.Kp=3.5*Master_Speed/400*2.0;
+        // if(real_distance[imgInfo.top]>300)Image.Kp=3.5*Master_Speed/400*1.5;
+}
+
+        // Image.Kp=3.5*Master_Speed/400*3.0;
+        // if(Image.Kp<3.5*0.5)Image.Kp=3.5*0.5;
         // Image.Kd=Image.Kp*0.3;
         // Dis_1.Kp=Image.Kp/3.5/3;
         //  Dis_1.Kp = Master_Speed/400*60;//
@@ -3105,11 +3269,12 @@ for(int i=imgInfo.top + 1;i<imgInfo.bottom - 1;i++)
         // if(MAX(encoder_L.speed,encoder_R.speed)<speed_goal/4)Image.Kp=3.5*MAX(encoder_L.speed,encoder_R.speed)/speed_goal*1;
         
 
-        // if(real_distance[imgInfo.top]>150)Image.Kp=3.5*2.5;
-        // // if(Now_Speed<0)Image.Kp=0; 
-        // if(real_distance[imgInfo.top]>200)Image.Kp=3.5*2;
-        // if(real_distance[imgInfo.top]>250)Image.Kp=3.5*1.5;
-        // if(real_distance[imgInfo.top]>300)Image.Kp=3.5*1.5;
+
+// if(Left_Sideline_flag[forward]==1&&Right_Sideline_flag[forward]==1)
+// {
+//     Image.Kp*=0.5;
+// }
+// if(speed_add>0)Image.Kp*=0.25;
         // if(Flag.picture==2)Image.Kp=3.5*1.5;
         // if(Flag.picture==3)Image.Kp=3.5*1.5;
         // if(Flag.picture==4)Image.Kp=3.5*1.5;
@@ -3122,765 +3287,564 @@ for(int i=imgInfo.top + 1;i<imgInfo.bottom - 1;i++)
 int red_find_x,red_find_y,red_find_y1;
 int picture_first_num,picture_second_num,picture_third_num,maxlong_colume,colume_long[94], long_max,picture_white=0,picture_black=0,jump_point1;
 float black_ratio;
-void picture1(void)
-{
-    
-        picture_white=0;
-        picture_black=0;
-        jump_point1=0;
-        black_ratio=0;
-
-
-Flag.picture=0;
-    if(Flag.picture==0||Flag.picture==1)
-{
-
-      if(R_h_guai.flag==1&&R_h_guai.row>16&&imgInfo.Both_lose==0&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>25 )//
-{
-
-            //             picture_first_num=0;  
-            // for(int i = R_h_guai.column;i<94;i++)
-            // {
-            //     if(Image_Use[R_h_guai.row-1][i] == white)
-            //         picture_first_num++;
-            //         if(Image_Use[R_h_guai.row][i-1] == black && Image_Use[R_h_guai.row][i] == black&& Image_Use[R_h_guai.row][i+1] == black&&picture_first_num>10)
-            //         break;
-            // }
-// long_max = 0;
-// maxlong_colume = R_h_guai.column+1;
-
-// for(int j = R_h_guai.column+1; j < Right_Sideline[55]; j++)
-// {
-//     colume_long[j] = 0;  // 每一列先清空
-
-//     // 从上往下扫这一列
-//     for(int i = 58; i >= 1; i--)
-//     {
-//         // 找到第一个 白在上 + 黑在下
-//         if(Image_Use[i][j] == white && Image_Use[i-1][j] == black&& Image_Use[i-2][j] == black)
-//         {
-//             colume_long[j] = 58 - i;
-//             break;  // 找到 → 立刻退出这一列扫描 ✅ 正确
-//         }
-
-//         // 如果扫到最顶上都没找到 → 整列有效
-//         if(i == 1)
-//         {   
-//             colume_long[j] = 58 - i;
-//         }
-//     }
-
-//     // 出了 i 循环，再更新最长列 ✅ 正确
-//     if(colume_long[j] > long_max)
-//     {
-//         long_max = colume_long[j];
-//         maxlong_colume = j;
-//     }
-// }
-// if(imgInfo.R_loselineSum>2)  {maxlong_colume=92;}
-
-
-                    Find_right_Sideline(imgInfo.bottom-1,imgInfo.top+4);
-                    // Find_left_Sideline(imgInfo.bottom-1,imgInfo.top+4);     
-                    Find_r_h_Guaidian();  
-    for(int i=R_h_guai.row;i>=real_distance_to_row(real_distance[R_h_guai.row]+10);i--) 
-    {
-        // picture_white=0;
-        // picture_black=0;
-        // jump_point1=0;
-        for(int j=Left_Sideline[i]+1;j<Right_Sideline[i];j++)
-        {
-           if(Image_Use[i][j]==white)picture_white++;
-           if(Image_Use[i][j]==black)picture_black++;
-           if(Image_Use[i][j]==white&&Image_Use[i][j+1]==black)jump_point1++;
-        }
-    }
-    if(picture_white>0)
-                black_ratio=(float)picture_black/(float)picture_white;
-
-                
-    //         if((R_h_guai.row!=R_h_guai1.row)&&(R_h_guai1.flag==0)&&picture_black>5&&black_ratio>0.15&&black_ratio<0.6)//(real_distance[R_h_guai1.row]-real_distance[R_h_guai.row])>20||
-    //         {
-    //                                         Flag.picture=1;
-    //         for(int i=real_distance_to_row(real_distance[R_h_guai.row]+20);i>=real_distance_to_row(real_distance[R_h_guai.row]+45);i--) 
-    // {
-    //     picture_white=0;
-    //     picture_black=0;
-    //     jump_point1=0;
-    //     for(int j=Left_Sideline[i]+1;j<Right_Sideline[i];j++)
-    //     {
-    //        if(Image_Use[i][j]==white)picture_white++;
-    //        if(Image_Use[i][j]==black)picture_black++;
-    //        if(Image_Use[i][j]==white&&Image_Use[i][j+1]==black)jump_point1++;
-    //     }
-    //             if(picture_white>0)
-    //             black_ratio=(float)picture_black/(float)picture_white;
-    // }
-    //             if(black_ratio<0.1)//(real_distance[R_h_guai1.row]-real_distance[R_h_guai.row])>20||
-    //         {
-    //         // Flag.picture=2;
-    //         }
-    //         }
-            
-            
-
-                
-}
-
-
-
-
-if(L_h_guai.flag==1&&L_h_guai.row>16&&imgInfo.Both_lose==0&&(real_distance[imgInfo.top]-real_distance[L_h_guai.row])>25)//
-{
-            // picture_first_num=0;
-            // for(int i = L_h_guai.column;i>0;i--)
-            // {
-            //     if(Image_Use[L_h_guai.row][i] == white)
-            //         picture_first_num++;
-            //         if(Image_Use[L_h_guai.row][i-1] == black && Image_Use[L_h_guai.row][i] == black&& Image_Use[L_h_guai.row][i+1] == black&&picture_first_num>10)
-            //         break;
-            // }
-// long_max = 0;
-// maxlong_colume = L_h_guai.column-1;
-
-// for(int j = L_h_guai.column-1; j > Left_Sideline[55]; j--)
-// {
-//     colume_long[j] = 0;  // 每一列先清空
-
-//     // 从上往下扫这一列
-//     for(int i = 58; i >= 1; i--)
-//     {
-//         // 找到第一个 白在上 + 黑在下
-//         if(Image_Use[i][j] == white && Image_Use[i-1][j] == black&& Image_Use[i-2][j] == black)//
-//         {
-//             colume_long[j] = 58 - i;
-//             break;  // 找到 → 立刻退出这一列扫描 ✅ 正确
-//         }
-
-//         // 如果扫到最顶上都没找到 → 整列有效
-//         if(i == 1)
-//         {   
-//             colume_long[j] = 58 - i;
-//         }
-//     }
-
-//     // 出了 i 循环，再更新最长列 ✅ 正确
-//     if(colume_long[j] > long_max)
-//     {
-//         long_max = colume_long[j];
-//         maxlong_colume = j;
-//     }
-// }
-// if(imgInfo.L_loselineSum>2)  {maxlong_colume=2;}
-                    // Find_right_Sideline(imgInfo.bottom-1,imgInfo.top+4);
-                    Find_left_Sideline(imgInfo.bottom-1,imgInfo.top+4);       
-                    Find_l_h_Guaidian();   
-    for(int i=L_h_guai.row;i>=real_distance_to_row(real_distance[L_h_guai.row]+10);i--) 
-    {
-        // picture_white=0;
-        // picture_black=0;
-        // jump_point1=0;
-        for(int j=Left_Sideline[i]+1;j<Right_Sideline[i];j++)
-        {
-           if(Image_Use[i][j]==white)picture_white++;
-           if(Image_Use[i][j]==black)picture_black++;
-           if(Image_Use[i][j]==white&&Image_Use[i][j+1]==black)jump_point1++;
-        }
-    }
-    if(picture_white>0)
-                black_ratio=(float)picture_black/(float)picture_white;
-
-
-    //             if((L_h_guai.row!=L_h_guai1.row)&&(L_h_guai1.flag==0)&&picture_black>5&&black_ratio>0.15&&black_ratio<0.6)//(real_distance[L_h_guai1.row]-real_distance[L_h_guai.row])>20||
-    //         { 
-    //                         Flag.picture=1;
-    //         for(int i=real_distance_to_row(real_distance[L_h_guai.row]+20);i>=real_distance_to_row(real_distance[L_h_guai.row]+45);i--) 
-    // {
-        
-    //     picture_white=0;
-    //     picture_black=0;
-    //     jump_point1=0;
-    //     for(int j=Left_Sideline[i]+1;j<Right_Sideline[i];j++)
-    //     {
-    //        if(Image_Use[i][j]==white)picture_white++;
-    //        if(Image_Use[i][j]==black)picture_black++;
-    //        if(Image_Use[i][j]==white&&Image_Use[i][j+1]==black)jump_point1++;
-    //     }
-    //             if(picture_white>0)
-    //             black_ratio=(float)picture_black/(float)picture_white;
-    // }
-    //             if(black_ratio<0.1)//(real_distance[R_h_guai1.row]-real_distance[R_h_guai.row])>20||
-    //         {
-    //         // Flag.picture=2;
-    //         }
-    //         }
-
-
-}
-}
-
-
-}
-
-
-
 // int red_find_x,red_find_y,red_find_y1;
 // int picture_first_num,picture_second_num,picture_third_num,maxlong_colume,colume_long[94], long_max,picture_white=0,picture_black=0,jump_point1;
 // float black_ratio;
 int red_x_mid,red_y_mid,x_err_red;
 float err_picture;
-// void picture2(void)
-// {
-//         picture_white=0;
-//         picture_black=0;
-//         jump_point1=0;
-//         black_ratio=0;
-//         err_picture=100;
-//         x_err_red=200;
-//     if(Flag.picture==0)
-// {
+int red_left,red_right;
+float real_picture_distance,recognize_distance,recognize_distance2;
 
-//       if(R_h_guai.flag==1&&R_h_guai.row>16&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>60&&real_distance[imgInfo.top]>100)//&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>25&&imgInfo.Both_lose==0 
-// {
+void picture(void)
+{
+        picture_white=0;
+        picture_black=0;
+        jump_point1=0;
+        black_ratio=0;
+        err_picture=100;
+        x_err_red=200;
+        red_x_mid=0;
+        red_y_mid=0;
 
 
+                   float K1 = xielv_sideline(55, Left_Sideline[55], 45, Left_Sideline[45], 'k');
+                   float B1 = xielv_sideline(55, Left_Sideline[55], 45, Left_Sideline[45], 'b');
+                    float K2 = xielv_sideline(55, Right_Sideline[55], 45, Right_Sideline[45], 'k');
+                   float B2 = xielv_sideline(55, Right_Sideline[55], 45, Right_Sideline[45], 'b');
+                   red_left=K1*MAX(R_h_guai.row,L_h_guai.row)+B1;
+                   red_right=K2*MAX(R_h_guai.row,L_h_guai.row)+B2;
 
-//                     Find_right_Sideline(imgInfo.bottom-1,imgInfo.top+4);
-//                     Find_left_Sideline(imgInfo.bottom-1,imgInfo.top+4);     
-//                     // Find_r_h_Guaidian();  
-//     for(int i=R_h_guai.row;i>=real_distance_to_row(real_distance[R_h_guai.row]+10);i--) 
-//     {
-//         for(int j=Left_Sideline[i]+1;j<Right_Sideline[i];j++)
-//         {
-//            if(Image_Use[i][j]==white)picture_white++;
-//            if(Image_Use[i][j]==black)picture_black++;
-//            if(Image_Use[i][j]==white&&Image_Use[i][j+1]==black)jump_point1++;
-//         }
-//     }
-//     if(picture_white>0)
-//                 black_ratio=(float)picture_black/(float)picture_white;
+                // recognize_distance=Now_Speed*0.10+40;
 
-                
-//                         picture_first_num=0;
-//             for(int i = R_h_guai.column;i<94;i++)
-//             {
-//                 if(Image_Use[R_h_guai.row][i] == white)
-//                     picture_first_num++;
-//                     if( Image_Use[R_h_guai.row][i] == black&& Image_Use[R_h_guai.row][i+1] == black&&picture_first_num>10)
-//                     break;
-//             }
-            
-
-                
-// }
+                recognize_distance=75;
+                recognize_distance2=30;
 
 
 
-
-// if(L_h_guai.flag==1&&L_h_guai.row>16)//&&(real_distance[imgInfo.top]-real_distance[L_h_guai.row])>25&&imgInfo.Both_lose==0
-// {
-
-//                     Find_right_Sideline(imgInfo.bottom-1,imgInfo.top+4);
-//                     Find_left_Sideline(imgInfo.bottom-1,imgInfo.top+4);       
-//     for(int i=L_h_guai.row;i>=real_distance_to_row(real_distance[L_h_guai.row]+10);i--) 
-//     {
-
-//         for(int j=Left_Sideline[i]+1;j<Right_Sideline[i];j++)
-//         {
-//            if(Image_Use[i][j]==white)picture_white++;
-//            if(Image_Use[i][j]==black)picture_black++;
-//            if(Image_Use[i][j]==white&&Image_Use[i][j+1]==black)jump_point1++;
-//         }
-//     }
-//     if(picture_white>0)
-//                 black_ratio=(float)picture_black/(float)picture_white;
-
-//             picture_first_num=0;
-//             for(int i = L_h_guai.column;i>0;i--)
-//             {
-//                 if(Image_Use[L_h_guai.row][i] == white)
-//                     picture_first_num++;
-//                     if(Image_Use[L_h_guai.row][i-1] == black && Image_Use[L_h_guai.row][i] == black&&picture_first_num>10)
-//                     break;
-//             }
+    if(Flag.picture==0)
+{
 
 
 
-// }
+            //    cv::Rect rect(red_find_x,red_find_y,Right_Sideline[L_h_guai.row],red_find_y1 - red_find_y);
+            //    cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
 
-//                     // Find_right_Sideline(imgInfo.bottom-1,imgInfo.top+4);
-//                     // Find_left_Sideline(imgInfo.bottom-1,imgInfo.top+4); 
-//             // if(picture_first_num>15&&picture_first_num<40)
-//             // {
+                Flag.Redblock=0;   
+            if(!red_objects.empty())
+               {
+                // Flag.Redblock=1;
+                red_x_mid=resize_cx;
+                red_y_mid=resize_cy;
+                // err_picture=fabs(real_distance[red_y_mid]-real_distance[L_h_guai.row]);
+                x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
+                // if(err_picture<15)//&&abs(center.x-L_h_guai.column)<20
+                Flag.Redblock=1;
+               }
 
-//                 if(R_h_guai.flag==1&&L_h_guai.flag==1)
-//                 {
-//                     Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
-//                red_find_x=Left_Sideline[MAX(R_h_guai.row,L_h_guai.row)];//94//320
-//                red_find_y=real_distance_to_row(real_distance[MAX(R_h_guai.row,L_h_guai.row)]+12);//red_find_y到R_h_guai.row（*4)
-//                red_find_y1=MAX(R_h_guai.row,L_h_guai.row);
-//                DetectRedBlock(resizedFrame,red_find_x,red_find_y,Right_Sideline[MAX(R_h_guai.row,L_h_guai.row)] - red_find_x,red_find_y1 - red_find_y);
-//                 cv::Rect rect(red_find_x,red_find_y,Right_Sideline[MAX(R_h_guai.row,L_h_guai.row)],red_find_y1 - red_find_y);
-//                 cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
+    
+
+
+
+
+               if(Flag.Redblock==1&&real_distance[red_y_mid]<100&&Left_Sideline[red_y_mid]<red_x_mid&&red_x_mid<Right_Sideline[red_y_mid]){Flag.picture=2;}
+    //         if(x_err_red>5&&imgInfo.R_straight_flag==0&&imgInfo.R_straight_flag==1)
+    //         {
+    //            Flag.small_rock =1;
+    //         }
+
+    //         if(x_err_red>5&&imgInfo.R_straight_flag==1&&imgInfo.R_straight_flag==0)
+    //         {
+    //            Flag.small_rock =2;
+    //         }
+
+    // if(Flag.small_rock ==1||Flag.small_rock ==2)
+    // {
+    //     if(distance>10)
+    //     {
+    //         distance=0;
+    //         Flag.small_rock =0;
+    //     }
+    // }
+
+}
+
+
+
+
+
+    if(Flag.picture==1){
         
-//                 //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
-//             if(!red_objects.empty())
-//                {
-//                 // Flag.Redblock=1;
-//                 red_x_mid=resize_cx;
-//                 red_y_mid=resize_cy;
-//                 err_picture=fabs(real_distance[red_y_mid]-real_distance[MAX(R_h_guai.row,L_h_guai.row)]);
-//                 x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-//                 // if(err_picture<20)//&&abs(center.x-R_h_guai.column)<20)
-//                 // Flag.Redblock=1;
-//                }
-//                 }
+    }
+    if(Flag.picture==2){
 
 
-
-
-
-
-
-
-
-//                 else if(R_h_guai.flag==1)
-//                 {
-//                     Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
-//                red_find_x=Left_Sideline[R_h_guai.row];//94//320
-//                red_find_y=real_distance_to_row(real_distance[R_h_guai.row]+12);//red_find_y到R_h_guai.row（*4)
-//                red_find_y1=R_h_guai.row;
-//                DetectRedBlock(resizedFrame,red_find_x,red_find_y,Right_Sideline[R_h_guai.row] - red_find_x,red_find_y1 - red_find_y);
-//                 cv::Rect rect(red_find_x,red_find_y,Right_Sideline[R_h_guai.row],red_find_y1 - red_find_y);
-//                 cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
-        
-//                 //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
-                             
-//             if(!red_objects.empty())
-//                {
-//                 // Flag.Redblock=1;
-//                 red_x_mid=resize_cx;
-//                 red_y_mid=resize_cy;
-//                 err_picture=fabs(real_distance[red_y_mid]-real_distance[R_h_guai.row]);
-//                 x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-//                 // if(err_picture<15)//&&abs(center.x-R_h_guai.column)<20
-//                 // Flag.Redblock=1;
-//                }
-//                 }
-
-                
-
-
-
-
-
-
-
-//                 else if(L_h_guai.flag==1)
-//                 {
-
-//                     Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
-//                red_find_x=Left_Sideline[L_h_guai.row];//Right_Sideline[L_h_guai.row]
-//                red_find_y=real_distance_to_row(real_distance[L_h_guai.row]+12);//
-//                             red_find_y1=L_h_guai.row;
-//                DetectRedBlock(resizedFrame,red_find_x,red_find_y,Right_Sideline[L_h_guai.row],red_find_y1 - red_find_y);
-//                cv::Rect rect(red_find_x,red_find_y,Right_Sideline[L_h_guai.row],red_find_y1 - red_find_y);
-//                cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
-
-                            
-//             if(!red_objects.empty())
-//                {
-//                 // Flag.Redblock=1;
-//                 red_x_mid=resize_cx;
-//                 red_y_mid=resize_cy;
-//                 err_picture=fabs(real_distance[red_y_mid]-real_distance[L_h_guai.row]);
-//                 x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-//                 // if(err_picture<15)//&&abs(center.x-L_h_guai.column)<20
-//                 // Flag.Redblock=1;
-//                }
-//                 }
-
-
-
-//                if(x_err_red<=5){Flag.Redblock=1;}
-//             // if(Flag.Redblock==1){Flag.picture=2;Flag.Redblock=0;}
-//             // }
-
-// }
-
-
-//     if(Flag.picture==1){
-        
-//     }
-//     if(Flag.picture==2){
-//                                 Find_right_Sideline(imgInfo.bottom-1,imgInfo.top+4);
-//                     Find_left_Sideline(imgInfo.bottom-1,imgInfo.top+4);       
-//         if((L_h_guai.flag==1&&real_distance[L_h_guai.row]<30)||(R_h_guai.flag==1&&real_distance[R_h_guai.row]<30))
-//         {
-
-//          Flag.picture=3;
-
-//         }
-//     }
-
-//     if(Flag.picture==3){
-//                             Find_right_Sideline(imgInfo.bottom-1,imgInfo.top+4);
-//                     Find_left_Sideline(imgInfo.bottom-1,imgInfo.top+4);       
-//         if(distance_picture>8)
-//         {
-//             distance_picture=0;
-//             Flag.picture = 4;//清除标志位
-//         }
-//     }
-
-//     if(Flag.picture==4){
-//                     Find_right_Sideline(imgInfo.bottom-1,imgInfo.top+4);
-//                     Find_left_Sideline(imgInfo.bottom-1,imgInfo.top+4);       
-//         if(distance_picture>100)
-//         {
-//             //结束绕行
-//             Flag.picture = 0;//清除标志位
-//             //Flag.infer = 1;//打开推理开关
-//             distance_picture=0;
-//             printf("右行结束\n");
-//             return;
-
-//         }
-//     }
-
-// }
-
-// int red_left,red_right;
-// float real_picture_distance;
-// void picture(void)
-// {
-//         picture_white=0;
-//         picture_black=0;
-//         jump_point1=0;
-//         black_ratio=0;
-//         err_picture=100;
-//         x_err_red=200;
-
-
-
-//                    float K1 = xielv_sideline(55, Left_Sideline[55], 45, Left_Sideline[45], 'k');
-//                    float B1 = xielv_sideline(55, Left_Sideline[55], 45, Left_Sideline[45], 'b');
-//                     float K2 = xielv_sideline(55, Right_Sideline[55], 45, Right_Sideline[45], 'k');
-//                    float B2 = xielv_sideline(55, Right_Sideline[55], 45, Right_Sideline[45], 'b');
-//                    red_left=K1*MAX(R_h_guai.row,L_h_guai.row)+B1;
-//                    red_right=K2*MAX(R_h_guai.row,L_h_guai.row)+B2;
-
-//     if(Flag.picture==0)
-// {
-
-//       if(R_h_guai.flag==1&&L_h_guai.flag==1)//&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>25&&imgInfo.Both_lose==0 
-// {
- 
-//             if(MAX(R_h_guai.row,L_h_guai.row)>real_distance_to_row(80)&&MAX(R_h_guai.row,L_h_guai.row)<real_distance_to_row(40)&&
-//             (real_distance[imgInfo.top]-real_distance[MAX(R_h_guai.row,L_h_guai.row)])>60&&real_distance[imgInfo.top]>100) 
-//             {
-//                 Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
-//                red_find_x=red_left;//94//320
-//                red_find_y=real_distance_to_row(real_distance[MAX(R_h_guai.row,L_h_guai.row)]+12);//red_find_y到R_h_guai.row（*4)
-//                red_find_y1=MAX(R_h_guai.row,L_h_guai.row);
                
-//                DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right- red_find_x,red_find_y1 - red_find_y);
-//                 // cv::Rect rect(red_find_x,red_find_y,Right_Sideline[MAX(R_h_guai.row,L_h_guai.row)],red_find_y1 - red_find_y);
-//                 // cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
-        
-//                 //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
-//             if(!red_objects.empty())
-//                {
-//                 // Flag.Redblock=1;
-//                 red_x_mid=resize_cx;
-//                 red_y_mid=resize_cy;
-//                 err_picture=fabs(real_distance[red_y_mid]-real_distance[MAX(R_h_guai.row,L_h_guai.row)]);
-//                 x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-//                 // if(err_picture<20)//&&abs(center.x-R_h_guai.column)<20)
-//                 // Flag.Redblock=1;
-//                }
-//             } 
+                      Flag.Redblock=0;      
+            if(!red_objects.empty())
+               { 
+                // Flag.Redblock=1;
+                red_x_mid=resize_cx;
+                red_y_mid=resize_cy;
+                // err_picture=fabs(real_distance[red_y_mid]-real_distance[L_h_guai.row]);
+                x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
+                // if(err_picture<15)//&&abs(center.x-L_h_guai.column)<20
+                Flag.Redblock=1;
+               }
+               if(real_distance[red_y_mid]<35) Flag.infer = 1;
 
-
-                
-// }
+    
 
 
 
 
-//      else if(R_h_guai.flag==1){
-//       if(R_h_guai.row>real_distance_to_row(80)&&R_h_guai.row<real_distance_to_row(40)&&
-//       (real_distance[imgInfo.top]-real_distance[R_h_guai.row])>60&&real_distance[imgInfo.top]>100)
-// {
+                if(Flag.weapon>=1)
+                {
+                    printf("检测到 weapon\n");//左绕
+                    Flag.infer = 0;
+                    Flag.supply = 0;
+                    Flag.vehicle = 0;
+                    Flag.weapon = 0;
+                    Flag.picture = 3;
+
+                }
+
+                if(Flag.supply>=1)
+                {   printf("检测到 supply\n");//右绕
+                    Flag.infer = 0;
+                    Flag.supply= 0;
+                    Flag.vehicle = 0;
+                    Flag.weapon = 0;
+                    Flag.picture = 4;
+
+                }
 
 
-//                     Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
-//                red_find_x=red_left;//94//320
-//                red_find_y=real_distance_to_row(real_distance[R_h_guai.row]+12);//red_find_y到R_h_guai.row（*4)
-//                red_find_y1=R_h_guai.row;
-//                DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
-//                 // cv::Rect rect(red_find_x,red_find_y,Right_Sideline[R_h_guai.row],red_find_y1 - red_find_y);
-//                 // cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
-        
-//                 //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
-                             
-//             if(!red_objects.empty())
-//                {
-//                 // Flag.Redblock=1;
-//                 red_x_mid=resize_cx;
-//                 red_y_mid=resize_cy;
-//                 err_picture=fabs(real_distance[red_y_mid]-real_distance[R_h_guai.row]);
-//                 x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-//                 // if(err_picture<15)//&&abs(center.x-R_h_guai.column)<20
-//                 // Flag.Redblock=1;
-//                }
-
-
-// }
-// }
-
-//       else if(L_h_guai.flag==1){
-//        if(L_h_guai.row>real_distance_to_row(80)&&L_h_guai.row<real_distance_to_row(40)&&
-//       (real_distance[imgInfo.top]-real_distance[L_h_guai.row])>60&&real_distance[imgInfo.top]>100)
-// {
-
-
-
-//                     Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
-//                red_find_x=red_left;//Right_Sideline[L_h_guai.row]
-//                red_find_y=real_distance_to_row(real_distance[L_h_guai.row]+12);//
-//                             red_find_y1=L_h_guai.row;
-//                DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
-//             //    cv::Rect rect(red_find_x,red_find_y,Right_Sideline[L_h_guai.row],red_find_y1 - red_find_y);
-//             //    cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
-
-                            
-//             if(!red_objects.empty())
-//                { 
-//                 // Flag.Redblock=1;
-//                 red_x_mid=resize_cx;
-//                 red_y_mid=resize_cy;
-//                 err_picture=fabs(real_distance[red_y_mid]-real_distance[L_h_guai.row]);
-//                 x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-//                 // if(err_picture<15)//&&abs(center.x-L_h_guai.column)<20
-//                 // Flag.Redblock=1;
-//                }
-
-// }}
-
-
-
-
-
-
-//                if(x_err_red<=5){Flag.Redblock=1;Flag.picture=2;}
-//     //         if(x_err_red>5&&imgInfo.R_straight_flag==0&&imgInfo.R_straight_flag==1)
-//     //         {
-//     //            Flag.small_rock =1;
-//     //         }
-
-//     //         if(x_err_red>5&&imgInfo.R_straight_flag==1&&imgInfo.R_straight_flag==0)
-//     //         {
-//     //            Flag.small_rock =2;
-//     //         }
-
-//     // if(Flag.small_rock ==1||Flag.small_rock ==2)
-//     // {
-//     //     if(distance>10)
-//     //     {
-//     //         distance=0;
-//     //         Flag.small_rock =0;
-//     //     }
-//     // }
-
-// }
-
-
-
-
-
-//     if(Flag.picture==1){
-        
-//     }
-//     if(Flag.picture==2){
-
-//         Flag.infer = 1;
-//         if((L_h_guai.flag==1&&real_distance[MAX(R_h_guai.row,L_h_guai.row)]<30)||(R_h_guai.flag==1&&real_distance[MAX(R_h_guai.row,L_h_guai.row)]<30))
-//         {
-//     //    Image.Kp/=2.5;
-//            if(R_h_guai.flag==1&&L_h_guai.flag==1)//&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>25&&imgInfo.Both_lose==0 
-//             {
- 
-//             // if(MAX(R_h_guai.row,L_h_guai.row)>real_distance_to_row(80)&&(real_distance[imgInfo.top]-real_distance[MAX(R_h_guai.row,L_h_guai.row)])>60&&real_distance[imgInfo.top]>100) 
-//             // {
-//                 Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
-//                red_find_x=red_left;//94//320
-//                red_find_y=real_distance_to_row(real_distance[MAX(R_h_guai.row,L_h_guai.row)]+12);//red_find_y到R_h_guai.row（*4)
-//                red_find_y1=MAX(R_h_guai.row,L_h_guai.row);
-//                DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
-//                 // cv::Rect rect(red_find_x,red_find_y,Right_Sideline[MAX(R_h_guai.row,L_h_guai.row)],red_find_y1 - red_find_y);
-//                 // cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
-        
-//                 //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
-//             if(!red_objects.empty())
-//                {
-//                 // Flag.Redblock=1;
-//                 red_x_mid=resize_cx;
-//                 red_y_mid=resize_cy;
-//                 err_picture=fabs(real_distance[red_y_mid]-real_distance[MAX(R_h_guai.row,L_h_guai.row)]);
-//                 x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-//                 // if(err_picture<20)//&&abs(center.x-R_h_guai.column)<20)
-//                 // Flag.Redblock=1;
-//                }
-//             // } 
-
-
-                
-// }
-
-
-
-
-
-//       else if(R_h_guai.flag==1)//&&R_h_guai.row>real_distance_to_row(80)&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>60&&real_distance[imgInfo.top]>100
-// {
-
-
-//                 Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
-//                red_find_x=red_left;//94//320
-//                red_find_y=real_distance_to_row(real_distance[R_h_guai.row]+12);//red_find_y到R_h_guai.row（*4)
-//                red_find_y1=R_h_guai.row;
-//                DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
-//                 // cv::Rect rect(red_find_x,red_find_y,Right_Sideline[R_h_guai.row],red_find_y1 - red_find_y);
-//                 // cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
-        
-//                 //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
-                             
-//             if(!red_objects.empty())
-//                {
-//                 // Flag.Redblock=1;
-//                 red_x_mid=resize_cx;
-//                 red_y_mid=resize_cy;
-//                 err_picture=fabs(real_distance[red_y_mid]-real_distance[R_h_guai.row]);
-//                 x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-//                 // if(err_picture<15)//&&abs(center.x-R_h_guai.column)<20
-//                 // Flag.Redblock=1;
-//                }
-
-
-// }
-
-//       else if(L_h_guai.flag==1)//&&L_h_guai.row>real_distance_to_row(80)&&(real_distance[imgInfo.top]-real_distance[L_h_guai.row])>60&&real_distance[imgInfo.top]>100
-// {
-
-
-
-//                 Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
-//                red_find_x=red_left;//Right_Sideline[L_h_guai.row]
-//                red_find_y=real_distance_to_row(real_distance[L_h_guai.row]+12);//
-//                             red_find_y1=L_h_guai.row;
-//                DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
-//             //    cv::Rect rect(red_find_x,red_find_y,Right_Sideline[L_h_guai.row],red_find_y1 - red_find_y);
-//             //    cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
-
-                            
-//             if(!red_objects.empty())
-//                {
-//                 // Flag.Redblock=1;
-//                 red_x_mid=resize_cx;
-//                 red_y_mid=resize_cy;
-//                 err_picture=fabs(real_distance[red_y_mid]-real_distance[L_h_guai.row]);
-//                 x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-//                 // if(err_picture<15)//&&abs(center.x-L_h_guai.column)<20
-//                 // Flag.Redblock=1;
-//                }
-// }
-
-//                 // if(Flag.weapon>=1)
-//                 // {
-//                 //     printf("检测到 weapon\n");//左绕
-//                 //     Flag.infer = 0;
-//                 //     Flag.supply = 0;
-//                 //     Flag.vehicle = 0;
-//                 //     Flag.weapon = 0;
-//                 //     Flag.picture = 3;
-
-//                 // }
-
-//                 // if(Flag.supply>=1)
-//                 // {   printf("检测到 supply\n");//右绕
-//                 //     Flag.infer = 0;
-//                 //     Flag.supply= 0;
-//                 //     Flag.vehicle = 0;
-//                 //     Flag.weapon = 0;
-//                 //     Flag.picture = 4;
-
-//                 // }
-
-
-//                 // if(Flag.vehicle>=1)
-//                 // {   printf("检测到 vehicle\n");//交通工具
-//                 //     Flag.infer = 0;
-//                 //     Flag.supply = 0;
-//                 //     Flag.vehicle = 0;
-//                 //     Flag.weapon = 0;
-//                 //     Flag.picture = 5;
+                if(Flag.vehicle>=1)
+                {   printf("检测到 vehicle\n");//交通工具
+                    Flag.infer = 0;
+                    Flag.supply = 0;
+                    Flag.vehicle = 0;
+                    Flag.weapon = 0;
+                    Flag.picture = 5;
 
                     
-//                 // }
+                }
 
-//         //  if()
-//         //  Flag.picture=3;
-//         //  if()
-//         //   Flag.picture=4;
 
-//         }
-//     }
-
-//     if(Flag.picture==3){
-
-//         if(distance_picture>30)
-//         {
-//             distance_picture=0;
-//             //    Image.Kp=3.5*3.0;
-//             //结束绕行
-//             Flag.picture = 0;//清除标志位
-//             distance_picture=0;
-//             printf("left\n");
 
         
-//         }
-//     }
+    }
 
-//     if(Flag.picture==4){
+    if(Flag.picture==3){
+
+        if(distance_picture>40)
+        {
+            distance_picture=0;
+            //    Image.Kp=3.5*3.0;
+            //结束绕行
+            Flag.picture = 6;//清除标志位
+            distance_picture=0;
+            printf("left\n");
+
+        
+        }
+    }
+
+    if(Flag.picture==4){
        
-//         if(distance_picture>30)
-//         {
-//             distance_picture=0;
-//             //    Image.Kp=3.5*3.0;
-//             //结束绕行
-//             Flag.picture = 0;//清除标志位
-//             distance_picture=0;
-//             printf("右行结束\n");
+        if(distance_picture>40)
+        {
+            distance_picture=0;
+            //    Image.Kp=3.5*3.0;
+            //结束绕行
+            Flag.picture = 6;//清除标志位
+            distance_picture=0;
+            printf("右行结束\n");
 
-//         }
-//     }
+        }
+    }
 
-//         if(Flag.picture==5){
+        if(Flag.picture==5){
        
-//         if(distance_picture>20)
-//         {
-//             distance_picture=0;
-//             // Image.Kp=3.5*3.0;
-//             //结束绕行
-//             Flag.picture = 0;//清除标志位
-//             distance_picture=0;
-//             printf("straight行结束\n");
+        if(distance_picture>40)
+        {
+            distance_picture=0;
+            // Image.Kp=3.5*3.0;
+            //结束绕行
+            Flag.picture = 6;//清除标志位
+            distance_picture=0;
+            printf("straight行结束\n");
 
-//         }
-//     }
+        }
+    }
 
-// }
+            if(Flag.picture==6){
+        if(distance_picture>40)
+        {
+            distance_picture=0;
+            // Image.Kp=3.5*3.0;
+            //结束绕行
+            Flag.picture = 0;//清除标志位
+            distance_picture=0;
+            printf("picture结束\n");
+
+        }
+            }
+
+}
+
+
+
+void picture1(void)
+{
+        picture_white=0;
+        picture_black=0;
+        jump_point1=0;
+        black_ratio=0;
+        err_picture=100;
+        x_err_red=200;
+
+
+
+                   float K1 = xielv_sideline(55, Left_Sideline[55], 45, Left_Sideline[45], 'k');
+                   float B1 = xielv_sideline(55, Left_Sideline[55], 45, Left_Sideline[45], 'b');
+                    float K2 = xielv_sideline(55, Right_Sideline[55], 45, Right_Sideline[45], 'k');
+                   float B2 = xielv_sideline(55, Right_Sideline[55], 45, Right_Sideline[45], 'b');
+                   red_left=K1*MAX(R_h_guai.row,L_h_guai.row)+B1;
+                   red_right=K2*MAX(R_h_guai.row,L_h_guai.row)+B2;
+
+                // recognize_distance=Now_Speed*0.10+40;
+
+                recognize_distance=Now_Speed*0.1+40;
+                recognize_distance2=30;
+    if(Flag.picture==0)
+{
+
+      if(R_h_guai.flag==1&&L_h_guai.flag==1)//&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>25&&imgInfo.Both_lose==0 
+{
+ 
+ //           &&(real_distance[imgInfo.top]-real_distance[MAX(R_h_guai.row,L_h_guai.row)])>60&&real_distance[imgInfo.top]>100&&MAX(R_h_guai.row,L_h_guai.row)<real_distance_to_row(40)
+            if(MAX(R_h_guai.row,L_h_guai.row)>real_distance_to_row(recognize_distance))
+            {
+                    Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
+               red_find_x=red_left;//94//320
+               red_find_y=real_distance_to_row(real_distance[MAX(R_h_guai.row,L_h_guai.row)]+12);//red_find_y到R_h_guai.row（*4)
+                              if(red_find_y<imgInfo.top)red_find_y=imgInfo.top;
+               red_find_y1=MAX(R_h_guai.row,L_h_guai.row);
+               DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right- red_find_x,red_find_y1 - red_find_y);
+                // cv::Rect rect(red_find_x,red_find_y,Right_Sideline[MAX(R_h_guai.row,L_h_guai.row)],red_find_y1 - red_find_y);
+                // cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
+        
+                //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
+            if(!red_objects.empty())
+               {
+                // Flag.Redblock=1;
+                red_x_mid=resize_cx;
+                red_y_mid=resize_cy;
+                err_picture=fabs(real_distance[red_y_mid]-real_distance[MAX(R_h_guai.row,L_h_guai.row)]);
+                x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
+                // if(err_picture<20)//&&abs(center.x-R_h_guai.column)<20)
+                Flag.Redblock=1;
+               }
+            } 
+
+
+                
+}
+
+
+
+
+     else if(R_h_guai.flag==1){
+        //&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>60&&real_distance[imgInfo.top]>100&&R_h_guai.row<real_distance_to_row(40)
+      if(R_h_guai.row>real_distance_to_row(recognize_distance)
+      )
+{
+
+
+                    Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
+               red_find_x=red_left;//94//320
+               red_find_y=real_distance_to_row(real_distance[R_h_guai.row]+12);//red_find_y到R_h_guai.row（*4)
+               if(red_find_y<imgInfo.top)red_find_y=imgInfo.top;
+               red_find_y1=R_h_guai.row;
+               DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
+                // cv::Rect rect(red_find_x,red_find_y,Right_Sideline[R_h_guai.row],red_find_y1 - red_find_y);
+                // cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
+        
+                //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
+                             
+            if(!red_objects.empty())
+               {
+                // Flag.Redblock=1;
+                red_x_mid=resize_cx;
+                red_y_mid=resize_cy;
+                err_picture=fabs(real_distance[red_y_mid]-real_distance[R_h_guai.row]);
+                x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
+                // if(err_picture<15)//&&abs(center.x-R_h_guai.column)<20
+                Flag.Redblock=1;
+               }
+
+
+}
+}
+
+      else if(L_h_guai.flag==1){
+        //&&(real_distance[imgInfo.top]-real_distance[L_h_guai.row])>60&&real_distance[imgInfo.top]>100&&L_h_guai.row<real_distance_to_row(40)
+       if(L_h_guai.row>real_distance_to_row(recognize_distance)
+      )
+{
+
+
+
+                    Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
+               red_find_x=red_left;//Right_Sideline[L_h_guai.row]
+               red_find_y=real_distance_to_row(real_distance[L_h_guai.row]+12);//
+                              if(red_find_y<imgInfo.top)red_find_y=imgInfo.top;
+                            red_find_y1=L_h_guai.row;
+               DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
+            //    cv::Rect rect(red_find_x,red_find_y,Right_Sideline[L_h_guai.row],red_find_y1 - red_find_y);
+            //    cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
+
+                            
+            if(!red_objects.empty())
+               { 
+                // Flag.Redblock=1;
+                red_x_mid=resize_cx;
+                red_y_mid=resize_cy;
+                err_picture=fabs(real_distance[red_y_mid]-real_distance[L_h_guai.row]);
+                x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
+                // if(err_picture<15)//&&abs(center.x-L_h_guai.column)<20
+                Flag.Redblock=1;
+               }
+
+}}
+
+
+
+
+
+
+               if(Flag.Redblock==1){Flag.picture=2;}
+    //         if(x_err_red>5&&imgInfo.R_straight_flag==0&&imgInfo.R_straight_flag==1)
+    //         {
+    //            Flag.small_rock =1;
+    //         }
+
+    //         if(x_err_red>5&&imgInfo.R_straight_flag==1&&imgInfo.R_straight_flag==0)
+    //         {
+    //            Flag.small_rock =2;
+    //         }
+
+    // if(Flag.small_rock ==1||Flag.small_rock ==2)
+    // {
+    //     if(distance>10)
+    //     {
+    //         distance=0;
+    //         Flag.small_rock =0;
+    //     }
+    // }
+
+}
+
+
+
+
+
+    if(Flag.picture==1){
+        
+    }
+    if(Flag.picture==2){
+
+        Flag.infer = 1;
+        if((L_h_guai.flag==1&&real_distance[MAX(R_h_guai.row,L_h_guai.row)]<30)||(R_h_guai.flag==1&&abs(recognize_distance2-real_distance[MAX(R_h_guai.row,L_h_guai.row)])<2))//&&fabs(Now_Speed)<10
+        {
+    //    Image.Kp/=2.5;
+           if(R_h_guai.flag==1&&L_h_guai.flag==1)//&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>25&&imgInfo.Both_lose==0 
+            {
+ 
+            // if(MAX(R_h_guai.row,L_h_guai.row)>real_distance_to_row(80)&&(real_distance[imgInfo.top]-real_distance[MAX(R_h_guai.row,L_h_guai.row)])>60&&real_distance[imgInfo.top]>100) 
+            // {
+                Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
+               red_find_x=red_left;//94//320
+               red_find_y=real_distance_to_row(real_distance[MAX(R_h_guai.row,L_h_guai.row)]+12);//red_find_y到R_h_guai.row（*4)
+                              if(red_find_y<imgInfo.top)red_find_y=imgInfo.top;
+               red_find_y1=MAX(R_h_guai.row,L_h_guai.row);
+               DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
+                // cv::Rect rect(red_find_x,red_find_y,Right_Sideline[MAX(R_h_guai.row,L_h_guai.row)],red_find_y1 - red_find_y);
+                // cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
+        
+                //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
+            if(!red_objects.empty())
+               {
+                // Flag.Redblock=1;
+                red_x_mid=resize_cx;
+                red_y_mid=resize_cy;
+                err_picture=fabs(real_distance[red_y_mid]-real_distance[MAX(R_h_guai.row,L_h_guai.row)]);
+                x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
+                // if(err_picture<20)//&&abs(center.x-R_h_guai.column)<20)
+                // Flag.Redblock=1;
+               }
+            // } 
+
+
+                
+}
+
+
+
+
+
+      else if(R_h_guai.flag==1&&abs(recognize_distance2-real_distance[R_h_guai.row])<2)//&&fabs(Now_Speed)<10&&R_h_guai.row>real_distance_to_row(80)&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>60&&real_distance[imgInfo.top]>100
+{
+
+
+                Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
+               red_find_x=red_left;//94//320
+               red_find_y=real_distance_to_row(real_distance[R_h_guai.row]+12);//red_find_y到R_h_guai.row（*4)
+                              if(red_find_y<imgInfo.top)red_find_y=imgInfo.top;
+               red_find_y1=R_h_guai.row;
+               DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
+                // cv::Rect rect(red_find_x,red_find_y,Right_Sideline[R_h_guai.row],red_find_y1 - red_find_y);
+                // cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
+        
+                //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
+                             
+            if(!red_objects.empty())
+               {
+                // Flag.Redblock=1;
+                red_x_mid=resize_cx;
+                red_y_mid=resize_cy;
+                err_picture=fabs(real_distance[red_y_mid]-real_distance[R_h_guai.row]);
+                x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
+                // if(err_picture<15)//&&abs(center.x-R_h_guai.column)<20
+                // Flag.Redblock=1;
+               }
+
+
+}
+
+      else if(L_h_guai.flag==1&&abs(recognize_distance2-real_distance[L_h_guai.row])<2)//&&fabs(Now_Speed)<10&&L_h_guai.row>real_distance_to_row(80)&&(real_distance[imgInfo.top]-real_distance[L_h_guai.row])>60&&real_distance[imgInfo.top]>100
+{
+
+
+
+                Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
+               red_find_x=red_left;//Right_Sideline[L_h_guai.row]
+               red_find_y=real_distance_to_row(real_distance[L_h_guai.row]+12);//
+                              if(red_find_y<imgInfo.top)red_find_y=imgInfo.top;
+                            red_find_y1=L_h_guai.row;
+               DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
+            //    cv::Rect rect(red_find_x,red_find_y,Right_Sideline[L_h_guai.row],red_find_y1 - red_find_y);
+            //    cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
+
+                            
+            if(!red_objects.empty())
+               {
+                // Flag.Redblock=1;
+                red_x_mid=resize_cx;
+                red_y_mid=resize_cy;
+                err_picture=fabs(real_distance[red_y_mid]-real_distance[L_h_guai.row]);
+                x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
+                // if(err_picture<15)//&&abs(center.x-L_h_guai.column)<20
+                // Flag.Redblock=1;
+               }
+}
+
+                if(Flag.weapon>=1)
+                {
+                    printf("检测到 weapon\n");//左绕
+                    Flag.infer = 0;
+                    Flag.supply = 0;
+                    Flag.vehicle = 0;
+                    Flag.weapon = 0;
+                    Flag.picture = 3;
+
+                }
+
+                if(Flag.supply>=1)
+                {   printf("检测到 supply\n");//右绕
+                    Flag.infer = 0;
+                    Flag.supply= 0;
+                    Flag.vehicle = 0;
+                    Flag.weapon = 0;
+                    Flag.picture = 4;
+
+                }
+
+
+                if(Flag.vehicle>=1)
+                {   printf("检测到 vehicle\n");//交通工具
+                    Flag.infer = 0;
+                    Flag.supply = 0;
+                    Flag.vehicle = 0;
+                    Flag.weapon = 0;
+                    Flag.picture = 5;
+
+                    
+                }
+
+
+
+        }
+    }
+
+    if(Flag.picture==3){
+
+        if(distance_picture>30)
+        {
+            distance_picture=0;
+            //    Image.Kp=3.5*3.0;
+            //结束绕行
+            Flag.picture = 6;//清除标志位
+            distance_picture=0;
+            printf("left\n");
+
+        
+        }
+    }
+
+    if(Flag.picture==4){
+       
+        if(distance_picture>30)
+        {
+            distance_picture=0;
+            //    Image.Kp=3.5*3.0;
+            //结束绕行
+            Flag.picture = 6;//清除标志位
+            distance_picture=0;
+            printf("右行结束\n");
+
+        }
+    }
+
+        if(Flag.picture==5){
+       
+        if(distance_picture>30)
+        {
+            distance_picture=0;
+            // Image.Kp=3.5*3.0;
+            //结束绕行
+            Flag.picture = 6;//清除标志位
+            distance_picture=0;
+            printf("straight行结束\n");
+
+        }
+    }
+
+            if(Flag.picture==6){
+        if(distance_picture>40)
+        {
+            distance_picture=0;
+            // Image.Kp=3.5*3.0;
+            //结束绕行
+            Flag.picture = 0;//清除标志位
+            distance_picture=0;
+            printf("picture结束\n");
+
+        }
+            }
+
+}
 
 
 
@@ -3924,7 +3888,7 @@ void image_init(void)
         printf("Camera opened failed!\n");
         return;
     }
-    cam.set_exposure_manual(60);
+    cam.set_exposure_manual(40);
     printf("龙邱摄像头宽度:%d\n",cam.get_camera_width());
     printf("龙邱摄像头高度:%d\n",cam.get_camera_height());
     printf("龙邱摄像头帧率:%d\n",cam.get_camera_fps());
@@ -3946,9 +3910,9 @@ float distance_cross,distance,distance_picture;
 void distance_judge(void)//1m=66
 {
            if(Flag.Huandao_L==1||Flag.Huandao_R==1||Flag.Huandao_L==2||Flag.Huandao_R==2||Flag.Huandao_R==6||Flag.Huandao_L==6
-                  ||Flag.small_rock||Flag.Zebra_cross==1||Flag.Zebra_cross==2||Flag.Zebra_cross==4||Flag.ramp!=0)//||Flag.Huandao_R==3||Flag.Huandao_L==3
+                  ||Flag.small_rock||Flag.Zebra_cross==0||Flag.Zebra_cross==2||Flag.Zebra_cross==4||Flag.ramp!=0)//||Flag.Huandao_R==3||Flag.Huandao_L==3
     distance+=(float)(encoder_L.count_now+encoder_R.count_now)/2/350;
-    if(Flag.picture==3||Flag.picture==4||Flag.picture==5)
+    if(Flag.picture==3||Flag.picture==4||Flag.picture==5||Flag.picture==6)
     {
     distance_picture+=(float)(encoder_L.count_now+encoder_R.count_now)/2/350;
     }
@@ -3961,30 +3925,30 @@ void distance_judge(void)//1m=66
 
     if(Flag.Zebra_cross==0)
     {
-    jump_point=0;
-    for(int i = 25;i < 44; i++)
-    {
-        for(int j = 30; j < 64; j++)
-        {
-            if(Image_Use[i][j] == 255 && Image_Use[i][j+1] == 0)
-            {
-                jump_point ++;
-            }
-        }
-    }
+    // jump_point=0;
+    // for(int i = 25;i < 44; i++)
+    // {
+    //     for(int j = 30; j < 64; j++)
+    //     {
+    //         if(Image_Use[i][j] == 255 && Image_Use[i][j+1] == 0)
+    //         {
+    //             jump_point ++;
+    //         }
+    //     }
+    // }
 
-    if(jump_point>25)//&&top_white_num>0&&fabs(real_distance[imgInfo.top]-real_distance[MAX(R_h_guai.row,L_h_guai.row)])<20&&imgInfo.top>30
-    {
-                Flag.Zebra_cross=1;
-            // }
+    // if(jump_point>25)//&&top_white_num>0&&fabs(real_distance[imgInfo.top]-real_distance[MAX(R_h_guai.row,L_h_guai.row)])<20&&imgInfo.top>30
+    // {
+    //             Flag.Zebra_cross=1;
+    //         // }
 
-    }
-    }
+    // }
+    // }
 
-    if(Flag.Zebra_cross==1)
-    {
+    // if(Flag.Zebra_cross==1)
+    // {
 
-        if(distance>15)
+        if(distance>100)
         {
             Flag.Zebra_cross=2;
             distance=0;
@@ -4002,7 +3966,7 @@ void distance_judge(void)//1m=66
 
     if(Flag.Zebra_cross==3)
     {
-        jump_point=0;
+        jump_point=0; 
         for(int i = 25;i < 44; i++)
         {
             for(int j = 30; j < 64; j++)
@@ -4040,107 +4004,107 @@ void distance_judge(void)//1m=66
 
 
 uint16_t small_rock_r_num,small_rock_l_num;
-// void small_rock(void)
-// {
-//     if(Flag.small_rock ==0)
-//     {
-//                    float K1 = xielv_sideline(55, Left_Sideline[55], 45, Left_Sideline[45], 'k');
-//                    float B1 = xielv_sideline(55, Left_Sideline[55], 45, Left_Sideline[45], 'b');
-//                     float K2 = xielv_sideline(55, Right_Sideline[55], 45, Right_Sideline[45], 'k');
-//                    float B2 = xielv_sideline(55, Right_Sideline[55], 45, Right_Sideline[45], 'b');
-//                    red_left=K1*MAX(R_h_guai.row,L_h_guai.row)+B1;
-//                    red_right=K2*MAX(R_h_guai.row,L_h_guai.row)+B2;
+void small_rock(void)
+{
+    if(Flag.small_rock ==0)
+    {
+                   float K1 = xielv_sideline(55, Left_Sideline[55], 45, Left_Sideline[45], 'k');
+                   float B1 = xielv_sideline(55, Left_Sideline[55], 45, Left_Sideline[45], 'b');
+                    float K2 = xielv_sideline(55, Right_Sideline[55], 45, Right_Sideline[45], 'k');
+                   float B2 = xielv_sideline(55, Right_Sideline[55], 45, Right_Sideline[45], 'b');
+                   red_left=K1*MAX(R_h_guai.row,L_h_guai.row)+B1;
+                   red_right=K2*MAX(R_h_guai.row,L_h_guai.row)+B2;
 
 
-//       if(R_h_guai.flag==1&&L_h_guai.flag==1)//&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>25&&imgInfo.Both_lose==0 
-// {
+      if(R_h_guai.flag==1&&L_h_guai.flag==1)//&&(real_distance[imgInfo.top]-real_distance[R_h_guai.row])>25&&imgInfo.Both_lose==0 
+{
  
-//             if(MAX(R_h_guai.row,L_h_guai.row)>real_distance_to_row(40)&&MAX(R_h_guai.row,L_h_guai.row)<real_distance_to_row(10)&&
-//             (real_distance[imgInfo.top]-real_distance[MAX(R_h_guai.row,L_h_guai.row)])>60&&real_distance[imgInfo.top]>100) 
-//             {
-//                     Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
-//                red_find_x=red_left;//94//320
-//                red_find_y=real_distance_to_row(real_distance[MAX(R_h_guai.row,L_h_guai.row)]+12);//red_find_y到R_h_guai.row（*4)
-//                red_find_y1=MAX(R_h_guai.row,L_h_guai.row);
-//                DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right- red_find_x,red_find_y1 - red_find_y);
-//                 // cv::Rect rect(red_find_x,red_find_y,Right_Sideline[MAX(R_h_guai.row,L_h_guai.row)],red_find_y1 - red_find_y);
-//                 // cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
+            if(MAX(R_h_guai.row,L_h_guai.row)>real_distance_to_row(40)&&MAX(R_h_guai.row,L_h_guai.row)<real_distance_to_row(10)&&
+            (real_distance[imgInfo.top]-real_distance[MAX(R_h_guai.row,L_h_guai.row)])>60&&real_distance[imgInfo.top]>100) 
+            {
+                    Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
+               red_find_x=red_left;//94//320
+               red_find_y=real_distance_to_row(real_distance[MAX(R_h_guai.row,L_h_guai.row)]+12);//red_find_y到R_h_guai.row（*4)
+               red_find_y1=MAX(R_h_guai.row,L_h_guai.row);
+               DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right- red_find_x,red_find_y1 - red_find_y);
+                // cv::Rect rect(red_find_x,red_find_y,Right_Sideline[MAX(R_h_guai.row,L_h_guai.row)],red_find_y1 - red_find_y);
+                // cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
         
-//                 //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
-//             if(!red_objects.empty())
-//                {
-//                 // Flag.Redblock=1;
-//                 red_x_mid=resize_cx;
-//                 red_y_mid=resize_cy;
-//                 err_picture=fabs(real_distance[red_y_mid]-real_distance[MAX(R_h_guai.row,L_h_guai.row)]);
-//                 x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-//                 // if(err_picture<20)//&&abs(center.x-R_h_guai.column)<20)
-//                 // Flag.Redblock=1;
-//                }
-//             } 
+                //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
+            if(!red_objects.empty())
+               {
+                // Flag.Redblock=1;
+                red_x_mid=resize_cx;
+                red_y_mid=resize_cy;
+                err_picture=fabs(real_distance[red_y_mid]-real_distance[MAX(R_h_guai.row,L_h_guai.row)]);
+                x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
+                // if(err_picture<20)//&&abs(center.x-R_h_guai.column)<20)
+                // Flag.Redblock=1;
+               }
+            } 
 
 
                 
-// }
+}
 
 
 
 
 
-//       if(R_h_guai.flag==1&&R_h_guai.row>real_distance_to_row(40)&&R_h_guai.row<real_distance_to_row(10)&&
-//       (real_distance[imgInfo.top]-real_distance[R_h_guai.row])>60&&real_distance[imgInfo.top]>100)
-// {
+      if(R_h_guai.flag==1&&R_h_guai.row>real_distance_to_row(40)&&R_h_guai.row<real_distance_to_row(10)&&
+      (real_distance[imgInfo.top]-real_distance[R_h_guai.row])>60&&real_distance[imgInfo.top]>100)
+{
 
 
-//                     Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
-//                red_find_x=red_left;//94//320
-//                red_find_y=real_distance_to_row(real_distance[R_h_guai.row]+12);//red_find_y到R_h_guai.row（*4)
-//                red_find_y1=R_h_guai.row;
-//                DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
-//                 // cv::Rect rect(red_find_x,red_find_y,Right_Sideline[R_h_guai.row],red_find_y1 - red_find_y);
-//                 // cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
+                    Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
+               red_find_x=red_left;//94//320
+               red_find_y=real_distance_to_row(real_distance[R_h_guai.row]+12);//red_find_y到R_h_guai.row（*4)
+               red_find_y1=R_h_guai.row;
+               DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
+                // cv::Rect rect(red_find_x,red_find_y,Right_Sideline[R_h_guai.row],red_find_y1 - red_find_y);
+                // cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
         
-//                 //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
+                //cv::circle(resizedFrame, bestCenter, 1, cv::Scalar(0, 255, 0), -1);
                              
-//             if(!red_objects.empty())
-//                {
-//                 // Flag.Redblock=1;
-//                 red_x_mid=resize_cx;
-//                 red_y_mid=resize_cy;
-//                 err_picture=fabs(real_distance[red_y_mid]-real_distance[R_h_guai.row]);
-//                 x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-//                 // if(err_picture<15)//&&abs(center.x-R_h_guai.column)<20
-//                 // Flag.Redblock=1;
-//                }
+            if(!red_objects.empty())
+               {
+                // Flag.Redblock=1;
+                red_x_mid=resize_cx;
+                red_y_mid=resize_cy;
+                err_picture=fabs(real_distance[red_y_mid]-real_distance[R_h_guai.row]);
+                x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
+                // if(err_picture<15)//&&abs(center.x-R_h_guai.column)<20
+                // Flag.Redblock=1;
+               }
 
 
-// }
+}
 
-//       else if(L_h_guai.flag==1&&L_h_guai.row>real_distance_to_row(40)&&L_h_guai.row<real_distance_to_row(10)
-//       &&(real_distance[imgInfo.top]-real_distance[L_h_guai.row])>60&&real_distance[imgInfo.top]>100)
-// {
+      else if(L_h_guai.flag==1&&L_h_guai.row>real_distance_to_row(40)&&L_h_guai.row<real_distance_to_row(10)
+      &&(real_distance[imgInfo.top]-real_distance[L_h_guai.row])>60&&real_distance[imgInfo.top]>100)
+{
 
 
 
-//                     Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
-//                red_find_x=red_left;//Right_Sideline[L_h_guai.row]
-//                red_find_y=real_distance_to_row(real_distance[L_h_guai.row]+12);//
-//                             red_find_y1=L_h_guai.row;
-//                DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
-//             //    cv::Rect rect(red_find_x,red_find_y,Right_Sideline[L_h_guai.row],red_find_y1 - red_find_y);
-//             //    cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
+                    Flag.Redblock=0;red_x_mid=0;red_y_mid=0;
+               red_find_x=red_left;//Right_Sideline[L_h_guai.row]
+               red_find_y=real_distance_to_row(real_distance[L_h_guai.row]+12);//
+                            red_find_y1=L_h_guai.row;
+               DetectRedBlock(resizedFrame,red_find_x,red_find_y,red_right - red_find_x,red_find_y1 - red_find_y);
+            //    cv::Rect rect(red_find_x,red_find_y,Right_Sideline[L_h_guai.row],red_find_y1 - red_find_y);
+            //    cv::rectangle(resizedFrame, rect, cv::Scalar(0, 255, 0), 1);
 
                             
-//             if(!red_objects.empty())
-//                { 
-//                 // Flag.Redblock=1;
-//                 red_x_mid=resize_cx;
-//                 red_y_mid=resize_cy;
-//                 err_picture=fabs(real_distance[red_y_mid]-real_distance[L_h_guai.row]);
-//                 x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-//                 // if(err_picture<15)//&&abs(center.x-L_h_guai.column)<20
-//                 // Flag.Redblock=1;
-//                }
+            if(!red_objects.empty())
+               { 
+                // Flag.Redblock=1;
+                red_x_mid=resize_cx;
+                red_y_mid=resize_cy;
+                err_picture=fabs(real_distance[red_y_mid]-real_distance[L_h_guai.row]);
+                x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
+                // if(err_picture<15)//&&abs(center.x-L_h_guai.column)<20
+                // Flag.Redblock=1;
+               }
 
 
 
@@ -4151,38 +4115,38 @@ uint16_t small_rock_r_num,small_rock_l_num;
                 
 
 
-// }
+}
 
 
 
 
-//             if(x_err_red>5&&imgInfo.R_straight_flag==0&&imgInfo.R_straight_flag==1)
-//             {
-//                Flag.small_rock =1;
-//             }
+            if(x_err_red>5&&imgInfo.R_straight_flag==0&&imgInfo.R_straight_flag==1)
+            {
+               Flag.small_rock =1;
+            }
 
-//             if(x_err_red>5&&imgInfo.R_straight_flag==1&&imgInfo.R_straight_flag==0)
-//             {
-//                Flag.small_rock =2;
-//             }
-
-
-
-//     }
-
-
-//     if(Flag.small_rock ==1||Flag.small_rock ==2)
-//     {
-//         if(distance>10)
-//         {
-//             distance=0;
-//             Flag.small_rock =0;
-//         }
-//     }
-// }
+            if(x_err_red>5&&imgInfo.R_straight_flag==1&&imgInfo.R_straight_flag==0)
+            {
+               Flag.small_rock =2;
+            }
 
 
 
+    }
+
+
+    if(Flag.small_rock ==1||Flag.small_rock ==2)
+    {
+        if(distance>10)
+        {
+            distance=0;
+            Flag.small_rock =0;
+        }
+    }
+}
+
+
+int ramp_white_num;
 float ramp_line,ramp_err;
 void ramp(void)
 {
@@ -4192,20 +4156,27 @@ void ramp(void)
 if(Flag.ramp==0)
 {
      
-    if(imgInfo.top<20)
+    if(imgInfo.top<10)
   {
         ramp_err=0;
             //  ramp_err=50;
-       for(int i = imgInfo.top+5;i<55 ;i++)
+            ramp_line=0;
+       for(int i = imgInfo.top+5;i<50 ;i++)
     {
             //   if(fabs(Dir_Err[i]-k*i-b)>2)
             // {
             //        if(i<50||(Right_Sideline_flag[i]==1&&Left_Sideline_flag[i]==1))
             //            ramp_line++;
             // }
-          ramp_err+=Dir_Err[i];
+            if(Left_Sideline_flag[i]==0||Right_Sideline_flag[i]==0)
+            {
+                ramp_line++;
+            }
+
+            ramp_white_num+=white_width[i];
+        //   ramp_err+=Dir_Err[i];
     }
-       if(dl1x_distance_raw>50&&dl1x_distance_raw<1500&&fabs(ramp_err)<30)//ramp_line==0&&&&B<0.2
+       if(ramp_white_num>500&&ramp_line==0)//ramp_line==0&&&&B<0.2dl1x_distance_raw>50&&dl1x_distance_raw<1500&&fabs(ramp_err)<30
     {
            Flag.ramp=2;
 
@@ -4240,6 +4211,8 @@ if(Flag.ramp==3)
 }
 }
  /***************************************************检测红色矩形块******************************************************/
+
+
 //角点排序函数 根据极点进行排序 
  void OrderTargetStripQuad(cv::Point2f points[4])
 {
@@ -6762,6 +6735,172 @@ bool GenerateROI(const cv::Point &center, cv::Rect &roi, const cv::Mat &src)
     roi = cv::Rect(roi_x_1, roi_y_1, ROI_SIZE, ROI_SIZE);
     return true;
 }
+
+
+ std::vector<RedObject> red_objects;
+ 
+ int red_area = 0;
+  #define MIN_RED_AREA 0//最小红色区域面积 用于滤除红色噪点
+ #define MIN_AREA_FOR_BARRIER 250 //障碍物面积
+int red_points_num;
+int alpha = 0.1;
+cv::Point center(-1,-1);
+cv::Point last_center(-1,-1);
+ void DetectRedBlock(cv::Mat &src,int roi_x,int roi_y,int width,int height)
+{
+    red_objects.clear();//先清元素
+    red_area = 0;
+    red_points_num = 0;
+    long long sum_x = 0;
+    long long sum_y = 0;
+    if(src.empty()) 
+    {
+        printf("DetectRedBlock src is empty\n");
+        return;
+    }
+    if(roi_x<0 || roi_y<0||roi_x >= src.cols || roi_y >= src.rows)  return;
+    if(width <= 0 || height <= 0 || width>src.cols||height>src.rows) return;
+    if(roi_x + width > src.cols || roi_y + height > src.rows) return;
+    cv::Rect roi(roi_x,roi_y,width,height);
+
+    cv::Rect roi_rect;
+    cv::Mat roi_src = src(roi);
+    cv::Mat mask;
+    mask.create(roi_src.size(), CV_8UC1);
+
+
+    for (int y = 0; y < roi_src.rows; ++y)
+    {
+        const cv::Vec3b* src_ptr = roi_src.ptr<cv::Vec3b>(y);
+        uchar* mask_ptr = mask.ptr<uchar>(y);
+
+        for (int x = 0; x < roi_src.cols; ++x)
+        {
+            int b = src_ptr[x][0];
+            int g = src_ptr[x][1];
+            int r = src_ptr[x][2];
+
+            if (r > Flash.debug_rgb_r_min && (r - g) > Flash.debug_rgb_rg_diff && (r - b) > Flash.debug_rgb_rb_diff){
+                Image_Use[y+roi_y][x+roi_x]=white;
+                red_points_num++;
+                sum_x += x;
+                sum_y += y;
+                mask_ptr[x] = white;
+            }
+            else{
+                mask_ptr[x] = 0;
+            }
+        }
+    }
+
+  
+if (red_points_num >= 5)
+    {
+        int cx = sum_x / red_points_num;
+        int cy = sum_y / red_points_num;
+        
+        resize_cx = cx + roi_x;
+        resize_cy = cy + roi_y;
+        // 映射到原图坐标
+        if(resize_cx*3.4>320) return;
+        if(resize_cy*4>240) return;
+        center= cv::Point((resize_cx)*3.4, (resize_cy)*4);//修改1
+
+        if(last_center != cv::Point(-1, -1))
+        {
+            int dx = center.x - last_center.x;
+            int dy = center.y - last_center.y;
+            double dist = sqrt(dx * dx + dy * dy);
+            // if(dist>80){
+            //     printf("本帧无效\n");
+            //     return;
+            // }
+            if(dist<16)
+            {
+                center = last_center;
+            }
+        }
+        last_center = center;
+        red_area = red_points_num;
+        red_objects.push_back({center,red_area});
+
+        // 可选：画点
+        //cv::circle(lq_frame, center, 3, cv::Scalar(0, 255, 0), -1);
+        //printf("检测到红色块\n");
+       // printf("Red Center: (%d, %d), Area: %d,red_points_num: %d, sum_x:%d\n",center.x, center.y, red_area,red_points_num,sum_x);
+    }
+    else{
+        center = cv::Point(-1,-1);
+        last_center = cv::Point(-1,-1);
+        resize_cx = 0;
+        resize_cy = 0;
+    }
+
+    if(!red_objects.empty()&&Flag.infer ==1)
+    {   
+   auto &obj = red_objects[0];
+
+        if (obj.center.x < 0 || obj.center.y < 0 || 
+        obj.center.x >= lq_frame.cols || obj.center.y >= lq_frame.rows||obj.center.y < 0||obj.center.x < 0) 
+        {
+        return;
+        }
+
+        if(!GenerateROI(obj.center, roi_rect, lq_frame)){
+            return;
+        }
+        if (roi_rect.x < 0 || roi_rect.y < 0 ||
+            roi_rect.width <= 0 || roi_rect.height <= 0 ||
+            roi_rect.x + roi_rect.width > lq_frame.cols ||
+            roi_rect.y + roi_rect.height > lq_frame.rows)
+        {
+                std::cout << "BAD ROI: "
+              << roi_rect << " | img: "
+              << lq_frame.cols << "x"
+              << lq_frame.rows << std::endl;
+                return;
+        }
+            cv::Mat roi_img = lq_frame(roi_rect);//截图送入模型
+              if(roi_img.empty()||roi_img.rows<=0||roi_img.cols<=0)
+                 {
+                    return;
+                 }
+                // cv::rectangle(lq_frame, roi_rect, cv::Scalar(255, 0, 0), 1);
+                 float confidence;
+                 auto start_time = std::chrono::high_resolution_clock::now();
+
+                 real_picture_distance=real_distance[MAX(L_h_guai.row,R_h_guai.row)];
+                 printf("real_picture_distance:%f\n",real_picture_distance);
+
+                 std::string result = classifier.Infer(roi_img,confidence);
+                auto end_time = std::chrono::high_resolution_clock::now();
+                std::chrono::duration<double, std::milli> elapsed_ms = end_time - start_time;
+                 printf("检测结果:%s, 置信度: %.1f,推理耗时: %.2f ms\n",result.c_str(),confidence,elapsed_ms.count());
+
+
+                if(result == "supply" && confidence>40)
+                {
+                    Flag.supply++;
+                    Flag.weapon = 0;
+                    Flag.vehicle = 0;
+                }
+                if(result == "weapon" && confidence>40)
+                {
+                    Flag.supply = 0;
+                    Flag.weapon++;
+                    Flag.vehicle = 0;
+                }
+                if(result == "vehicle" && confidence>40)
+                {
+                    Flag.supply = 0;
+                    Flag.weapon = 0;
+                    Flag.vehicle++;
+                }
+        
+    }
+
+}
+
 /***************************************************红色标注******************************************************/
 enum ClassType{
     CLASS_SUPPLIES = 0,
@@ -6781,18 +6920,7 @@ ClassType GetClassID(const std::string &cls){
 }
 ClassType id;
 
-cv::Rect crop_rect;
-cv::Mat src_img;
-cv::Mat roi_img;         // 纯ROI
-cv::Point roi_center;    // ROI中心
-//限幅函数
-cv::RotatedRect rect1;
 
-cv::Mat target_roi;
-cv::Point2f target_pts[4];
-cv::Point2f red_pts[4];
-float valid_ratio = 0.0f;
-static int count = 0;
 /***************************************************图像处理******************************************************/
 void ImageDeal()
 {   
@@ -6800,13 +6928,8 @@ void ImageDeal()
     if(lq_frame.empty()){
         return; 
     }
-    // for(count = 0 ; count < 1 ; count ++){
-    //     cv::imwrite("/home/root/ipm_calib1.jpg",lq_frame);
-    // }
-    
-
       cv::resize(lq_frame,resizedFrame,cv::Size(LCDW_1,LCDH_1),0,0,cv::INTER_AREA);
-   // DetectRedBlock(resizedFrame);
+
     // RedBlockProcess(resizedFrame);
     // camera_server.update_frame_mat(lq_frame);//打开图传服务器
 
@@ -6831,42 +6954,19 @@ void ImageDeal()
 
         // my_sobel_dajin(Image_Zip,Image_Use);
 
+
         imgInfoInit();
 
         Get_ImageTop();
 
+
         Draw_BlackSideline(Image_Use);//画边线
 
         Find_Sideline(imgInfo.bottom-1,imgInfo.top+ 1);//找边线
-auto start_time = std::chrono::high_resolution_clock::now();
-//  if (find_targetROI(lq_frame, rect1))
-// {
-//     cv::Point2f pts1[4];
-//     rect1.points(pts1);
-
-//     int thickness = 2;
-
-//     for (int i = 0; i < 4; i++)
-//     {
-//         cv::line(lq_frame,
-//                  pts1[i],
-//                  pts1[(i + 1) % 4],
-//                  cv::Scalar(0, 255, 0),
-//                  thickness,
-//                  cv::LINE_AA);
-//     }
-
-//     cv::circle(lq_frame,
-//                rect1.center,
-//                3,
-//                cv::Scalar(0, 255, 0),
-//                -1,
-//                cv::LINE_AA);
-// }
 
 
-if(FindTargetRoiByFixedIpm(lq_frame,target_roi,nullptr,nullptr, nullptr)){
-    camera_server.update_frame_mat(target_roi);
+        if(FindTargetRoiByFixedIpm(lq_frame,target_roi,nullptr,nullptr, nullptr)){
+    //camera_server.update_frame_mat(target_roi);
 }
 
 
@@ -6942,47 +7042,47 @@ if(FindTargetRoiByFixedIpm(lq_frame,target_roi,nullptr,nullptr, nullptr)){
     std::chrono::duration<double, std::milli> elapsed_ms = end_time - start_time;
     //printf("函数耗时: %.2f ms\n",elapsed_ms.count());
 
+
+
         if(Flag.Huandao_L>0||Flag.Huandao_R>0)
         Find_Guaidian();  //找拐点
         else
         Find_Guaidian1();  //找拐点
 
+        if(L_h_guai.flag||R_h_guai.flag)
+        {
+           
+            //DetectRedBlock(resizedFrame,0,(int)MAX(imgInfo.top+1,real_distance_to_row(120)),93,59-MAX(imgInfo.top+1,real_distance_to_row(120)));
+                                    
+                    Find_right_Sideline(imgInfo.bottom-5,imgInfo.top+1);
+                    Find_left_Sideline(imgInfo.bottom-5,imgInfo.top+1); 
+        }
         straight_judge();
 
-// if (red_detect_rgb(lq_frame, red_seed))
-// {
-//     if (get_red_contour(lq_frame, red_seed, red_rect))
-//     {
-//         cv::Point2f pts[4];
-//         red_rect.points(pts);
+                            //                         Flag.Redblock=0;   
+            // if(!red_objects.empty())
+            //    {
+            //     // Flag.Redblock=1;
+            //     red_x_mid=resize_cx;
+            //     red_y_mid=resize_cy;
+            //     // err_picture=fabs(real_distance[red_y_mid]-real_distance[L_h_guai.row]);
+            //     x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
+            //     // if(err_picture<15)//&&abs(center.x-L_h_guai.column)<20
+            //     Flag.Redblock=1;
+            //    }
 
-//         for (int i = 0; i < 4; ++i)
-//         {
-//             cv::line(lq_frame,
-//                      pts[i],
-//                      pts[(i + 1) % 4],
-//                      cv::Scalar(0, 255, 0),
-//                      2);
-//         }
+    
+                        // Find_Sideline(imgInfo.bottom-1,imgInfo.top+ 1);//找边线
 
-//         // 调试用：画出粗找种子点
-//        // cv::circle(lq_frame, red_seed, 3, cv::Scalar(255, 0, 255), -1);
-//     }
-// }
-    cv::Mat red_debug_show;
-  //  RedThresholdNoGui_Update(lq_frame, red_debug_show);
 
-// 通过图传显示：原图 + Mask + Result
-   // camera_server.update_frame_mat(red_debug_show);
-    // camera_server.update_frame_mat(lq_frame);//打开图传服务器
-        // zebra_corssing();
+        zebra_corssing();
 
         // if(Flag.Zebra_cross==3)
         // {
         // ramp();
         // }
 
-        //picture();
+
 
         // if(Flag.Huandao_L==0&&Flag.Huandao_R==0)
         // small_rock();
@@ -6999,10 +7099,10 @@ if(FindTargetRoiByFixedIpm(lq_frame,target_roi,nullptr,nullptr, nullptr)){
        &&Flag.Huandao_L!=4&&Flag.Huandao_R!=4&&Flag.Huandao_L!=5&&Flag.Huandao_R!=5&&Flag.Huandao_L!=6&&Flag.Huandao_R!=6)
         Buxian();
 
+        // if(Flag.Huandao_L!=1&&Flag.Huandao_R!=1&&Flag.Huandao_L!=2&&Flag.Huandao_R!=2)
+        // picture();
+        
         Find_Midline();
-
-     //   dynamic_forward();
-
 
 
         Err_Sum();

@@ -3,5 +3,5 @@
 
 void key_scan(void);
 void oled_show(void);
-
+extern int esc_duty;
 #endif

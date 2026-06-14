@@ -43,7 +43,7 @@ zf_device_ips200 ips200;
 int32_t encoder_left,encoder_right;
 encoder encoder_L = {0};
 encoder encoder_R = {0};
-float LPF_Speed = 0.0;
+float LPF_Speed = 0;
 int8_t run_flag;
 uint32_t fPS;
 int16_t encoder_abs;
@@ -115,14 +115,15 @@ void Encoder_update()
     // encode_r_total += encoder_R.count_now;
     // encoder_abs = (encode_l_total + encode_r_total)*0.5;
     // printf("encode_l_total:%d encode_r_total:%d,encoder_abs:%d\n",encode_l_total,encode_r_total,encoder_abs);
-    // }
+    // }s
     //printf("encode_l_total:%d encode_r_total:%d,encoder_abs:%d\n",encode_l_total,encode_r_total,encoder_abs);
 
 
     LPF_1(20, 5.0e-3,encoder_L.count_now, &encoder_L.speed);
     LPF_1(20, 5.0e-3,encoder_R.count_now, &encoder_R.speed);
 
-        LPF_1(20, 5.0e-3, 0.8*MAX(encoder_L.speed,encoder_R.speed)+0.2*MIN(encoder_L.speed,encoder_R.speed), &Master_Speed);
+            LPF_1(20, 5.0e-3, 1*MAX(encoder_L.speed,encoder_R.speed), &MaX_Speed);
+        LPF_1(20, 5.0e-3, 1*MAX(encoder_L.speed,encoder_R.speed)+0*MIN(encoder_L.speed,encoder_R.speed), &Master_Speed);
     // encoder_L.speed=encoder_L.count_now;
     // encoder_R.speed=encoder_R.count_now;
     LPF_1(20, 5.0e-3, 0.5*(encoder_L.count_now + encoder_R.count_now), &Now_Speed);

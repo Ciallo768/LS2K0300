@@ -655,13 +655,34 @@ void Direction_PID_Init(){
     cv::Point bestCenter;//存储轮廓的质心坐标
     cv::Rect bestRect;//存储最小外接矩形
 
+    // for(auto &c : contours)//遍历每一个色块 寻找出最大色块
+    // {
+    //     int area = cv::contourArea(c);//计算最大红色联通区域的面积
+
+    //     if(area < MIN_RED_AREA) continue;//
+
+    //     cv::Moments m = cv::moments(c);//m00->轮廓的面积 （m10 m01->用于计算轮廓的质心坐标)
+    //     if(m.m00 == 0) continue;
+
+    //     int cx = static_cast<int>(m.m10 / m.m00);//计算质心坐标
+    //     int cy = static_cast<int>(m.m01 / m.m00);//计算质心坐标
+
+    //     if(area > maxArea)
+    //     {
+    //         maxArea = area;
+
+    //         bestCenter = cv::Point(cx, cy);//存储轮廓的质心坐标
+
+    //         bestRect = cv::boundingRect(c);//计算色块最小外接矩形
+    //     }
+    // }
 
     //改为寻找最靠近的红色矩形块
     for(auto &c : contours){
         cv::Rect rect = cv::boundingRect(c);
 
         int area = rect.area();
-        if(area < MIN_RED_AREA) continue;//排除红色噪点 （后续可以用于排除一些红色色块在远端的情况
+        if(area < MIN_RED_AREA) continue;//排除红色噪点 （后续可以用于排除一些红色色块在远端的情况)
         cv::Moments m = cv::moments(c);
         if(m.m00 == 0) continue;
         
@@ -679,6 +700,15 @@ void Direction_PID_Init(){
     }
 
 
+    // if(maxArea > 0)
+    // {
+    //     red_objects.push_back({bestCenter, maxArea});//存储最大红色色块的中心坐标和面积
+    //     // if(GenerateROI(red_objects[0].center,roi,src)){
+    //     //     cv::rectangle(src, roi, cv::Scalar(255, 0, 0), 1);
+    //     // }
+    //     cv::rectangle(src, bestRect, cv::Scalar(0, 255, 0), 1);//绘制最小外接矩形
+        
+    // }
     if(bottom_y > 0){
         bestCenter.y += roi_y;
         bestRect.y += roi_y;
@@ -691,7 +721,14 @@ void Direction_PID_Init(){
 
     //    printf("cx:%d,cy:%d,w:%d,h:%d,area:%d\n",bestCenter.x,bestCenter.y,bestRect.width,bestRect.height,red_area);
     }
-
+    // //中间变量
+    // if(!red_objects.empty()){
+    //     red_area = cv::countNonZero(mask(bestRect));//计算红色矩形块的最小外接矩形内的红色像素点数 存储到red_area变量中
+    //     //printf("cx:%d,cy:%d,w:%d,h:%d,area:%d\n",bestCenter.x,bestCenter.y,bestRect.width,bestRect.height,red_area);
+    // }
+    // else{
+    //     red_area = 0;
+    // }
 
 
 }

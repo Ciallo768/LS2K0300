@@ -22,6 +22,7 @@ uint8_t Threshold = 0;  //大津法求出的阈值
 struct imageInformation imgInfo;
 struct YuanSu Flag;
 cv::Mat frame, grayFrame, binaryFrame,resizedFrame,flippedFrame,translatedFrame,translationMatrix,float_img,resized_img;
+cv::Mat target_roi;//存储目标图片区域
 TransmissionStreamServer camera_server;
 int roi_x_1= 0;
 int roi_y_1 = 0;
@@ -43,7 +44,12 @@ float Yaw_picture_err = 0;
 float Yaw_picture_target = 0;//绕行的目标偏差值
 float encoder_val = 0;//用于记录编码器的值 以实现分阶段运行
 int resize_cx,resize_cy = 0;
-
+cv::Point2f target_pts[4] = {
+    cv::Point2f(0.0f, 0.0f),
+    cv::Point2f(0.0f, 0.0f),
+    cv::Point2f(0.0f, 0.0f),
+    cv::Point2f(0.0f, 0.0f)
+};
 unsigned char R_TH = 140;
 unsigned char G_TH = 125;
 unsigned char B_TH = 125;
@@ -285,35 +291,15 @@ void Get01change_dajin() {
           Image_Use[i][j] = 0;  //黑
     }
   }
-//     for (i = 50; i < 60; i++) {
-//     for (j = LCDW_1/2-15; j < LCDW_1/2+15; j++) {
 
-//           Image_Use[i][j] = 255;  //白
+  for(int i = red_L_L.column; i < red_R_L.column; i++)
+  {
+    for(int j = red_L_L.row; j > picture_R_H.row; j--)
+    {
+      Image_Use[j][i] = white;
+    }
+  }
 
-//     }
-//   }
-
-    // //图像最小范围 35~60
-    // int roi_resize_x = roix1*0.5;
-    // int roi_resize_y = roiy1*0.5;
-    // int roi_y_2 = roi_resize_y + 25;
-    // int roi_x_2 = roi_resize_x + 25;
-    // if(roi_resize_x < 35) roi_resize_x = 35;//确保在赛道范围内 同时不要越界
-    // if(roi_x_2 > 65) roi_x_2 = 65;
-
-    // if(roi_y_2 > 60) roi_y_2 = 60;
-    // if(roi_y_2<0)   roi_y_2 = 0;
-    
-    // if(Flag.Redblock == 1)
-    // {
-    //     for(int i = roi_resize_y;i<roi_y_2;i++)
-    //     {
-    //         for(int j = roi_resize_x;j<roi_x_2;j++)
-    //         {
-    //             Image_Use[i][j] = 255;
-    //         }
-    //     }
-    // }
 
 }
 
@@ -3867,8 +3853,8 @@ void image_init(void)
     
     std::string model_param = "tiny_classifier_fp32.ncnn.param";//tiny_classifier_fp32.ncnn.param
     std::string model_bin   = "tiny_classifier_fp32.ncnn.bin";//tiny_classifier_fp32.ncnn.bin
-    int input_width    = 60;
-    int input_height   = 60;
+    int input_width    = 64;
+    int input_height   = 64;
     std::vector<std::string> labels = {"supply", "vehicle", "weapon"};
         // 归一化参数（ImageNet标准）
      float mean_vals[3] = {123.675f, 116.28f, 103.53f};
@@ -4214,6 +4200,11 @@ if(Flag.ramp==3)
 
 
 //角点排序函数 根据极点进行排序 
+//输出顺序
+//points[0] —— 左上角（Top-Left）
+//points[1] —— 右上角（Top-Right）
+//points[2] —— 右下角（Bottom-Right）
+//points[3] —— 左下角（Bottom-Left）
  void OrderTargetStripQuad(cv::Point2f points[4])
 {
     cv::Point2f center(0.0f, 0.0f);
@@ -4295,7 +4286,7 @@ struct IpmLutTable
 {
     IpmLutPoint points[CAM_HEIGHT][CAM_WIDTH];
 };
-
+/***************************************************红色标注******************************************************/
 /*引入BEV鸟瞰图变换*/
 // ===================== 固定 IPM 正变换参数：图像坐标 -> BEV 坐标 =====================
 constexpr float kStaticIpmRot00 = 1.612538001f;
@@ -5640,6 +5631,79 @@ bool BuildTargetRoiByFixedIpmRemap(const cv::Mat& input_frame,
 }
 
 
+void red_init(){
+    red_L_L.row = 0;//红块左下
+    red_L_L.column = 0;
+    red_R_L.row = 0;//红块右下
+    red_R_L.column =0;
+
+    picture_L_H.row = 0;//图片左上
+    picture_L_H.column = 0;
+    picture_R_H.row = 0;//图片右上
+    picture_R_H.column = 0;
+}
+
+//points[0] —— 左上角（Top-Left）
+//points[1] —— 右上角（Top-Right）
+//points[2] —— 右下角（Bottom-Right）
+//points[3] —— 左下角（Bottom-Left）
+
+//红块+图片部分角点映射 与 排序 
+//参数1 红块的四个角点 参2 图片部分四个角点
+//逻辑 画出由这四个点组成图像的最小外接矩形
+void map_and_sort(cv::Point2f pts[4],cv::Point2f pts_picture[4]){
+    red_init();//清理四个拐点
+
+    cv::Point2f pts_remove[4];
+    pts_remove[0] = cv::Point2f(pts_picture[0].x/3.4,pts_picture[0].y/4);//左上
+    pts_remove[1] = cv::Point2f(pts_picture[1].x/3.4,pts_picture[1].y/4);//右上
+    pts_remove[2] = cv::Point2f(pts_picture[2].x/3.4,pts_picture[2].y/4);//右下
+    pts_remove[3] = cv::Point2f(pts_picture[3].x/3.4,pts_picture[3].y/4);//左下
+
+    // 将 pts_remove 转成 vector
+    std::vector<cv::Point2f> points;
+    for (int i = 0; i < 4; ++i)
+    {
+        points.emplace_back(pts_remove[i]);
+    }
+
+    // 计算正外接矩形（轴对齐）
+    cv::Rect rect = cv::boundingRect(points);
+
+    // 返回正框的四个角点（float）
+    cv::Point2f rect_pts[4];
+
+    rect_pts[0] = cv::Point2f(rect.x, rect.y);                 // 左上
+    rect_pts[1] = cv::Point2f(rect.x + rect.width, rect.y);    // 右上
+    rect_pts[2] = cv::Point2f(rect.x + rect.width,
+                           rect.y + rect.height);               // 右下
+    rect_pts[3] = cv::Point2f(rect.x, rect.y + rect.height);   // 左下
+
+    for(int i = 0; i < 4; i++)
+    {
+    int y = static_cast<int>(rect_pts[i].y);
+      if(rect_pts[i].x > LCDW_1||rect_pts[i].y > LCDH_1||rect_pts[i].x <= 0||rect_pts[i].y <= 0)  return;
+
+      if(rect_pts[i].x > Right_Sideline[y] || rect_pts[i].x < Left_Sideline[y]) return;
+    }
+
+
+    picture_L_H.column = static_cast<uint8_t>(pts_remove[0].x);// 左上
+    picture_L_H.row = static_cast<uint8_t>(pts_remove[0].y);
+
+    picture_R_H.column = static_cast<uint8_t>(pts_remove[1].x)+2;// 右上
+    picture_R_H.row = static_cast<uint8_t>(pts_remove[1].y)+2;
+
+    red_R_L.column = static_cast<uint8_t>(pts_remove[2].x);// 右下
+    red_R_L.row = static_cast<uint8_t>(pts_remove[2].y);
+
+    red_L_L.column = static_cast<uint8_t>(pts_remove[3].x)-2;// 左下
+    red_L_L.row = static_cast<uint8_t>(pts_remove[3].y)-2;
+
+}
+
+
+
 //target_roi 输出的目标图片区域
 bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
                              cv::Mat& target_roi,
@@ -5702,6 +5766,8 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
             debug_target_img_pts[i] =
                 BevPointToImagePoint(target_bev_pts[i], input_frame);
         }
+
+        OrderTargetStripQuad(debug_target_img_pts);//对图片四点排序
     }
 
     // 6. 使用固定 IPM 反变换 + remap 裁剪出固定大小 ROI
@@ -5713,8 +5779,11 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
         return false;
     }
 
+
+    map_and_sort(red_img_pts,debug_target_img_pts);
     return true;
 }
+
 
 
  std::vector<cv::Point2f> orderPoints(cv::Point2f pts[4])
@@ -6326,17 +6395,6 @@ static float parallelError(const cv::Point2f& a,
     return std::fabs(cross_angle(a, b)) / (na * nb);
 }
 
-void red_init(){
-    red_L_L.row = 0;
-    red_L_L.column = 0;
-    red_R_L.row = 0;
-    red_R_L.column =0;
-
-    picture_L_H.row = 0;
-    picture_L_H.column = 0;
-    picture_R_H.row = 0;
-    picture_R_H.column = 0;
-}
  void DetectRedBlock(cv::Mat &src)
 {   
     auto start_time = std::chrono::high_resolution_clock::now();
@@ -6901,6 +6959,9 @@ if (red_points_num >= 5)
 
 }
 
+
+
+
 /***************************************************红色标注******************************************************/
 enum ClassType{
     CLASS_SUPPLIES = 0,
@@ -6920,7 +6981,6 @@ ClassType GetClassID(const std::string &cls){
 }
 ClassType id;
 
-
 /***************************************************图像处理******************************************************/
 void ImageDeal()
 {   
@@ -6930,15 +6990,13 @@ void ImageDeal()
     }
       cv::resize(lq_frame,resizedFrame,cv::Size(LCDW_1,LCDH_1),0,0,cv::INTER_AREA);
 
-    // RedBlockProcess(resizedFrame);
-    // camera_server.update_frame_mat(lq_frame);//打开图传服务器
+
 
       cv::cvtColor(resizedFrame,grayFrame,cv::COLOR_BGR2GRAY);
 
-    //   cv::warpAffine(grayFrame, translatedFrame, translationMatrix, grayFrame.size(), 
-    //                  cv::INTER_LINEAR, cv::BORDER_CONSTANT, 0);
+ 
 
-//   //  将OpenCV图像数据复制到图像数组 采用memcpy函数加快处理速度
+//  将OpenCV图像数据复制到图像数组 采用memcpy函数加快处理速度
     for (int i = 0; i < LCDH_1; i++)
     {
         uint8_t *p = grayFrame.ptr<uint8_t>(i);
@@ -6948,6 +7006,12 @@ void ImageDeal()
 
         }
     }
+
+    //             if(FindTargetRoiByFixedIpm(lq_frame,target_roi,target_pts,nullptr, nullptr)){
+    //                 printf("函数执行\n");
+    // //camera_server.update_frame_mat(target_roi);
+    //     }
+        
          Get01change_dajin();
 
         // my_sobel(Image_Zip,Image_Use); //压缩后的图像数组,
@@ -6963,11 +7027,16 @@ void ImageDeal()
         Draw_BlackSideline(Image_Use);//画边线
 
         Find_Sideline(imgInfo.bottom-1,imgInfo.top+ 1);//找边线
-
-
-        if(FindTargetRoiByFixedIpm(lq_frame,target_roi,nullptr,nullptr, nullptr)){
+        //图片相关
+        if(FindTargetRoiByFixedIpm(lq_frame,target_roi,target_pts,nullptr, nullptr)){
+                    printf("函数执行\n");
     //camera_server.update_frame_mat(target_roi);
-}
+        }
+
+    // auto start_time = std::chrono::high_resolution_clock::now();
+    // auto end_time = std::chrono::high_resolution_clock::now();
+    // std::chrono::duration<double, std::milli> elapsed_ms = end_time - start_time;
+    // printf("函数耗时: %.2f ms\n",elapsed_ms.count());
 
 
 // if (FindTargetRoiByFixedIpm(lq_frame,
@@ -7037,11 +7106,6 @@ void ImageDeal()
 //     //
 //     // classify_result = TargetClassify(target_roi);
 // }
-
-    auto end_time = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> elapsed_ms = end_time - start_time;
-    //printf("函数耗时: %.2f ms\n",elapsed_ms.count());
-
 
 
         if(Flag.Huandao_L>0||Flag.Huandao_R>0)

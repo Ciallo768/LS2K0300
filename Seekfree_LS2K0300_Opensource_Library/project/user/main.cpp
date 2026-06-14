@@ -81,13 +81,13 @@ void pit_callback()
 
    it_time++;
    
-    if(it_time%20==0)
-    {
-        printf("Yaw:%.3f   v_right_target:%.1f  Flag.picture:%d   Flag.Zebra_cross:%d  v_left_target:%.1f  imgInfo.top:%d    Flag.ramp:%d  real_distance[red_y_mid]:%.2f Dir_Err:%.1f   Huandao_R:%d    Huandao_L:%d   V_max:%.1f\n"
-            ,icm_data.yaw,v_right_target,Flag.picture,Flag.Zebra_cross,v_left_target,imgInfo.top,Flag.ramp,real_distance[red_y_mid],Dir_err,Flag.Huandao_R,Flag.Huandao_L,MAX(encoder_L.speed,encoder_R.speed));
-        // printf("PWM_L:%d.PWM_R:%d\n",PWM_L,-PWM_R);
-                        //    printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
-    }
+    // if(it_time%20==0)
+    // {
+    //     printf("Yaw:%.3f   v_right_target:%.1f  Flag.picture:%d   Flag.Zebra_cross:%d  v_left_target:%.1f  imgInfo.top:%d    Flag.ramp:%d  real_distance[red_y_mid]:%.2f Dir_Err:%.1f   Huandao_R:%d    Huandao_L:%d   V_max:%.1f\n"
+    //         ,icm_data.yaw,v_right_target,Flag.picture,Flag.Zebra_cross,v_left_target,imgInfo.top,Flag.ramp,real_distance[red_y_mid],Dir_err,Flag.Huandao_R,Flag.Huandao_L,MAX(encoder_L.speed,encoder_R.speed));
+    //     // printf("PWM_L:%d.PWM_R:%d\n",PWM_L,-PWM_R);
+    //                     //    printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
+    // }
 
 }
     
@@ -124,22 +124,22 @@ int main(int, char**)
         auto current_time = std::chrono::steady_clock::now();
         std::chrono::duration<double, std::milli> elapsed = current_time - last_print_time;
         
-        if (elapsed.count() >= PRINT_INTERVAL)
-        {
-            // 计算实际帧率：帧数 / 耗时（秒）
-            double fps = frame_count / (elapsed.count() / 1000.0);
-            // printf("top:%d,Dir_err:%.1f\n",imgInfo.top,Dir_err);
-            //         printf("Yaw:%f,distance=%f\n",icm_data.yaw,distance);
-                   printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
+        // if (elapsed.count() >= PRINT_INTERVAL)
+        // {
+        //     // 计算实际帧率：帧数 / 耗时（秒）
+        //     double fps = frame_count / (elapsed.count() / 1000.0);
+        //     // printf("top:%d,Dir_err:%.1f\n",imgInfo.top,Dir_err);
+        //     //         printf("Yaw:%f,distance=%f\n",icm_data.yaw,distance);
+        //            printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
     
             
-            // 输出帧率信息
-            std::cout << "实时帧率：" << fps << " FPS | 累计帧数：" << frame_count << std::endl;
+        //     // 输出帧率信息
+        //     std::cout << "实时帧率：" << fps << " FPS | 累计帧数：" << frame_count << std::endl;
             
-            // 重置统计变量
-            frame_count = 0;
-            last_print_time = current_time;
-        }
+        //     // 重置统计变量
+        //     frame_count = 0;
+        //     last_print_time = current_time;
+        // }
 
          
         if(run_flag==2||run_flag==0)

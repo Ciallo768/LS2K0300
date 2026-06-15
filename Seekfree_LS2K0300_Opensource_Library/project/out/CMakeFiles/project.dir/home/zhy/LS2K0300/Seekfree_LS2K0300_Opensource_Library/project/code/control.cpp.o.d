@@ -1,5 +1,5 @@
-CMakeFiles/project.dir/main.cpp.o: \
- /home/zhy/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/user/main.cpp \
+CMakeFiles/project.dir/home/zhy/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp.o: \
+ /home/zhy/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/code/control.cpp \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/stdc-predef.h \
  /home/zhy/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_headfile.hpp \
  /home/zhy/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_font.hpp \

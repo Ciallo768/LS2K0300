@@ -17,9 +17,9 @@ FlashInformation Flash = {
     .small_err = 15,
     .picture_err =30,
     .forward = 24,
-    .debug_rgb_r_min = 120,
-    .debug_rgb_rb_diff = 35,
-    .debug_rgb_rg_diff = 35
+    .debug_rgb_r_min = 140,
+    .debug_rgb_rb_diff = 50,
+    .debug_rgb_rg_diff = 50
 };
 
 /**

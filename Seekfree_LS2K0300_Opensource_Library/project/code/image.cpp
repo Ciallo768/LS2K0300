@@ -50,12 +50,16 @@ cv::Point2f target_pts[4] = {
     cv::Point2f(0.0f, 0.0f),
     cv::Point2f(0.0f, 0.0f)
 };
+cv::Point2f red_pts[4];
+float valid_ratio = 0.0f;
+bool erase_pts_ready = false;
+
 unsigned char R_TH = 140;
 unsigned char G_TH = 125;
 unsigned char B_TH = 125;
 unsigned char R_G_TH = 50;
 unsigned char R_B_TH = 50;
-
+Guaidian  red_point;
 Guaidian red_L_L,red_R_L,picture_L_H,picture_R_H;//四个拐点
 //处理陀螺仪角度跳变
 float Yaw_correct(float current_yaw,float target_yaw)
@@ -292,13 +296,13 @@ void Get01change_dajin() {
     }
   }
 
-  for(int i = red_L_L.column; i < red_R_L.column; i++)
-  {
-    for(int j = red_L_L.row; j > picture_R_H.row; j--)
-    {
-      Image_Use[j][i] = white;
-    }
-  }
+//   for(int i = red_L_L.column; i < red_R_L.column; i++)
+//   {
+//     for(int j = red_L_L.row; j > picture_R_H.row; j--)
+//     {
+//       Image_Use[j][i] = white;
+//     }
+//   }
 
 
 }
@@ -3865,6 +3869,7 @@ void image_init(void)
     classifier.SetLabels(labels);
     classifier.SetNormalize(mean_vals, norm_vals);
     classifier.Init();
+
     cam.start_collect();
     if(cam.is_cam_opened())
     {
@@ -3874,7 +3879,7 @@ void image_init(void)
         printf("Camera opened failed!\n");
         return;
     }
-    cam.set_exposure_manual(40);
+    cam.set_exposure_manual(60);
     printf("龙邱摄像头宽度:%d\n",cam.get_camera_width());
     printf("龙邱摄像头高度:%d\n",cam.get_camera_height());
     printf("龙邱摄像头帧率:%d\n",cam.get_camera_fps());
@@ -3885,6 +3890,11 @@ void image_init(void)
     binaryFrame.create(LCDH_1, LCDW_1, CV_8UC1);
     translationMatrix = (cv::Mat_<float>(2, 3) << 1, 0, 0, 0, 1, 0);//将捕获图像向右平移3个像素点
    camera_server.start_server(8080);//打开图传服务器
+
+}
+
+
+void zf_camera_init(){
 
 }
 
@@ -4476,7 +4486,7 @@ inline cv::Point2f RotateVector2D(const cv::Point2f& v, float angle_deg)
 //改为rgb方式 + 四领域 爬出轮廓
 inline bool is_red_rgb(unsigned char r, unsigned char g ,unsigned char b)
 {
-    if(r > R_TH && r-g > R_G_TH && r-b > R_B_TH)
+    if(r > Flash.debug_rgb_r_min && r-g > Flash.debug_rgb_rg_diff && r-b > Flash.debug_rgb_rb_diff)
     return 1;//表示红色
     else return 0;
 }
@@ -4724,8 +4734,8 @@ bool red_detect_rgb(const cv::Mat& src_img, cv::Point& seed)
         search_top,
         src_img.rows - 1);
   
-    const int y_stride = 2;
-    const int x_stride = 4;
+    const int y_stride = 1;//向内收缩 y坐标每两行
+    const int x_stride = 4;//向内收缩 x坐标每四列找一次
 
     // 至少连续两个采样点是红色，才认为这一行有可靠红色段
     const int min_run_samples = 2;
@@ -4744,7 +4754,7 @@ bool red_detect_rgb(const cv::Mat& src_img, cv::Point& seed)
         // 这样可以减少误把赛道外红色物体当成目标的概率
         if (lx_small < 0 || lx_small >= small_w ||
             rx_small < 0 || rx_small >= small_w)
-        {
+        {   printf("本行左右边界无效跳过\n");
             continue;
         }
 
@@ -4758,8 +4768,8 @@ bool red_detect_rgb(const cv::Mat& src_img, cv::Point& seed)
             continue;
         }
 
-        int lx = static_cast<int>(std::floor(lx_small * small_to_src_x));
-        int rx = static_cast<int>(std::ceil((rx_small + 1) * small_to_src_x)) - 1;
+        int lx = static_cast<int>(std::floor(lx_small * small_to_src_x));//映射到大图
+        int rx = static_cast<int>(std::ceil((rx_small + 1) * small_to_src_x)) - 1;//映射到大图
 
         lx = ClampTargetInt(lx, 0, src_img.cols - 1);
         rx = ClampTargetInt(rx, 0, src_img.cols - 1);
@@ -4771,6 +4781,7 @@ bool red_detect_rgb(const cv::Mat& src_img, cv::Point& seed)
 
         if (lx > rx)
         {
+            printf("大图中左边线>右边线跳过\n");
             continue;
         }
 
@@ -4782,7 +4793,7 @@ bool red_detect_rgb(const cv::Mat& src_img, cv::Point& seed)
 
         for (int x = lx; x <= rx; x += x_stride)
         {
-            if (get_red_rgb(src_img, x, y))
+            if (get_red_rgb(src_img, x, y))//快速访问图像中的单个点的rgb三色通道 并判断是否为红色
             {
                 if (run_start_x < 0)
                 {
@@ -4815,16 +4826,23 @@ bool red_detect_rgb(const cv::Mat& src_img, cv::Point& seed)
 
         if (best_run_len >= min_run_samples && best_run_start_x >= 0)
         {
+            
             const int seed_x = best_run_start_x + (best_run_len / 2) * x_stride;
             seed = cv::Point(ClampTargetInt(seed_x, 0, src_img.cols - 1), y);
 
             // 再确认种子点附近红色密度，防止单点误判
-            if (CountRed3x3(src_img, seed.x, seed.y) >= 3)
+            if (CountRed3x3(src_img, seed.x, seed.y) >= 3)// 统计 3x3 邻域内有多少个红色点
             {   
                 // printf("粗找到种子点");
                 return true;
             }
+            else{
+                printf("3x3领域内种子点不足跳过\n");
+            }
         }
+        // else{
+        //     printf("小于两个红点\n");
+        // }
     }
 
     return false;
@@ -5703,14 +5721,197 @@ void map_and_sort(cv::Point2f pts[4],cv::Point2f pts_picture[4]){
 }
 
 
+// 把原图 320x240 上的四边形点映射到 94x60 二值图上
+static bool SrcQuadToSmallQuad(const cv::Point2f src_quad[4],
+                               const cv::Size& src_size,
+                               cv::Point small_quad[4])
+{
+    if (src_quad == nullptr || src_size.width <= 1 || src_size.height <= 1)
+    {
+        return false;
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (!IsFinitePoint(src_quad[i]))
+        {
+            return false;
+        }
+
+        int x = static_cast<int>(std::lround(
+            src_quad[i].x * static_cast<float>(LCDW_1 - 1) /
+            static_cast<float>(src_size.width - 1)));
+
+        int y = static_cast<int>(std::lround(
+            src_quad[i].y * static_cast<float>(LCDH_1 - 1) /
+            static_cast<float>(src_size.height - 1)));
+
+        x = ClampTargetInt(x, 0, LCDW_1 - 1);
+        y = ClampTargetInt(y, 0, LCDH_1 - 1);
+
+        small_quad[i] = cv::Point(x, y);
+    }
+
+    return true;
+}
+
+//bin_img和 image共享同一块内存
+// 修改 bin_img，等于直接修改 image
+// 在 94x60 二值图中抹掉一个四边形区域
+static void EraseQuadOnBinary(uint8_t image[LCDH_1][LCDW_1],
+                              const cv::Point2f src_quad[4],
+                              const cv::Size& src_size,
+                              int pad)
+{
+    cv::Point small_quad[4];
+
+    if (!SrcQuadToSmallQuad(src_quad, src_size, small_quad))
+    {
+        return;
+    }
+
+    // Image_Use 本身是连续内存，可以直接包装成 Mat
+    cv::Mat bin_img(LCDH_1, LCDW_1, CV_8UC1, image);
+
+    static cv::Mat mask;
+    mask.create(LCDH_1, LCDW_1, CV_8UC1);
+    mask.setTo(cv::Scalar(0));
+
+    cv::fillConvexPoly(mask,
+                       small_quad,
+                       4,
+                       cv::Scalar(255),//白色
+                       cv::LINE_8);//填充四边形
+
+    // 稍微扩大一点，避免边缘残留
+    if (pad > 0)
+    {
+        cv::dilate(mask,
+                   mask,
+                   cv::Mat(),
+                   cv::Point(-1, -1),
+                   pad);
+    }
+
+    // 这里设置为 white，表示把图片/红块区域当成赛道白色区域处理
+    bin_img.setTo(cv::Scalar(white), mask);
+}
+
+//bin_img和 image共享同一块内存
+// 修改 bin_img，等于直接修改 image
+// 在 94x60 二值图中抹掉一个四边形区域
+struct EraseQuadCache
+{
+    cv::Point2f red[4];
+    cv::Point2f target[4];
+    bool has_last = false;
+    int lost_cnt = 0;
+};
+
+static EraseQuadCache g_erase_cache;
+
+
+//判断是否为有效四边形
+static bool IsQuadValidForErase(const cv::Point2f quad[4],
+                                const cv::Size& img_size)
+{
+    if (quad == nullptr || img_size.width <= 0 || img_size.height <= 0)
+    {
+        return false;
+    }
+
+    std::vector<cv::Point2f> q;
+    q.reserve(4);
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (!IsFinitePoint(quad[i]))//安全性检查 判断 转化到BEV上的点有没有越界
+        {
+            return false;
+        }
+
+        q.push_back(quad[i]);
+    }
+
+    float area = std::fabs(static_cast<float>(cv::contourArea(q)));
+
+    // 原图坐标下，面积太小说明点异常
+    if (area < 20.0f)
+    {
+        return false;
+    }
+
+    cv::Rect2f box = cv::boundingRect(q);
+
+    // 四边形完全跑出图像外，不使用
+    if (box.x > img_size.width - 1 ||
+        box.y > img_size.height - 1 ||
+        box.x + box.width < 0 ||
+        box.y + box.height < 0)
+    {
+        return false;
+    }
+
+    return true;
+}
+
+static bool AreEraseQuadsValid(const cv::Point2f red_quad[4],
+                               const cv::Point2f target_quad[4],
+                               const cv::Size& img_size)
+{
+    return IsQuadValidForErase(red_quad, img_size) &&
+           IsQuadValidForErase(target_quad, img_size);//只有当红色矩形块和图像区域都有效时才返回真
+}
+
+static void SaveEraseCache(const cv::Point2f red_quad[4],
+                           const cv::Point2f target_quad[4])
+{
+    for (int i = 0; i < 4; i++)
+    {
+        g_erase_cache.red[i] = red_quad[i];
+        g_erase_cache.target[i] = target_quad[i];
+    }
+
+    g_erase_cache.has_last = true;
+    g_erase_cache.lost_cnt = 0;
+}
+
+// 同时抹掉红色矩形块和上方图片区域
+static void EraseTargetAndRedOnBinary(uint8_t image[LCDH_1][LCDW_1],
+                                      const cv::Point2f red_pts[4],
+                                      const cv::Point2f target_pts[4],
+                                      const cv::Size& src_size)
+{
+    // 红色矩形块
+    EraseQuadOnBinary(image, red_pts, src_size, 1);
+
+    // 上方图片区域
+    EraseQuadOnBinary(image, target_pts, src_size, 1);
+}
+
 
 //target_roi 输出的目标图片区域
+//修改：新增参数 作为灰度图抹除红块的断点标记 防止因为返回false 而导致整帧不抹
 bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
                              cv::Mat& target_roi,
+                             struct Guaidian* red_point,
                              cv::Point2f* debug_target_img_pts = nullptr,
                              cv::Point2f* debug_red_img_pts = nullptr,
-                             float* debug_valid_ratio = nullptr)
+                             float* debug_valid_ratio = nullptr,
+                             bool* erase_pts_ready = nullptr)
 {
+
+    if (red_point != nullptr)
+    {
+        red_point->column = -1;
+        red_point->row = -1;
+    }
+
+    if (erase_pts_ready != nullptr)
+    {
+        *erase_pts_ready = false;
+    }
+
     target_roi.release();
 
     if (input_frame.empty())
@@ -5724,12 +5925,14 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
     // 1. 粗找红色种子点
     if (!red_detect_rgb(input_frame, red_seed))
     {
+        //printf("未找到种子点\n");
         return false;
     }
-
+    // cv::circle(lq_frame, red_seed, 1, cv::Scalar(0, 255, 0), -1);//调试用 看种子点对不对
     // 2. 细找红色定位条
     if (!get_red_contour(input_frame, red_seed, red_rect))
-    {
+    {   
+        //printf("未找到定位矩形块\n");
         return false;
     }
 
@@ -5738,7 +5941,67 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
     red_rect.points(red_img_pts);
 
     // 修改:对红条四个角点排序
+    //points[0] —— 左上角（Top-Left）
+    //points[1] —— 右上角（Top-Right）
+    //points[2] —— 右下角（Bottom-Right）
+    //points[3] —— 左下角（Bottom-Left）
     OrderTargetStripQuad(red_img_pts);
+
+    float bottom_mid_x = (red_img_pts[2].x + red_img_pts[3].x) * 0.5f;
+    float bottom_mid_y = (red_img_pts[2].y + red_img_pts[3].y) * 0.5f;
+
+    const float src_to_small_x = 94.0f / static_cast<float>(input_frame.cols);
+    const float src_to_small_y = 60.0f / static_cast<float>(input_frame.rows);
+    //返回红条的最小外接旋转矩形的下底边的中心点并映射到94*60
+
+    int small_x = static_cast<int>(std::lround(bottom_mid_x * src_to_small_x));
+    int small_y = static_cast<int>(std::lround(bottom_mid_y * src_to_small_y));
+
+    small_x = ClampTargetInt(small_x, 0, 93);
+    small_y = ClampTargetInt(small_y, 0, 59);
+
+    static bool has_last_red_point = false;
+    static int last_red_x = -1;
+    static int last_red_y = -1;
+
+    const int RED_POINT_DEAD_ZONE = 1;   // 小抖动不更新
+    const int RED_POINT_MAX_JUMP = 15;   // 突然跳太远也不更新，防误检
+
+    if (!has_last_red_point)
+    {
+        last_red_x = small_x;
+        last_red_y = small_y;
+        has_last_red_point = true;
+    }
+    else
+    {
+        int dx = small_x - last_red_x;
+        int dy = small_y - last_red_y;
+
+        int dist2 = dx * dx + dy * dy;
+
+        int dead_zone2 = RED_POINT_DEAD_ZONE * RED_POINT_DEAD_ZONE;
+        int max_jump2 = RED_POINT_MAX_JUMP * RED_POINT_MAX_JUMP;
+
+        if (dist2 <= dead_zone2)
+        {
+        // 变化太小，认为是抖动，不更新
+        }
+        // else if (dist2 >= max_jump2)
+        // {
+        // // 跳变太大，可能是误检，不更新
+        // }
+        else
+        {
+        // 正常变化，更新
+        last_red_x = small_x;
+        last_red_y = small_y;
+        }
+    }
+
+    red_point->column = last_red_x;
+    red_point->row = last_red_y;
+
 
     if (debug_red_img_pts != nullptr)
     {
@@ -5766,9 +6029,19 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
             debug_target_img_pts[i] =
                 BevPointToImagePoint(target_bev_pts[i], input_frame);
         }
-
+        //printf("成功返回目标框坐标\n");
         OrderTargetStripQuad(debug_target_img_pts);//对图片四点排序
     }
+
+
+    //程序运行到此处时 说明已经得到所需坐标 可以抹除红块了
+    if (debug_red_img_pts != nullptr &&
+    debug_target_img_pts != nullptr &&
+    erase_pts_ready != nullptr)
+    {
+    *erase_pts_ready = true;
+    }
+
 
     // 6. 使用固定 IPM 反变换 + remap 裁剪出固定大小 ROI
     if (!BuildTargetRoiByFixedIpmRemap(input_frame,
@@ -5780,7 +6053,7 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
     }
 
 
-    map_and_sort(red_img_pts,debug_target_img_pts);
+    // map_and_sort(red_img_pts,debug_target_img_pts);
     return true;
 }
 
@@ -7023,21 +7296,78 @@ void ImageDeal()
 
         Get_ImageTop();
 
-
         Draw_BlackSideline(Image_Use);//画边线
 
         Find_Sideline(imgInfo.bottom-1,imgInfo.top+ 1);//找边线
         //图片相关
-        if(FindTargetRoiByFixedIpm(lq_frame,target_roi,target_pts,nullptr, nullptr)){
-                    printf("函数执行\n");
-    //camera_server.update_frame_mat(target_roi);
-        }
+        bool roi_ok = FindTargetRoiByFixedIpm(lq_frame,
+                                      target_roi,
+                                      &red_point,
+                                      target_pts,
+                                      red_pts,
+                                      &valid_ratio,
+                                    &erase_pts_ready);
 
+        // if(roi_ok){
+        // //         for (int i = 0; i < 4; i++)
+        // //         {
+        // // cv::line(lq_frame,
+        // //          target_pts[i],
+        // //          target_pts[(i + 1) % 4],
+        // //          cv::Scalar(0, 255, 0),
+        // //          2,
+        // //          cv::LINE_AA);
+        // //     }
+        // // cv::Point red(red_point.column,red_point.row);
+        // cv::circle(resizedFrame, red, 1, cv::Scalar(0, 255, 0), -1);
+        // }
+
+bool erase_done = false;
+
+//当前帧已经算出了红块和图片四点
+if (erase_pts_ready &&
+    AreEraseQuadsValid(red_pts, target_pts, lq_frame.size()))
+{
+    SaveEraseCache(red_pts, target_pts);//保存上一帧的坐标点
+
+    EraseTargetAndRedOnBinary(Image_Use,
+                              red_pts,
+                              target_pts,
+                              lq_frame.size());
+
+    erase_done = true;//完成抹除 需要重新找边线
+}
+
+else if (g_erase_cache.has_last && g_erase_cache.lost_cnt < 3)
+{
+    EraseTargetAndRedOnBinary(Image_Use,
+                              g_erase_cache.red,
+                              g_erase_cache.target,
+                              lq_frame.size());
+
+    g_erase_cache.lost_cnt++;
+    erase_done = true;
+}
+else
+{
+    g_erase_cache.has_last = false;
+    g_erase_cache.lost_cnt = 0;
+}
+
+// 只要执行过抹除，就重新找边线
+if (erase_done)
+{
+    imgInfoInit();
+    Get_ImageTop();
+    Draw_BlackSideline(Image_Use);
+    Find_Sideline(imgInfo.bottom - 1, imgInfo.top + 1);
+}
+    // camera_server.update_frame_mat(resizedFrame);
     // auto start_time = std::chrono::high_resolution_clock::now();
     // auto end_time = std::chrono::high_resolution_clock::now();
     // std::chrono::duration<double, std::milli> elapsed_ms = end_time - start_time;
     // printf("函数耗时: %.2f ms\n",elapsed_ms.count());
-
+// camera_server.update_frame_mat(lq_frame);
 
 // if (FindTargetRoiByFixedIpm(lq_frame,
 //                             target_roi,
@@ -7170,9 +7500,6 @@ void ImageDeal()
 
 
         Err_Sum();
-
-
-
 
         protect();
 }

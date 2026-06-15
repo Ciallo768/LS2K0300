@@ -114,7 +114,7 @@ extern uint16_t jump_point,maxkuan_line;
 extern int avoid_state,x_err_red;
 extern int forward,forward1, red_x_mid,red_y_mid;; 
 extern unsigned char Left_Sideline_flag[LCDH_0] ;   //左边线标志位
-extern float Yaw_Huandao,Yaw_Huandao_err,yaw_correct,distance_HUAN1,black_ratio,err_picture,real_picture_distance;
+extern float ramp_line,Yaw_Huandao,Yaw_Huandao_err,yaw_correct,distance_HUAN1,black_ratio,err_picture,real_picture_distance;
 extern int right_num ,ramp_white_num,r_num,left_num ,l_num ,R_l_lsoe,L_l_lose,red_points_num,picture_first_num,picture_second_num,maxlong_colume,long_max,jump_point1,picture_white,picture_black,red_find_x,red_find_y,red_find_y1;;
 extern cv::Point center;
 extern cv::Mat lq_frame;

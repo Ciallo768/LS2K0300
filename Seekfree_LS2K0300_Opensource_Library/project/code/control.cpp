@@ -101,42 +101,46 @@ float Speed_PID_Cal(PID *PID,float Target, float feedback){
     PID->error = Target - feedback;
 
      LPF_1(10, 5.0e-3, (feedback - PID->Last_feedback), &PID->Differential);
+    if(PID->error*PID->Integral<0)PID->Integral=0;
+    PID->Integral += PID->error;
 
-    PID->Integral += LIMIT(PID->error, -PID->Max_error, PID->Max_error);
-    PID->Integral = LIMIT(PID->Integral, -PID->Max_integral, PID->Max_integral);
-
-    PID->output = PID->kf*Target + PID->kp*PID->error + PID->ki*PID->Differential + PID->kd*(PID->error - PID->last_error);
+        if(PID->Integral>PID->Max_integral)PID->output=PID->Max_integral;
+        if(PID->Integral<-PID->Max_integral)PID->output=-PID->Max_integral;
+    PID->output = PID->kf*Target + PID->kp*PID->error + 
+    PID->ki* (PID->error - 2 * PID->last_error + PID->last_last_error)  + PID->kd*(PID->error - PID->last_error);
     // PID->output = LIMIT(PID->output, -PID->Max_output, PID->Max_output);//限幅
 
     if(PID->output>PID->Max_output)PID->output=PID->Max_output;
         if(PID->output<-PID->Max_output)PID->output=-PID->Max_output;
 
     PID->Last_feedback = feedback;
+    PID->last_last_error = PID->last_error;
     PID->last_error=PID->error;
     return PID->output;
 
 }
 
-float Speed_PID_Cal1(Direction_PID *pid,float expect, float feedback)
-{
-    pid->Error = expect - feedback;
-    //  pid->Kp =6-0.6*imgInfo.top;//第一个数是最大的阻尼系数，第二个是截至行的比例系数越大阻尼越弱
-    //  if(pid->Kp<=1.0)
-    // pid->Kp=6.0;//是最小阻尼系数
-    float delta_output ;
-    pid->Integral=pid->Kd * (pid->Error - 2 * pid->Last_Error + pid->Last_Last_Error) ;
-    delta_output = pid->Kp * (pid->Error - pid->Last_Error) 
-                         +pid->Ki * pid->Error +
-                         pid->Integral;
-                         //
+float Speed_PID_Cal1(PID *PID,float Target, float feedback){
+    PID->error = Target - feedback;
 
-    pid->OutPut += delta_output;
-    // LIMIT(pid->OutPut,-pid->MAX_OutPut,pid->MAX_OutPut);
+     LPF_1(10, 5.0e-3, (feedback - PID->Last_feedback), &PID->Differential);
 
-    pid->Last_Last_Error = pid->Last_Error;
-    pid->Last_Error = pid->Error;
-    pid->expect_last = expect;
-    return pid->OutPut;
+    PID->Integral += LIMIT(PID->error, -PID->Max_error, PID->Max_error);
+    PID->Integral = LIMIT(PID->Integral, -PID->Max_integral, PID->Max_integral);
+
+    float delta=PID->ki*PID->error + PID->kp*(PID->error - PID->last_error)
+    +PID->kd * (PID->error - 2 * PID->last_error + PID->last_last_error) ;
+    PID->output += delta;
+    // PID->output = LIMIT(PID->output, -PID->Max_output, PID->Max_output);//限幅
+
+    if(PID->output>PID->Max_output)PID->output=PID->Max_output;
+        if(PID->output<-PID->Max_output)PID->output=-PID->Max_output;
+
+    PID->Last_feedback = feedback;
+            PID->last_last_error = PID->last_error;
+    PID->last_error=PID->error;
+
+    return PID->output;
 
 }
 /*******************************************图像专用PID*************************************************/
@@ -152,32 +156,6 @@ float Image_PID_Calculate(Direction_PID *pid, float expect, float feedback)
     return pid->OutPut;
 }
 /*******************************************差速PID*************************************************/
-float Dis_PID_Calculate(Direction_PID *pid, float expect, float feedback)
-{ 
-    //Δu(k) = Kp * [e(k) - e(k-1)] + Ki * e(k) + Kd * [e(k) - 2*e(k-1) + e(k-2)]
-
-    pid->Error = expect - feedback;
-    //  pid->Kp =6-0.6*imgInfo.top;//第一个数是最大的阻尼系数，第二个是截至行的比例系数越大阻尼越弱
-    //  if(pid->Kp<=1.0)
-    // pid->Kp=6.0;//是最小阻尼系数
-    float delta_output ;
-    pid->Integral=pid->Kd * (pid->Error - 2 * pid->Last_Error + pid->Last_Last_Error) ;
-    delta_output = pid->Kp * (pid->Error - pid->Last_Error) 
-                         +pid->Ki * pid->Error +
-                         pid->Integral;
-                         //
-
-    pid->OutPut += delta_output;
-
-    if(pid->OutPut >pid->MAX_OutPut )pid->OutPut =pid->MAX_OutPut ;
-    if(pid->OutPut <-pid->MAX_OutPut )pid->OutPut =-pid->MAX_OutPut ;
-
-    pid->Last_Last_Error = pid->Last_Error;
-    pid->Last_Error = pid->Error;
-    pid->expect_last = expect;
-    return pid->OutPut;
-
-}
 // float Dis_PID_Calculate(Direction_PID *pid, float expect, float feedback)
 // { 
 //     //Δu(k) = Kp * [e(k) - e(k-1)] + Ki * e(k) + Kd * [e(k) - 2*e(k-1) + e(k-2)]
@@ -187,13 +165,13 @@ float Dis_PID_Calculate(Direction_PID *pid, float expect, float feedback)
 //     //  if(pid->Kp<=1.0)
 //     // pid->Kp=6.0;//是最小阻尼系数
 //     float delta_output ;
-//     pid->Integral=pid->Ki * (pid->Error - 2 * pid->Last_Error + pid->Last_Last_Error) ;
-//     delta_output = pid->Kd * (pid->Error - pid->Last_Error) 
-//                          +pid->Kp * pid->Error +
+//     pid->Integral=pid->Kd * (pid->Error - 2 * pid->Last_Error + pid->Last_Last_Error) ;
+//     delta_output = pid->Kp * (pid->Error - pid->Last_Error) 
+//                          +pid->Ki * pid->Error +
 //                          pid->Integral;
 //                          //
 
-//     pid->OutPut = delta_output;
+//     pid->OutPut += delta_output;
 
 //     if(pid->OutPut >pid->MAX_OutPut )pid->OutPut =pid->MAX_OutPut ;
 //     if(pid->OutPut <-pid->MAX_OutPut )pid->OutPut =-pid->MAX_OutPut ;
@@ -204,6 +182,32 @@ float Dis_PID_Calculate(Direction_PID *pid, float expect, float feedback)
 //     return pid->OutPut;
 
 // }
+float Dis_PID_Calculate(Direction_PID *pid, float expect, float feedback)
+{ 
+    //Δu(k) = Kp * [e(k) - e(k-1)] + Ki * e(k) + Kd * [e(k) - 2*e(k-1) + e(k-2)]
+
+    pid->Error = expect - feedback;
+    //  pid->Kp =6-0.6*imgInfo.top;//第一个数是最大的阻尼系数，第二个是截至行的比例系数越大阻尼越弱
+    //  if(pid->Kp<=1.0)
+    // pid->Kp=6.0;//是最小阻尼系数
+    float delta_output ;
+    pid->Integral=pid->Ki * (pid->Error - 2 * pid->Last_Error + pid->Last_Last_Error) ;
+    delta_output = pid->Kd * (pid->Error - pid->Last_Error) 
+                         +pid->Kp * pid->Error +
+                         pid->Integral;
+                         //
+
+    pid->OutPut = delta_output;
+
+    if(pid->OutPut >pid->MAX_OutPut )pid->OutPut =pid->MAX_OutPut ;
+    if(pid->OutPut <-pid->MAX_OutPut )pid->OutPut =-pid->MAX_OutPut ;
+
+    pid->Last_Last_Error = pid->Last_Error;
+    pid->Last_Error = pid->Error;
+    pid->expect_last = expect;
+    return pid->OutPut;
+
+}
 
 float speed_difference_Calculate(Direction_PID *pid, float expect, float feedback)
 {
@@ -234,7 +238,7 @@ float Image_E1, Image_E2 = 0;
 
 
 
-    float K = 2.0;//2.3//12
+    float K = 3.5;//2.3//12
     Image.Kp = 3.5*K;//  0.8; //250*0.015
     Image.Ki = 0;   
     Image.Kd =0;// Image.Kp *0.3
@@ -242,30 +246,30 @@ float Image_E1, Image_E2 = 0;
     Image.Kp2 = 0;
     Image.MAX_OutPut = 10000;
 
-    Dis_1.Ki = 5*0.8;
-    Dis_1.Kp = 0.7;// ;5*Dis_1.Ki 50
+    // Dis_1.Ki = 5*0.075;
+    // Dis_1.Kp = 0.7;// ;5*Dis_1.Ki 50
     
 
 
-    // Dis_1.Kp = 0.75;// ;5*Dis_1.Ki 50
-    // Dis_1.Kd = Dis_1.Kp*0.3;   
-    // Dis_1.Ki = 5;
-    // Dis_1.Kp = 60;// ;5*Dis_1.Ki 50
+    Dis_1.Kp = 50;// ;5*Dis_1.Ki 50
+    Dis_1.Kd = 0;   
+    // Dis_1.Ki = 10;
+    // Dis_1.Kp = 40;// ;5*Dis_1.Ki 50
 
     // Dis_1.Kd =Dis_1.Kp*1;//Dis_1.Kp*0.001;Dis_1.Kp*0.0005Dis_1.Kp*0.001
 
-    Dis_1.MAX_OutPut = 10000;
+    Dis_1.MAX_OutPut = 20000;
 
 
     float K_v=1.0;
-    Speed_PID_Init(&Velocity,4*K_v,30*K_v,0,9*K_v,1500,10000,2000); //位置式速度环.
-    Speed_PID_Init(&Velocity_L,4*K_v,30*K_v,0,9*K_v,1500,10000,2000); //位置式速度
-    Speed_PID_Init(&Velocity_R,4*K_v,30*K_v,0,9*K_v,1500,10000,2000); //位置式速度环.
+    Speed_PID_Init(&Velocity,4*K_v,30*K_v,0,15*K_v,5000,10000,2000); //位置式速度环.
+    Speed_PID_Init(&Velocity_L,4*K_v,30*K_v,0*K_v,15*K_v,5000,10000,2000); //位置式速度
+    Speed_PID_Init(&Velocity_R,4*K_v,30*K_v,0*K_v,15*K_v,5000,10000,2000); //位置式速度环.
 
     // float K_v=0.5;
-    // Speed_PID_Init(&Velocity,0,50*K_v,1*K_v,10*K_v,10000,10000,2000); //位置式速度环.
-    // Speed_PID_Init(&Velocity_L,0,50*K_v,1*K_v,10*K_v,10000,10000,2000); //位置式速度环.
-    // Speed_PID_Init(&Velocity_R,0,50*K_v,1*K_v,10*K_v,10000,10000,2000); //位置式速度环.
+    // Speed_PID_Init(&Velocity,0,150*K_v,1*K_v,0*K_v,10000,10000,2000); //位置式速度环.
+    // Speed_PID_Init(&Velocity_L,0,150*K_v,1*K_v,0*K_v,10000,10000,2000); //位置式速度环.
+    // Speed_PID_Init(&Velocity_R,0,150*K_v,1*K_v,0*K_v,10000,10000,2000); //位置式速度环.
 
     PID_Init(&picture_distance, -10, 0, -5, 0, 1000,0,0,0);
 

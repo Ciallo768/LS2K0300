@@ -450,10 +450,10 @@ if(oled_flag == 0){
                    sprintf(txt,"err:%.1f ",Yaw_Huandao_err);
                    ips200.show_string(100,20,txt);
 
-                   sprintf(txt,"dl1x:%d ",dl1x_distance_raw);
+                   sprintf(txt,"ramp_white:%d ",ramp_white_num);
                    ips200.show_string(100,40,txt);
 
-                   sprintf(txt,"jump_point:%d ",jump_point);
+                   sprintf(txt,"ramp_line:%d ",ramp_line);
                    ips200.show_string(100,60,txt);
 
                 //    sprintf(txt,"Huandao_L:%d",Flag.Huandao_L);
@@ -536,7 +536,7 @@ if(oled_flag == 0){
               sprintf(txt,"distance:%.1f",distance);
               ips200.show_string(0,160,txt);
 
-              sprintf(txt,"Dir_err:%.1f",Dir_err);
+              sprintf(txt,"HUAN1:%.1f",distance_HUAN1);
               ips200.show_string(120,160,txt);
 
                     //   sprintf(txt,"L_strai:%d",imgInfo.L_straight_flag);

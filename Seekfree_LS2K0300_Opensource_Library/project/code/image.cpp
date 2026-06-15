@@ -36,14 +36,7 @@ bool first_flag = true;
 int roix1,roiy1 = 0;
 using namespace cv;
 cv::Mat lq_frame;
-//绕行相关
-bool picture_yaw_init = false;//记录第一次进入绕行逻辑的标志位
-float Yaw_picture = 0;//记录检测到图片时的初始yaw值
-float Yaw_picture_diff = 0;//当前的YAW值相较于Yaw_picture的差值
-float Yaw_picture_err = 0;
-float Yaw_picture_target = 0;//绕行的目标偏差值
-float encoder_val = 0;//用于记录编码器的值 以实现分阶段运行
-int resize_cx,resize_cy = 0;
+
 cv::Point2f target_pts[4] = {
     cv::Point2f(0.0f, 0.0f),
     cv::Point2f(0.0f, 0.0f),
@@ -61,6 +54,15 @@ unsigned char R_G_TH = 50;
 unsigned char R_B_TH = 50;
 Guaidian  red_point;
 Guaidian red_L_L,red_R_L,picture_L_H,picture_R_H;//四个拐点
+
+//绕行相关
+bool picture_yaw_init = false;//记录第一次进入绕行逻辑的标志位
+float Yaw_picture = 0;//记录检测到图片时的初始yaw值
+float Yaw_picture_diff = 0;//当前的YAW值相较于Yaw_picture的差值
+float Yaw_picture_err = 0;
+float Yaw_picture_target = 0;//绕行的目标偏差值
+float encoder_val = 0;//用于记录编码器的值 以实现分阶段运行
+int resize_cx,resize_cy = 0;
 //处理陀螺仪角度跳变
 float Yaw_correct(float current_yaw,float target_yaw)
 {
@@ -295,15 +297,35 @@ void Get01change_dajin() {
           Image_Use[i][j] = 0;  //黑
     }
   }
+//     for (i = 50; i < 60; i++) {
+//     for (j = LCDW_1/2-15; j < LCDW_1/2+15; j++) {
 
-//   for(int i = red_L_L.column; i < red_R_L.column; i++)
-//   {
-//     for(int j = red_L_L.row; j > picture_R_H.row; j--)
-//     {
-//       Image_Use[j][i] = white;
+//           Image_Use[i][j] = 255;  //白
+
 //     }
 //   }
 
+    // //图像最小范围 35~60
+    // int roi_resize_x = roix1*0.5;
+    // int roi_resize_y = roiy1*0.5;
+    // int roi_y_2 = roi_resize_y + 25;
+    // int roi_x_2 = roi_resize_x + 25;
+    // if(roi_resize_x < 35) roi_resize_x = 35;//确保在赛道范围内 同时不要越界
+    // if(roi_x_2 > 65) roi_x_2 = 65;
+
+    // if(roi_y_2 > 60) roi_y_2 = 60;
+    // if(roi_y_2<0)   roi_y_2 = 0;
+    
+    // if(Flag.Redblock == 1)
+    // {
+    //     for(int i = roi_resize_y;i<roi_y_2;i++)
+    //     {
+    //         for(int j = roi_resize_x;j<roi_x_2;j++)
+    //         {
+    //             Image_Use[i][j] = 255;
+    //         }
+    //     }
+    // }
 
 }
 
@@ -1141,7 +1163,7 @@ void Find_Guaidian1(void)
                        && Image_Use[i - 1][Left_Sideline[i] - 2] && Image_Use[i - 1][Left_Sideline[i] - 3])
                  )
                  /*上面三行的白行都比这一行多*/
-                 && white_width[i - 2] - white_width[i + 1] > 5
+                 && white_width[i - 2] - white_width[i + 1] > 10
                  && white_width[i - 2] > white_width[i] && white_width[i - 3] > white_width[i] && white_width[i - 4] > white_width[i]
                  && i > L_h_guai.row
                  && L_l_guai.flag == 0
@@ -1183,7 +1205,7 @@ void Find_Guaidian1(void)
                  )
                  /*上面三行的白行都比这一行多*/
                  && white_width[i - 2] > white_width[i] && white_width[i - 3] > white_width[i]
-                 && white_width[i - 2] - white_width[i + 1] > 5
+                 && white_width[i - 2] - white_width[i + 1] > 10
 //                 && abs(xielv_sideline(i, Right_Sideline[i], i - 3, Right_Sideline[i - 3], 'k') - xielv_sideline(i, Right_Sideline[i], i + 2, Right_Sideline[i + 2], 'k')) > 0.5
 //                 && xielv_sideline(i, Right_Sideline[i], i - 3, Right_Sideline[i - 3], 'k') > 1
                  && i > R_h_guai.row
@@ -1785,8 +1807,8 @@ void Huandao_L_imu()
                 }
 
 
-            if(((Left_Sideline_flag[LCDH_1 - 7] == 1 && Left_Sideline_flag[LCDH_1 - 8] == 1 
-                    && L_h_guai.flag) )&&distance>10)//&&distance>10|| !L_l_guai.flag
+            if((((Left_Sideline_flag[LCDH_1 - 7] == 1 && Left_Sideline_flag[LCDH_1 - 8] == 1 
+                    && L_h_guai.flag) )&&distance>10)||real_distance[R_h_guai.row]<50)//&&distance>10|| !L_l_guai.flag
             {
                 Flag.Huandao_L = 3;
                 distance=0;
@@ -2320,8 +2342,8 @@ void Huandao_R_imu()
                 }
 
 
-            if(((Right_Sideline_flag[LCDH_1 - 7] == 1 && Right_Sideline_flag[LCDH_1 - 8] == 1 
-                    && R_h_guai.flag) )&&distance>10)//|| !R_l_guai.flag
+            if((((Right_Sideline_flag[LCDH_1 - 7] == 1 && Right_Sideline_flag[LCDH_1 - 8] == 1 
+                    && R_h_guai.flag) )&&distance>10)||real_distance[R_h_guai.row]<50)//|| !R_l_guai.flag
             {
                 Flag.Huandao_R = 3;
                 distance=0;
@@ -2972,17 +2994,17 @@ void Err_Sum(void)
      esc_duty=1000;
     if(run_flag==1)
     {   //33100/2 16550         15*35  
-                forward1=35;
+                forward1=36;
                                 // forward1=40;
                 forward = forward1-Now_Speed/40;//23 
-                speed_goal=10*75;
+                speed_goal=10*60;
     //      Image.Kp=3.5*(0.2143*imgInfo.top+0.4286);
     //  if(Image.Kp<=1.3)Image.Kp=1.3;
     //  if(Image.Kp>=3.5)Image.Kp=3.5;
     //   //  speed_goal=10*30;
         // if(Flag.picture==2)speed_goal=50;
     //   if(Flag.picture==2&&real_distance[MAX(R_h_guai.row,L_h_guai.row)]>50)speed_goal=(real_distance[MAX(R_h_guai.row,L_h_guai.row)]-25)*9;
-      if(Flag.picture==2)
+      if(Flag.picture==2)//||(Flag.picture==3&&distance<10)||(Flag.picture==4&&distance<10)
       {
              speed_goal=100;
     //     if(real_distance[MAX(R_h_guai.row,L_h_guai.row)]<recognize_distance2)
@@ -2995,36 +3017,28 @@ void Err_Sum(void)
         if(Flag.ramp==2)speed_goal=150;
     
        
-// if(Flag.Zebra_cross>1)
-// {
-// Image.Kp=14;
-//                 Velocity_L.kd=Image.Kp*20;
-//                 Velocity_R.kd=Velocity_L.kd;
-//                 Dis_1.Kp=Velocity_L.kd*0.01;
-//                 Dis_1.Kd=Dis_1.Kp*0.25;
-float image_kp=3.0;
+Image.Kd= Image.Kp*0;
+Dis_1.Kp =50;
+
+float image_kp=5;
 float image_kd=20;
+
 if(real_distance[imgInfo.top]<150||Flag.Huandao_R!=0||Flag.Huandao_L!=0||Flag.picture!=0)//
 {
 
-                Image.Kp=3.5*MaX_Speed/400*image_kp/1;//MIN(MaX_Speed,speed_goal)
-                Velocity_L.kd=Image.Kp*image_kd;
-                Velocity_R.kd=Velocity_L.kd;
-                Dis_1.Kp=Velocity_L.kd*0.01;
-                Dis_1.Kd=Dis_1.Kp*0.25;
+                Image.Kp=3.5*MaX_Speed/400*image_kp/1;
+
                esc_pwm.set_duty(esc_duty); 
 
-                Velocity_L.ki= Velocity_L.kd;
-                 Velocity_R.ki= Velocity_R.kd;
+
+                // Velocity_L.ki= Velocity_L.kd;
+                //  Velocity_R.ki= Velocity_R.kd;
 }
 else
 {
 
-                Image.Kp=3.5*MaX_Speed/400*image_kp/1;//MIN(MaX_Speed,speed_goal)
-                Velocity_L.kd=Image.Kp*image_kd;
-                Velocity_R.kd=Velocity_L.kd;
-                Dis_1.Kp=Velocity_L.kd*0.01;
-                Dis_1.Kd=Dis_1.Kp*0.25;
+                Image.Kp=3.5*MaX_Speed/400*image_kp/1;
+  
                 esc_pwm.set_duty(MIN(750,esc_duty));                
 }
 // }
@@ -3034,28 +3048,87 @@ if(real_distance[imgInfo.top]>200&&Flag.Huandao_R==0&&Flag.Huandao_L==0)
 {
 
                 Image.Kp=3.5*MaX_Speed/400*image_kp/2;
-                Velocity_L.kd=Image.Kp*image_kd*2;
-                Velocity_R.kd=Velocity_L.kd;
-                Dis_1.Kp=Velocity_L.kd*0.01;
-                Dis_1.Kd=Dis_1.Kp*0.25;
+
 
             //         speed_add=0;
             // speed_add=(real_distance[imgInfo.top]-200)*0;
             // if(speed_add>0)
             // speed_goal+=speed_add;
 
-        
+
 }
 if(Flag.Zebra_cross==0)
 {
 
                 Image.Kp=3.5*MaX_Speed/400*image_kp/2;
-                Velocity_L.kd=Image.Kp*image_kd*2;
-                Velocity_R.kd=Velocity_L.kd;
-                Dis_1.Kp=Velocity_L.kd*0.01;
-                Dis_1.Kd=Dis_1.Kp*0.25;
-                esc_pwm.set_duty(esc_duty);                 
+                esc_pwm.set_duty(esc_duty); 
+             
 }
+
+
+// float image_kp=3.0;
+// float image_kd=20;
+// if(real_distance[imgInfo.top]<150||Flag.Huandao_R!=0||Flag.Huandao_L!=0||Flag.picture!=0)//
+// {
+
+//                 Image.Kp=3.5*MaX_Speed/400*image_kp/1;//MIN(MaX_Speed,speed_goal)
+//                 Velocity_L.kd=Image.Kp*image_kd;
+//                 Velocity_R.kd=Velocity_L.kd;
+
+//                esc_pwm.set_duty(esc_duty); 
+
+//                 // Velocity_L.ki= Velocity_L.kd;
+//                 //  Velocity_R.ki= Velocity_R.kd;
+// }
+// else
+// {
+
+//                 Image.Kp=3.5*MaX_Speed/400*image_kp/1;//MIN(MaX_Speed,speed_goal)
+//                 Velocity_L.kd=Image.Kp*image_kd;
+//                 Velocity_R.kd=Velocity_L.kd;
+
+//                 esc_pwm.set_duty(MIN(750,esc_duty));                
+// }
+// // }
+
+
+// if(real_distance[imgInfo.top]>200&&Flag.Huandao_R==0&&Flag.Huandao_L==0)
+// {
+
+//                 Image.Kp=3.5*MaX_Speed/400*image_kp/4;
+//                 Velocity_L.kd=Image.Kp*image_kd*4;
+//                 Velocity_R.kd=Velocity_L.kd;
+
+
+//             //         speed_add=0;
+//             // speed_add=(real_distance[imgInfo.top]-200)*0;
+//             // if(speed_add>0)
+//             // speed_goal+=speed_add;
+
+
+// }
+// if(Flag.Zebra_cross==0)
+// {
+
+//                 Image.Kp=3.5*MaX_Speed/400*image_kp/2;
+//                 Velocity_L.kd=Image.Kp*image_kd*2;
+//                 Velocity_R.kd=Velocity_L.kd;
+
+//                 esc_pwm.set_duty(esc_duty);                 
+// }
+//                 Dis_1.Kp=Velocity_L.kd*0.01;
+//                 Dis_1.Kd=Dis_1.Kp*0.25;
+                // Velocity_R.ki=Velocity_R.kd*0.25;
+                // Velocity_L.ki=Velocity_L.kd*0.25;
+//  image_kp=3.0;
+//  image_kd=10;
+//                 Dis_1.Ki = 5*0.06;
+//                 Image.Kp=7;//MIN(MaX_Speed,speed_goal)
+//                 Velocity_L.kd=Image.Kp*image_kd;
+//                 Velocity_R.kd=Velocity_L.kd;
+//                 Dis_1.Kp=Velocity_R.kd*0.01;
+//                 Dis_1.Kd=Dis_1.Kp*0.25;
+
 
 
 
@@ -3089,7 +3162,7 @@ if(  Image.Kp>20)  Image.Kp=20;
                     //  forward = 30-Master_Speed/60;//23
                 //                 forward1=27;
                 // forward = forward1-Now_Speed/60;//23 
-    if(Flag.Huandao_R==2||Flag.Huandao_L==2)forward-=1;
+    if(Flag.Huandao_R==2||Flag.Huandao_L==2)forward-=3;
     if(Flag.Huandao_R==3||Flag.Huandao_L==3)forward-=1;
     if(Flag.Huandao_R==5||Flag.Huandao_L==5)   forward+=2;
 
@@ -3126,7 +3199,9 @@ for(int i=imgInfo.top + 1;i<imgInfo.bottom - 1;i++)
     
     // if(Flag.picture==3)Dir_err =Dir_Err[maxkuan_line]*90/(120-maxkuan_line)+30;//
         // if(Flag.picture==2)Dir_err =(float)(LCDW_1/2-((float)Left_Sideline[forward]));//
+        if(Flag.picture==3&&distance<15)Dir_err =(float)(LCDW_1/2-((float)Left_Sideline[forward]-50));//
         if(Flag.picture==3)Dir_err =(float)(LCDW_1/2-((float)Left_Sideline[forward]-10));//
+        if(Flag.picture==4&&distance<15)Dir_err =(float)(LCDW_1/2-((float)Right_Sideline[forward]+50));//
         if(Flag.picture==4)Dir_err =(float)(LCDW_1/2-((float)Right_Sideline[forward]+10));//
         // if(Flag.picture==3){Dir_err = Dir_err+30;}//[maxkuan_line]*90/(120-maxkuan_line)+20
 
@@ -3307,7 +3382,7 @@ void picture(void)
                 // recognize_distance=Now_Speed*0.10+40;
 
                 recognize_distance=75;
-                recognize_distance2=30;
+                recognize_distance2=40;
 
 
 
@@ -3857,8 +3932,8 @@ void image_init(void)
     
     std::string model_param = "tiny_classifier_fp32.ncnn.param";//tiny_classifier_fp32.ncnn.param
     std::string model_bin   = "tiny_classifier_fp32.ncnn.bin";//tiny_classifier_fp32.ncnn.bin
-    int input_width    = 64;
-    int input_height   = 64;
+    int input_width    = 60;
+    int input_height   = 60;
     std::vector<std::string> labels = {"supply", "vehicle", "weapon"};
         // 归一化参数（ImageNet标准）
      float mean_vals[3] = {123.675f, 116.28f, 103.53f};
@@ -3869,7 +3944,6 @@ void image_init(void)
     classifier.SetLabels(labels);
     classifier.SetNormalize(mean_vals, norm_vals);
     classifier.Init();
-
     cam.start_collect();
     if(cam.is_cam_opened())
     {
@@ -3879,7 +3953,7 @@ void image_init(void)
         printf("Camera opened failed!\n");
         return;
     }
-    cam.set_exposure_manual(60);
+    cam.set_exposure_manual(40);
     printf("龙邱摄像头宽度:%d\n",cam.get_camera_width());
     printf("龙邱摄像头高度:%d\n",cam.get_camera_height());
     printf("龙邱摄像头帧率:%d\n",cam.get_camera_fps());
@@ -3894,11 +3968,6 @@ void image_init(void)
 }
 
 
-void zf_camera_init(){
-
-}
-
-
 uint16_t jump_point,finish_flag;
 float distance_cross,distance,distance_picture;
 
@@ -3908,6 +3977,7 @@ void distance_judge(void)//1m=66
            if(Flag.Huandao_L==1||Flag.Huandao_R==1||Flag.Huandao_L==2||Flag.Huandao_R==2||Flag.Huandao_R==6||Flag.Huandao_L==6
                   ||Flag.small_rock||Flag.Zebra_cross==0||Flag.Zebra_cross==2||Flag.Zebra_cross==4||Flag.ramp!=0)//||Flag.Huandao_R==3||Flag.Huandao_L==3
     distance+=(float)(encoder_L.count_now+encoder_R.count_now)/2/350;
+
     if(Flag.picture==3||Flag.picture==4||Flag.picture==5||Flag.picture==6)
     {
     distance_picture+=(float)(encoder_L.count_now+encoder_R.count_now)/2/350;
@@ -3943,9 +4013,11 @@ void distance_judge(void)//1m=66
 
     // if(Flag.Zebra_cross==1)
     // {
-
-        if(distance>100)
-        {
+        float K_v=0.5;
+    Speed_PID_Init(&Velocity_L,4*K_v,30*K_v,0*K_v,15*K_v,5000,10000,2000); //位置式速度
+    Speed_PID_Init(&Velocity_R,4*K_v,30*K_v,0*K_v,15*K_v,5000,10000,2000); //位置式速度环.
+        if(distance>60)
+        {   
             Flag.Zebra_cross=2;
             distance=0;
         }
@@ -3953,10 +4025,13 @@ void distance_judge(void)//1m=66
 
     if(Flag.Zebra_cross==2)
     {
-        if(distance>30)
+        if(distance>0)
         {
             Flag.Zebra_cross=3;
             distance=0;
+                    float K_v=1;
+    Speed_PID_Init(&Velocity_L,4*K_v,30*K_v,0*K_v,15*K_v,5000,10000,2000); //位置式速度
+    Speed_PID_Init(&Velocity_R,4*K_v,30*K_v,0*K_v,15*K_v,5000,10000,2000); //位置式速度环.
         }
     }
 
@@ -4157,6 +4232,7 @@ if(Flag.ramp==0)
         ramp_err=0;
             //  ramp_err=50;
             ramp_line=0;
+            ramp_white_num=0;
        for(int i = imgInfo.top+5;i<50 ;i++)
     {
             //   if(fabs(Dir_Err[i]-k*i-b)>2)
@@ -4172,7 +4248,8 @@ if(Flag.ramp==0)
             ramp_white_num+=white_width[i];
         //   ramp_err+=Dir_Err[i];
     }
-       if(ramp_white_num>500&&ramp_line==0)//ramp_line==0&&&&B<0.2dl1x_distance_raw>50&&dl1x_distance_raw<1500&&fabs(ramp_err)<30
+       if(ramp_white_num>2200&&L_h_guai.flag==0&&R_h_guai.flag==0&&L_l_guai.flag==0&&R_l_guai.flag==0
+        &&ramp_line==0&&imgInfo.Both_lose==0&&l_num<=3&&r_num<=3)//ramp_line==0&&&&B<0.2dl1x_distance_raw>50&&dl1x_distance_raw<1500&&fabs(ramp_err)<30
     {
            Flag.ramp=2;
 
@@ -4207,7 +4284,6 @@ if(Flag.ramp==3)
 }
 }
  /***************************************************检测红色矩形块******************************************************/
-
 
 //角点排序函数 根据极点进行排序 
 //输出顺序
@@ -7232,9 +7308,6 @@ if (red_points_num >= 5)
 
 }
 
-
-
-
 /***************************************************红色标注******************************************************/
 enum ClassType{
     CLASS_SUPPLIES = 0,
@@ -7263,13 +7336,15 @@ void ImageDeal()
     }
       cv::resize(lq_frame,resizedFrame,cv::Size(LCDW_1,LCDH_1),0,0,cv::INTER_AREA);
 
-
+    // RedBlockProcess(resizedFrame);
+    // camera_server.update_frame_mat(lq_frame);//打开图传服务器
 
       cv::cvtColor(resizedFrame,grayFrame,cv::COLOR_BGR2GRAY);
 
- 
+    //   cv::warpAffine(grayFrame, translatedFrame, translationMatrix, grayFrame.size(), 
+    //                  cv::INTER_LINEAR, cv::BORDER_CONSTANT, 0);
 
-//  将OpenCV图像数据复制到图像数组 采用memcpy函数加快处理速度
+//   //  将OpenCV图像数据复制到图像数组 采用memcpy函数加快处理速度
     for (int i = 0; i < LCDH_1; i++)
     {
         uint8_t *p = grayFrame.ptr<uint8_t>(i);
@@ -7279,12 +7354,6 @@ void ImageDeal()
 
         }
     }
-
-    //             if(FindTargetRoiByFixedIpm(lq_frame,target_roi,target_pts,nullptr, nullptr)){
-    //                 printf("函数执行\n");
-    // //camera_server.update_frame_mat(target_roi);
-    //     }
-        
          Get01change_dajin();
 
         // my_sobel(Image_Zip,Image_Use); //压缩后的图像数组,
@@ -7296,10 +7365,12 @@ void ImageDeal()
 
         Get_ImageTop();
 
+
         Draw_BlackSideline(Image_Use);//画边线
 
         Find_Sideline(imgInfo.bottom-1,imgInfo.top+ 1);//找边线
-        //图片相关
+
+           //图片相关
         bool roi_ok = FindTargetRoiByFixedIpm(lq_frame,
                                       target_roi,
                                       &red_point,
@@ -7308,134 +7379,46 @@ void ImageDeal()
                                       &valid_ratio,
                                     &erase_pts_ready);
 
-        // if(roi_ok){
-        // //         for (int i = 0; i < 4; i++)
-        // //         {
-        // // cv::line(lq_frame,
-        // //          target_pts[i],
-        // //          target_pts[(i + 1) % 4],
-        // //          cv::Scalar(0, 255, 0),
-        // //          2,
-        // //          cv::LINE_AA);
-        // //     }
-        // // cv::Point red(red_point.column,red_point.row);
-        // cv::circle(resizedFrame, red, 1, cv::Scalar(0, 255, 0), -1);
-        // }
-
-bool erase_done = false;
+        bool erase_done = false;
 
 //当前帧已经算出了红块和图片四点
-if (erase_pts_ready &&
-    AreEraseQuadsValid(red_pts, target_pts, lq_frame.size()))
-{
-    SaveEraseCache(red_pts, target_pts);//保存上一帧的坐标点
+        if (erase_pts_ready &&
+            AreEraseQuadsValid(red_pts, target_pts, lq_frame.size()))
+    {
+        SaveEraseCache(red_pts, target_pts);//保存上一帧的坐标点
 
-    EraseTargetAndRedOnBinary(Image_Use,
+        EraseTargetAndRedOnBinary(Image_Use,
                               red_pts,
                               target_pts,
                               lq_frame.size());
 
     erase_done = true;//完成抹除 需要重新找边线
-}
+    }
 
-else if (g_erase_cache.has_last && g_erase_cache.lost_cnt < 3)
-{
-    EraseTargetAndRedOnBinary(Image_Use,
+    else if (g_erase_cache.has_last && g_erase_cache.lost_cnt < 3)
+    {
+        EraseTargetAndRedOnBinary(Image_Use,
                               g_erase_cache.red,
                               g_erase_cache.target,
                               lq_frame.size());
 
-    g_erase_cache.lost_cnt++;
-    erase_done = true;
-}
-else
-{
-    g_erase_cache.has_last = false;
-    g_erase_cache.lost_cnt = 0;
-}
+        g_erase_cache.lost_cnt++;
+        erase_done = true;
+    }
+    else
+    {
+        g_erase_cache.has_last = false;
+        g_erase_cache.lost_cnt = 0;
+    }
 
-// 只要执行过抹除，就重新找边线
-if (erase_done)
-{
-    imgInfoInit();
-    Get_ImageTop();
-    Draw_BlackSideline(Image_Use);
-    Find_Sideline(imgInfo.bottom - 1, imgInfo.top + 1);
-}
-    // camera_server.update_frame_mat(resizedFrame);
-    // auto start_time = std::chrono::high_resolution_clock::now();
-    // auto end_time = std::chrono::high_resolution_clock::now();
-    // std::chrono::duration<double, std::milli> elapsed_ms = end_time - start_time;
-    // printf("函数耗时: %.2f ms\n",elapsed_ms.count());
-// camera_server.update_frame_mat(lq_frame);
-
-// if (FindTargetRoiByFixedIpm(lq_frame,
-//                             target_roi,
-//                             target_pts,
-//                             red_pts,
-//                             &valid_ratio))
-// {
-
-//     // 画红色定位条，蓝色
-//     for (int i = 0; i < 4; i++)
-//     {
-//         cv::line(lq_frame,
-//                  red_pts[i],
-//                  red_pts[(i + 1) % 4],
-//                  cv::Scalar(255, 0, 0),
-//                  2,
-//                  cv::LINE_AA);
-//     }
-
-//     // 画目标裁剪框，绿色
-//     for (int i = 0; i < 4; i++)
-//     {
-//         cv::line(lq_frame,
-//                  target_pts[i],
-//                  target_pts[(i + 1) % 4],
-//                  cv::Scalar(0, 255, 0),
-//                  2,
-//                  cv::LINE_AA);
-//     }
-
-//     // 左上角显示透视后的 ROI，方便调试
-//     if (!target_roi.empty() &&
-//         lq_frame.cols >= 80 &&
-//         lq_frame.rows >= 80)
-//     {
-//         cv::Mat show_roi;
-
-//         cv::resize(target_roi,
-//                    show_roi,
-//                    cv::Size(80, 80),
-//                    0,
-//                    0,
-//                    cv::INTER_NEAREST);
-
-//         show_roi.copyTo(lq_frame(cv::Rect(0, 0, 80, 80)));
-//     }
-
-//     // 显示采样有效比例
-//     char text[64];
-//     std::snprintf(text,
-//                   sizeof(text),
-//                   "ratio=%.2f",
-//                   static_cast<double>(valid_ratio));
-
-//     cv::putText(lq_frame,
-//                 text,
-//                 cv::Point(5, 100),
-//                 cv::FONT_HERSHEY_SIMPLEX,
-//                 0.45,
-//                 cv::Scalar(0, 255, 0),
-//                 1,
-//                 cv::LINE_AA);
-
-//     // 这里 target_roi 就是固定 60x60 的透视裁剪结果
-//     // 后面可以直接送入你的 NCNN 分类模型
-//     //
-//     // classify_result = TargetClassify(target_roi);
-// }
+    // 只要执行过抹除，就重新找边线
+    if (erase_done)
+    {
+        imgInfoInit();
+        Get_ImageTop();
+        Draw_BlackSideline(Image_Use);
+        Find_Sideline(imgInfo.bottom - 1, imgInfo.top + 1);
+    }
 
 
         if(Flag.Huandao_L>0||Flag.Huandao_R>0)
@@ -7443,38 +7426,24 @@ if (erase_done)
         else
         Find_Guaidian1();  //找拐点
 
-        if(L_h_guai.flag||R_h_guai.flag)
+                if(L_h_guai.flag||R_h_guai.flag)
         {
            
-            //DetectRedBlock(resizedFrame,0,(int)MAX(imgInfo.top+1,real_distance_to_row(120)),93,59-MAX(imgInfo.top+1,real_distance_to_row(120)));
+            DetectRedBlock(resizedFrame,0,(int)MAX(imgInfo.top+1,real_distance_to_row(120)),93,59-MAX(imgInfo.top+1,real_distance_to_row(120)));
                                     
                     Find_right_Sideline(imgInfo.bottom-5,imgInfo.top+1);
                     Find_left_Sideline(imgInfo.bottom-5,imgInfo.top+1); 
         }
         straight_judge();
 
-                            //                         Flag.Redblock=0;   
-            // if(!red_objects.empty())
-            //    {
-            //     // Flag.Redblock=1;
-            //     red_x_mid=resize_cx;
-            //     red_y_mid=resize_cy;
-            //     // err_picture=fabs(real_distance[red_y_mid]-real_distance[L_h_guai.row]);
-            //     x_err_red=abs((Right_Sideline[red_y_mid]+Left_Sideline[red_y_mid])/2-red_x_mid);
-            //     // if(err_picture<15)//&&abs(center.x-L_h_guai.column)<20
-            //     Flag.Redblock=1;
-            //    }
-
-    
-                        // Find_Sideline(imgInfo.bottom-1,imgInfo.top+ 1);//找边线
 
 
         zebra_corssing();
 
-        // if(Flag.Zebra_cross==3)
-        // {
-        // ramp();
-        // }
+        if(Flag.Zebra_cross==3)
+        {
+        ramp();
+        }
 
 
 
@@ -7488,7 +7457,6 @@ if (erase_done)
        Huandao_R_imu();
        Huandao_L_imu();
 
-
        if(Flag.Huandao_L!=1&&Flag.Huandao_R!=1&&Flag.Huandao_L!=2&&Flag.Huandao_R!=2&&Flag.Huandao_L!=3&&Flag.Huandao_R!=3
        &&Flag.Huandao_L!=4&&Flag.Huandao_R!=4&&Flag.Huandao_L!=5&&Flag.Huandao_R!=5&&Flag.Huandao_L!=6&&Flag.Huandao_R!=6)
         Buxian();
@@ -7500,6 +7468,9 @@ if (erase_done)
 
 
         Err_Sum();
+
+
+
 
         protect();
 }

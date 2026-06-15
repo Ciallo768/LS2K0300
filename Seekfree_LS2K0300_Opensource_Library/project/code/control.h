@@ -60,7 +60,7 @@ void Direction_PID_Init(void);
 float Image_PID_Calculate(Direction_PID *pid, float expect, float feedback);
 float Dis_PID_Calculate(Direction_PID *pid, float expect, float feedback);
 float speed_difference_Calculate(Direction_PID *pid, float expect, float feedback);
-float Speed_PID_Cal1(Direction_PID *pid,float expect, float feedback);
+float Speed_PID_Cal1(PID *PID,float Target, float feedback);
 
 
  #endif

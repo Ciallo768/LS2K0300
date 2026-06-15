@@ -22,55 +22,42 @@ void pit_callback()
     {   //33100/2 16550         15*35  
 
 
-
-
-    //     //printf("pit!\n");
-
-
-
        
        Dis_Out = Dis_PID_Calculate(&Dis_1,-Image_out,Dis_Speed); //- 100*(Image.Error - Image.Last_Error);//角速度环icm_data.gyro_z * K+ 400*(Image->Error - Image->Last_Error
        
  
 
-    //    float K_turn=2;
-    //     V_out=Speed_PID_Cal(&Velocity,speed_goal,MaX_Speed);
-
-    //    if(Dis_Out>0)
-    //  {
-    //        PWM_R=V_out-Dis_Out*K_turn;//
-    //        PWM_L=V_out+Dis_Out*(2-K_turn);//
-    //  }
-    //    if(Dis_Out<=0)
-    //  {
-    //        PWM_R=V_out-Dis_Out*(2-K_turn);//
-    //        PWM_L=V_out+Dis_Out*K_turn;//
-    //  }
-
-       float K_turn=2.0;//
+       float K_turn =2;
+        V_out=Speed_PID_Cal(&Velocity,speed_goal,MaX_Speed);
 
        if(Dis_Out>0)
      {
-           v_right_target=speed_goal-Dis_Out*K_turn;//
-           v_left_target=speed_goal+Dis_Out*(2-K_turn);//
+           PWM_R=V_out-Dis_Out*K_turn;//
+           PWM_L=V_out+Dis_Out*(2-K_turn);//
      }
        if(Dis_Out<=0)
      {
-           v_right_target=speed_goal-Dis_Out*(2-K_turn);//
-           v_left_target=speed_goal+Dis_Out*K_turn;//S
+           PWM_R=V_out-Dis_Out*(2-K_turn);//
+           PWM_L=V_out+Dis_Out*K_turn;//
      }
 
-        PWM_R = Speed_PID_Cal(&Velocity_R,v_right_target,encoder_R.speed)+D_ERR*0+0* (encoder_L.D_speed - encoder_R.D_speed)+0*Dis_1.Integral;//
-        PWM_L = Speed_PID_Cal(&Velocity_L,v_left_target,encoder_L.speed)-D_ERR*0-0* (encoder_L.D_speed - encoder_R.D_speed)-0*Dis_1.Integral;//
-        
-
+    //  if(Flag.Zebra_cross==0){PWM_R+=+icm_data.gyro_y*100;PWM_L+=+icm_data.gyro_y*100;}
+    //    float K_turn=2.0;//
+    //    if(Dis_Out>0)
+    //  {
+    //        v_right_target=speed_goal-Dis_Out*K_turn;//
+    //        v_left_target=speed_goal+Dis_Out*(2-K_turn);//
+    //  }
+    //    if(Dis_Out<=0)
+    //  {
+    //        v_right_target=speed_goal-Dis_Out*(2-K_turn);//
+    //        v_left_target=speed_goal+Dis_Out*K_turn;//S
+    //  }
+    //     PWM_R = Speed_PID_Cal(&Velocity_R,v_right_target,encoder_R.speed)+D_ERR*0+0* (encoder_L.D_speed - encoder_R.D_speed)+0*Dis_1.Integral;//
+    //     PWM_L = Speed_PID_Cal(&Velocity_L,v_left_target,encoder_L.speed)-D_ERR*0-0* (encoder_L.D_speed - encoder_R.D_speed)-0*Dis_1.Integral;//
         set_pwm(PWM_L,PWM_R); 
-        //printf("Yaw:%f\n",icm_data.yaw);
-    //set_pwm(1000,1000);
-    //    sprintf((char*)Tcp_buffer,"%d,%f,%f,%f\n",(encoder_L.count_now - encoder_R.count_now),Tpm_Dis,G_dis,Dis_Speed);
-    //   sprintf((char*)Tcp_buffer,"%f,%.1f,%f,%f,%f,%f,%f,%f\n",speed_goal,Now_Speed,Dir_err,-Image_out,Dis_Out,Dis_Speed,Tpm_Dis,G_dis);
-    //    sprintf((char*)Tcp_buffer,"%f,%f,%f,%f,%f,%f\n",Image_out,Dis_Out,v_right_target,encoder_R.speed,v_left_target,encoder_L.speed);
-    //  tcp_client_dev.send_data(Tcp_buffer,strlen((char*)Tcp_buffer));
+
+
     }
     if(run_flag==2)
     {
@@ -81,13 +68,13 @@ void pit_callback()
 
    it_time++;
    
-    // if(it_time%20==0)
-    // {
-    //     printf("Yaw:%.3f   v_right_target:%.1f  Flag.picture:%d   Flag.Zebra_cross:%d  v_left_target:%.1f  imgInfo.top:%d    Flag.ramp:%d  real_distance[red_y_mid]:%.2f Dir_Err:%.1f   Huandao_R:%d    Huandao_L:%d   V_max:%.1f\n"
-    //         ,icm_data.yaw,v_right_target,Flag.picture,Flag.Zebra_cross,v_left_target,imgInfo.top,Flag.ramp,real_distance[red_y_mid],Dir_err,Flag.Huandao_R,Flag.Huandao_L,MAX(encoder_L.speed,encoder_R.speed));
-    //     // printf("PWM_L:%d.PWM_R:%d\n",PWM_L,-PWM_R);
-    //                     //    printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
-    // }
+    if(it_time%20==0)
+    {
+        printf("ramp_line:%.1f   yaw:%.2f  Flag.picture:%d   Flag.Zebra_cross:%d  PWM_L:%d  imgInfo.top:%d    Flag.ramp:%d  real_distance[red_y_mid]:%.2f Dir_Err:%.1f   Huandao_R:%d    Huandao_L:%d   V_max:%.1f\n"
+            ,ramp_line,icm_data.yaw,Flag.picture,Flag.Zebra_cross,PWM_L,imgInfo.top,Flag.ramp,real_distance[red_y_mid],Dir_err,Flag.Huandao_R,Flag.Huandao_L,MAX(encoder_L.speed,encoder_R.speed));
+        // printf("PWM_L:%d.PWM_R:%d\n",PWM_L,-PWM_R);
+                        //    printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
+    }
 
 }
     
@@ -130,7 +117,7 @@ int main(int, char**)
             double fps = frame_count / (elapsed.count() / 1000.0);
             // printf("top:%d,Dir_err:%.1f\n",imgInfo.top,Dir_err);
             //         printf("Yaw:%f,distance=%f\n",icm_data.yaw,distance);
-                //    printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
+                   printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
     
             
             // 输出帧率信息

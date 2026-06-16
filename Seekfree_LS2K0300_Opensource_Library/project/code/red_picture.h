@@ -18,4 +18,8 @@ extern struct Guaidian red_center_pt;      // 红块中心点
 extern struct Guaidian target_top_pts[2];  // 图片框上面两个点
 extern struct Guaidian whole_rect_pts[4];    // 整个图像区域的四个角点
 void DetectRedBlock(cv::Mat &src,int roi_x,int roi_y,int width,int height);
+void snapshot(const cv::Mat& src,
+              int count,
+              const std::string& name,
+              const std::string& save_path);
 #endif

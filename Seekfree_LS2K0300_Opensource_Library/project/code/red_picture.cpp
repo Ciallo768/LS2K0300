@@ -1927,6 +1927,106 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
     };
 }
 
+// 截图函数 用于拍摄数据集
+// 参数1：src       拍摄区域，比如 target_roi 或 lq_frame
+// 参数2：count     需要保存的总张数
+// 参数3：name      命名方式/类别名，比如 "supplies"、"vehicle"、"weapon"
+// 参数4：save_path 保存路径，比如 "./dataset/supplies"
+void snapshot(const cv::Mat& src,
+              int count,
+              const std::string& name,
+              const std::string& save_path)
+{
+    if (src.empty())
+    {
+        return;
+    }
+
+    if (count <= 0)
+    {
+        return;
+    }
+
+    if (name.empty() || save_path.empty())
+    {
+        return;
+    }
+
+    static int saved_count = 0;
+    static std::string last_name = "";
+    static std::string last_path = "";
+
+    // 如果换了类别名或保存路径，就重新计数
+    if (last_name != name || last_path != save_path)
+    {
+        saved_count = 0;
+        last_name = name;
+        last_path = save_path;
+    }
+
+    // 已经保存够了，就不再保存
+    if (saved_count >= count)
+    {
+        return;
+    }
+
+    cv::Mat save_img;
+
+    // 防止 src 是摄像头缓冲区或 ROI 引用，先 clone
+    if (src.channels() == 3)
+    {
+        save_img = src.clone();
+    }
+    else if (src.channels() == 1)
+    {
+        cv::cvtColor(src, save_img, cv::COLOR_GRAY2BGR);
+    }
+    else if (src.channels() == 4)
+    {
+        cv::cvtColor(src, save_img, cv::COLOR_BGRA2BGR);
+    }
+    else
+    {
+        printf("snapshot: 不支持的图像通道数: %d\n", src.channels());
+        return;
+    }
+
+    char file_path[256];
+
+    // 判断路径末尾有没有 /
+    if (save_path.back() == '/')
+    {
+        snprintf(file_path,
+                 sizeof(file_path),
+                 "%s%s_%06d.jpg",
+                 save_path.c_str(),
+                 name.c_str(),
+                 saved_count + 1);
+    }
+    else
+    {
+        snprintf(file_path,
+                 sizeof(file_path),
+                 "%s/%s_%06d.jpg",
+                 save_path.c_str(),
+                 name.c_str(),
+                 saved_count + 1);
+    }
+
+    if (cv::imwrite(file_path, save_img))
+    {
+        saved_count++;
+        system_delay_ms(100);
+        printf("保存图片成功: %s  当前数量: %d / %d\n",
+               file_path,
+               saved_count,
+               count);
+    }
+    else
+    {
+        printf("保存图片失败: %s\n", file_path);
+    }
+}
 //为加寻找位置最靠下的红块
 //只在赛道内部找红块 
 //contour 没必要

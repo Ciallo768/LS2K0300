@@ -4362,6 +4362,9 @@ void ImageDeal()
                                       red_pts,
                                       &valid_ratio,
                                     &erase_pts_ready);
+        if(roi_ok){
+            snapshot(target_roi,70,"ambulance","/home/root/picture");
+        }
         // if(roi_ok == true){
         //     for(int i = 0; i<4; i++){
         //         whole_pts[i].x = whole_rect_pts[i].column;
@@ -4380,7 +4383,7 @@ void ImageDeal()
         else
         Find_Guaidian1();  //找拐点
 
-                if(L_h_guai.flag||R_h_guai.flag)
+        if(L_h_guai.flag||R_h_guai.flag)
         {
            
              DetectRedBlock(resizedFrame,0,(int)MAX(imgInfo.top+1,real_distance_to_row(120)),93,59-MAX(imgInfo.top+1,real_distance_to_row(120)));

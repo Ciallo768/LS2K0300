@@ -4352,54 +4352,14 @@ void ImageDeal()
                                       red_pts,
                                       &valid_ratio,
                                     &erase_pts_ready);
-        // if(roi_ok == true){
-        //     for(int i =0;i<4;i++){
-        //         cv::line(lq_frame, target_pts[i],target_pts[(i+1)%4] , cv::Scalar(0, 255, 0), 1);
-        //     }
-        // }
-        // camera_server.update_frame_mat(lq_frame);//打开图传服务器
+        if(roi_ok == true){
+            for(int i =0;i<4;i++){
+                cv::line(lq_frame, target_pts[i],target_pts[(i+1)%4] , cv::Scalar(0, 255, 0), 1);
+            }
+        }
+        cv::Mat show_frame = lq_frame.clone();
+        camera_server.update_frame_mat(show_frame);//打开图传服务器
         
-        // bool erase_done = false;
-
-// //当前帧已经算出了红块和图片四点
-//         if (erase_pts_ready &&
-//             AreEraseQuadsValid(red_pts, target_pts, lq_frame.size()))
-//     {
-//         SaveEraseCache(red_pts, target_pts);//保存上一帧的坐标点
-
-//         EraseTargetAndRedOnBinary(Image_Use,
-//                               red_pts,
-//                               target_pts,
-//                               lq_frame.size());
-
-//     erase_done = true;//完成抹除 需要重新找边线
-//     }
-
-//     else if (g_erase_cache.has_last && g_erase_cache.lost_cnt < 3)
-//     {
-//         EraseTargetAndRedOnBinary(Image_Use,
-//                               g_erase_cache.red,
-//                               g_erase_cache.target,
-//                               lq_frame.size());
-
-//         g_erase_cache.lost_cnt++;
-//         erase_done = true;
-//     }
-//     else
-//     {
-//         g_erase_cache.has_last = false;
-//         g_erase_cache.lost_cnt = 0;
-//     }
-
-    // // 只要执行过抹除，就重新找边线
-    // if (erase_done)
-    // {
-    //     imgInfoInit();
-    //     Get_ImageTop();
-    //     Draw_BlackSideline(Image_Use);
-    //     Find_Sideline(imgInfo.bottom - 1, imgInfo.top + 1);
-    // }
-
 
         if(Flag.Huandao_L>0||Flag.Huandao_R>0)
         Find_Guaidian();  //找拐点

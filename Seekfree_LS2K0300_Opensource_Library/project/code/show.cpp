@@ -82,7 +82,7 @@ void key_scan(void)
 
         if(key8_state<4000&&key8_last_state>=4000) // 右按键 右
     {       
-        //printf("右按键右按下\n");
+        // printf("右按键右按下\n");
         if(Parameter_flag == 1&&oled_flag==4){Flash.debug_rgb_r_min+=5;}
         if(Parameter_flag == 2&&oled_flag==4){Flash.debug_rgb_rg_diff+=5;}
         if(Parameter_flag == 3&&oled_flag==4){Flash.debug_rgb_rb_diff+=5;}

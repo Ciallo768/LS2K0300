@@ -301,7 +301,7 @@ inline uchar get_red_rgb(
     {
         return 0;
     }
-    if(x > img.cols || y> img.rows || x < 0 || y<0) 
+    if(x >= img.cols || y>= img.rows || x < 0 || y<0) 
     {
         return 0;
     }
@@ -320,7 +320,7 @@ inline uchar get_red_rgb(
 inline bool is_white(const cv::Mat& img,int x,int y)
 {
     if(img.empty())return false;
-    if(x > img.cols || y> img.rows || x < 0 || y<0) 
+    if(x >= img.cols || y>= img.rows || x < 0 || y<0) 
     {
         return false;
     }
@@ -414,84 +414,7 @@ inline bool FindSeedRedRun(const cv::Mat& img,
     return true;
 }
 
-//粗找红块 并返回一个roi区域 兼容94*60
 
-//转hsv找色块 如果色块超出赛道边界 或 超过截至行 return false
-// inline bool hsv_get_roi(const cv::Mat& img,cv::Rect& rect)
-// {
-//     if(img.empty) return false;
-//     if(img.width < 0 || img.height < 0) return false;
-
-//     cv::Mat mask1,mask2,mask;
-//     std::vector<cv::Point> contours;
-    
-//     cv::inRange(hsv, cv::Scalar(0, 120, 70), cv::Scalar(10, 255, 255), mask1);//红色阈值
-//     cv::inRange(hsv, cv::Scalar(160, 120, 70), cv::Scalar(179, 255, 255), mask2);//红色阈值
-
-//     mask = mask1| mask2;
-    
-//     cv::findContours(mask, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_NONE);
-
-//     int bottom_y = -1;
-//     cv::Point bestCenter;
-//     cv::Rect bestRect;
-//     //找出位置最靠下的红色矩形块
-//     for(auto& c : contours)
-//     {
-//         cv::Rect rect = cv::boundingRect(c);
-//         int cx = rect.x + rect.width / 2;
-//         int cy = rect.y + rect.height / 2;
-
-//         int area = rect.area();
-
-//         if(area < 10) continue;//面积太小
-
-//         if(cx < Left_Sideline[cy] || cx > Right_Sideline[cy] || cy < imgInfo.top) return false;//超出赛道边界 或在截至行以上
-
-
-//         if (cy > bottom_y)
-//         {
-//             bottom_y = cy;
-//             bestCenter = cv::Point(cx, cy);
-//             bestRect = rect;
-//         }
-//     }
-
-//     if (bottom_y >= 0)
-//     {
-//         bestCenter.y += roi_y;
-//         bestRect.y += roi_y;
-//     }
-    
-
-// }
-
-// inline bool rgb_get_roi(const cv::Mat& img,cv::Rect& rect)
-// {
-//     if(img.empty) return false;
-//     if(img.width < 0 || img.height < 0) return false;
-
-// }
-
-// //参数：输入图像 输出roi矩形 mode模式选择 0-转hsv处理 1-rgb扫线处理
-// inline bool get_red_roi(const cv::Mat& img,cv::Rect& roi_src,int model)
-// {
-//     roi_src =cv::Rect();
-//     if(img.empty) return false;
-//     if(img.width < 0 || src.height < 0) return false;
-
-//     //转hsv处理 调用相关函数
-//     if(model == 0)
-//     {
-
-//     }
-
-//     //rgb扫线处理 调用相关函数
-//     if(model == 1)
-//     {
-
-//     }
-// }
 
 cv::Rect rect_resize;
 //快速判断图像中有无红色 粗找 在resizedframe中 用rgb 寻找 并返回一个roi矩阵 方便后续在ROI中爬线
@@ -1193,8 +1116,8 @@ bool BuildTargetBevQuadFromRedRect(const cv::Mat& input_frame,
     const float RED_H_RATIO    = 5.0f  / 12.0f;
 
     // 框大小缩放
-    const float ROI_W_SCALE = 0.92f;
-    const float ROI_H_SCALE = 0.92f;
+    const float ROI_W_SCALE = 1.0f;
+    const float ROI_H_SCALE = 1.0f;
 
     // 角度补偿，单位：度
     // 先用 0，后面如果图传上角度偏了，再试 2 或 -2
@@ -1688,7 +1611,7 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
     {
         for (int i = 0; i < 4; i++)
         {
-            ClearGuaidianPoint(red_rect_pts[i]);
+            ClearGuaidianPoint(red_rect_pts[i]);//初始化四点
         }
     }
 

@@ -43,6 +43,15 @@ cv::Point2f target_pts[4] = {
     cv::Point2f(0.0f, 0.0f),
     cv::Point2f(0.0f, 0.0f)
 };
+
+
+cv::Point whole_pts[4] = {
+    cv::Point(0, 0),
+    cv::Point(0, 0),
+    cv::Point(0, 0),
+    cv::Point(0, 0)
+};
+
 cv::Point2f red_pts[4];
 float valid_ratio = 0.0f;
 bool erase_pts_ready = false;
@@ -4348,17 +4357,22 @@ void ImageDeal()
                                       red_rect_pts,
                                       &red_center_pt,
                                       target_top_pts,
+                                      whole_rect_pts,
                                       target_pts,
                                       red_pts,
                                       &valid_ratio,
                                     &erase_pts_ready);
-        if(roi_ok == true){
-            for(int i =0;i<4;i++){
-                cv::line(lq_frame, target_pts[i],target_pts[(i+1)%4] , cv::Scalar(0, 255, 0), 1);
-            }
-        }
-        cv::Mat show_frame = lq_frame.clone();
-        camera_server.update_frame_mat(show_frame);//打开图传服务器
+        // if(roi_ok == true){
+        //     for(int i = 0; i<4; i++){
+        //         whole_pts[i].x = whole_rect_pts[i].column;
+        //         whole_pts[i].y = whole_rect_pts[i].row;
+        //     }
+        //     for(int i =0;i<4;i++){
+        //         cv::line(resizedFrame, whole_pts[i],whole_pts[(i+1)%4] , cv::Scalar(0, 255, 0), 1);
+        //     }
+        // }
+        // cv::Mat show_frame = resizedFrame.clone();
+        // camera_server.update_frame_mat(show_frame);//打开图传服务器
         
 
         if(Flag.Huandao_L>0||Flag.Huandao_R>0)

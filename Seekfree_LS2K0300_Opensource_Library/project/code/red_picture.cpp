@@ -11,6 +11,7 @@ Guaidian red_L_L,red_R_L,picture_L_H,picture_R_H;//四个拐点
 struct Guaidian red_rect_pts[4];    // 红块四个角点
 struct Guaidian red_center_pt;      // 红块中心点
 struct Guaidian target_top_pts[2];  // 图片框上面两个点
+struct Guaidian whole_rect_pts[4];    // 整个图像区域的四个角点
  void OrderTargetStripQuad(cv::Point2f points[4])
 {
     cv::Point2f center(0.0f, 0.0f);
@@ -1596,15 +1597,17 @@ static inline void ImagePointToSmallGuaidian(const cv::Point2f& img_pt,
 //修改返回最小外接矩形的四个点 以及图片框的上面两个点
 //red_rect_pts 红块四个角点
 //红块中心点
+//修改:返回整个图片加红块区域的最小外接矩形的四个角点
 bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
                              cv::Mat& target_roi,
                              struct Guaidian* red_rect_pts,      // 红块4角点，94×60
                              struct Guaidian* red_center_pt,     // 红块中心点，94×60
                              struct Guaidian* target_top_pts,    // 图片框上边2点，94×60
+                             struct Guaidian*  whole_rect_pts,
                              cv::Point2f* target_pts,            // 保留：图片框4点，原图坐标
                              cv::Point2f* red_pts,               // 保留：红块4点，原图坐标
                              float* debug_valid_ratio,
-                             bool* erase_pts_ready)
+                             bool* erase_pts_ready)    //新增：整个图像最小外接矩形的四个角点
 {
     // 1. 初始化输出
     if (red_rect_pts != nullptr)
@@ -1618,6 +1621,14 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
     if (red_center_pt != nullptr)
     {
         ClearGuaidianPoint(*red_center_pt);
+    }
+
+      if (whole_rect_pts != nullptr)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            ClearGuaidianPoint(whole_rect_pts[i]);//初始化四点
+        }
     }
 
     if (target_top_pts != nullptr)
@@ -1787,6 +1798,51 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
     // target_img_pts[2] 右下
     // target_img_pts[3] 左下
     OrderTargetStripQuad(target_img_pts);
+
+    if (whole_rect_pts != nullptr)
+{
+    std::vector<cv::Point2f> whole_points;//定义轮廓
+    whole_points.reserve(8);
+
+    // 加入红色矩形块4点
+    for (int i = 0; i < 4; i++)
+    {
+        if (!IsFinitePoint(red_img_pts[i]))//安全性检查 判断 转化到BEV上的点有没有越界
+        {
+            return false;
+        }
+
+        whole_points.push_back(red_img_pts[i]);
+    }
+
+    // 加入图片区域4点
+    for (int i = 0; i < 4; i++)
+    {
+        if (!IsFinitePoint(target_img_pts[i]))
+        {
+            return false;
+        }
+
+        whole_points.push_back(target_img_pts[i]);
+    }
+
+    // 计算同时包住图片区域和红块区域的最小旋转矩形
+    cv::RotatedRect whole_rect = cv::minAreaRect(whole_points);
+
+    cv::Point2f whole_img_pts[4];
+    whole_rect.points(whole_img_pts);
+
+    // 排序成：左上、右上、右下、左下
+    OrderTargetStripQuad(whole_img_pts);
+
+    // 映射到 94×60
+    for (int i = 0; i < 4; i++)
+        {
+        ImagePointToSmallGuaidian(whole_img_pts[i],
+                                  input_frame,
+                                  whole_rect_pts[i]);
+        }
+    }
 
     // 11. 保留 target_pts：原图坐标下的图片框四点
     if (target_pts != nullptr)

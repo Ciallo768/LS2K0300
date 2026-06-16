@@ -1,5 +1,5 @@
-CMakeFiles/project.dir/main.cpp.o: \
- /home/zhy/project/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/user/main.cpp \
+CMakeFiles/project.dir/home/zhy/project/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp.o: \
+ /home/zhy/project/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/code/red_threshold_visual.cpp \
  /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/stdc-predef.h \
  /home/zhy/project/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_headfile.hpp \
  /home/zhy/project/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/user/../../libraries/zf_common/zf_common_font.hpp \
@@ -635,4 +635,6 @@ CMakeFiles/project.dir/main.cpp.o: \
  /home/zhy/project/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/user/../code/lq_ncnn.hpp \
  /home/zhy/project/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/user/../code/lq_camera_ex.hpp \
  /home/zhy/project/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/user/../code/red_threshold_visual.h \
- /home/zhy/project/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/user/../code/red_picture.h
+ /home/zhy/project/LS2K0300/Seekfree_LS2K0300_Opensource_Library/project/user/../code/red_picture.h \
+ /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/termios.h \
+ /opt/ls_2k0300_env/loongson-gnu-toolchain-8.3-x86_64-loongarch64-linux-gnu-rc1.6/loongarch64-linux-gnu/sysroot/usr/include/bits/termios.h

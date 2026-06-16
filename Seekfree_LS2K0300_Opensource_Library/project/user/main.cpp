@@ -89,7 +89,7 @@ int main(int, char**)
     //Flag.picture = 2;
     pit_timer.init_ms(5, pit_callback);//5ms定时器初始化
 
-    //set_pwm(1000,1000);
+    // set_pwm(3000,3000);
 
     Param_Init();
     while(1)

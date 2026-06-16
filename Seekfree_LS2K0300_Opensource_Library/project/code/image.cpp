@@ -3974,6 +3974,19 @@ void image_init(void)
 
 }
 
+//逐飞摄像头init代码 用于尝试yuv三色通道
+// void zf_image_init(){
+//     cap.open(/dev/video0);
+
+//     cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'YUYV'));//设置编码格式
+//     cap.set(cv2.CAP_PROP_CONVERT_RGB, 0);  // 禁止自动转 RGB/BGR
+//     cap.set(CAP_PROP_FRAME_WIDTH, UVC_WIDTH);     // 设置摄像头宽度
+//     cap.set(CAP_PROP_FRAME_HEIGHT, UVC_HEIGHT);    // 设置摄像头高度
+//     cap.set(CAP_PROP_FPS, UVC_FPS);              // 显示屏幕帧率
+
+// }
+
+
 
 uint16_t jump_point,finish_flag;
 float distance_cross,distance,distance_picture;
@@ -4362,9 +4375,9 @@ void ImageDeal()
                                       red_pts,
                                       &valid_ratio,
                                     &erase_pts_ready);
-        if(roi_ok){
-            snapshot(target_roi,70,"ambulance","/home/root/picture");
-        }
+        // if(roi_ok){
+        //     snapshot(target_roi,70,"ambulance","/home/root/picture");
+        // }
         // if(roi_ok == true){
         //     for(int i = 0; i<4; i++){
         //         whole_pts[i].x = whole_rect_pts[i].column;

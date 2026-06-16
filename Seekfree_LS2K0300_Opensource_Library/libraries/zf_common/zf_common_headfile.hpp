@@ -109,6 +109,7 @@
 #include "lq_ncnn.hpp"
 #include "lq_camera_ex.hpp"
 #include "red_threshold_visual.h"
+#include "red_picture.h"
 //===================================================用户自定义文件===================================================
 
 

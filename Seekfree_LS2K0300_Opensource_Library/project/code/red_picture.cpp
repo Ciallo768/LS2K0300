@@ -96,25 +96,47 @@ struct IpmLutTable
 /***************************************************红色标注******************************************************/
 /*引入BEV鸟瞰图变换*/
 // ===================== 固定 IPM 正变换参数：图像坐标 -> BEV 坐标 =====================
-constexpr float kStaticIpmRot00 = 1.612538001f;
-constexpr float kStaticIpmRot01 = -0.254463765f;
-constexpr float kStaticIpmRot02 = -224.154440449f;
-constexpr float kStaticIpmRot10 = -0.104520711f;
-constexpr float kStaticIpmRot11 = -3.170461577f;
-constexpr float kStaticIpmRot12 = 388.677685209f;
-constexpr float kStaticIpmRot20 = -0.006968047f;
-constexpr float kStaticIpmRot21 = 0.050865849f;
+// constexpr float kStaticIpmRot00 = 1.612538001f;
+// constexpr float kStaticIpmRot01 = -0.254463765f;
+// constexpr float kStaticIpmRot02 = -224.154440449f;
+// constexpr float kStaticIpmRot10 = -0.104520711f;
+// constexpr float kStaticIpmRot11 = -3.170461577f;
+// constexpr float kStaticIpmRot12 = 388.677685209f;
+// constexpr float kStaticIpmRot20 = -0.006968047f;
+// constexpr float kStaticIpmRot21 = 0.050865849f;
+// constexpr float kStaticIpmRot22 = 1.000000000f;
+
+// constexpr float kStaticIpmInv00 = 0.759965484f;
+// constexpr float kStaticIpmInv01 = 0.369279406f;
+// constexpr float kStaticIpmInv02 = 26.818973095f;
+// constexpr float kStaticIpmInv10 = 0.086256536f;
+// constexpr float kStaticIpmInv11 = -0.001676870f;
+// constexpr float kStaticIpmInv12 = 19.986547448f;
+// constexpr float kStaticIpmInv20 = 0.000907964f;
+// constexpr float kStaticIpmInv21 = 0.002658452f;
+// constexpr float kStaticIpmInv22 = 0.170243164f;
+
+constexpr float kStaticIpmRot00 = 1.240949172f;
+constexpr float kStaticIpmRot01 = 0.013009711f;
+constexpr float kStaticIpmRot02 = -195.251476562f;
+constexpr float kStaticIpmRot10 = -0.047501908f;
+constexpr float kStaticIpmRot11 = -2.161336799f;
+constexpr float kStaticIpmRot12 = 245.133594524f;
+constexpr float kStaticIpmRot20 = -0.000772935f;
+constexpr float kStaticIpmRot21 = 0.033056415f;
 constexpr float kStaticIpmRot22 = 1.000000000f;
 
-constexpr float kStaticIpmInv00 = 0.759965484f;
-constexpr float kStaticIpmInv01 = 0.369279406f;
-constexpr float kStaticIpmInv02 = 26.818973095f;
-constexpr float kStaticIpmInv10 = 0.086256536f;
-constexpr float kStaticIpmInv11 = -0.001676870f;
-constexpr float kStaticIpmInv12 = 19.986547448f;
-constexpr float kStaticIpmInv20 = 0.000907964f;
-constexpr float kStaticIpmInv21 = 0.002658452f;
-constexpr float kStaticIpmInv22 = 0.170243164f;
+constexpr float kStaticIpmInv00 = 0.847829304f;
+constexpr float kStaticIpmInv01 = 0.534185451f;
+constexpr float kStaticIpmInv02 = 34.593123902f;
+constexpr float kStaticIpmInv10 = 0.011726423f;
+constexpr float kStaticIpmInv11 = -0.090034070f;
+constexpr float kStaticIpmInv12 = 24.359976590f;
+constexpr float kStaticIpmInv20 = 0.000267684f;
+constexpr float kStaticIpmInv21 = 0.003389094f;
+constexpr float kStaticIpmInv22 = 0.221484751f;
+
+
 
 constexpr float kStaticIpmMinDivisor = 1e-4f;
 
@@ -1117,8 +1139,8 @@ bool BuildTargetBevQuadFromRedRect(const cv::Mat& input_frame,
     const float RED_H_RATIO    = 5.0f  / 12.0f;
 
     // 框大小缩放
-    const float ROI_W_SCALE = 1.2f;
-    const float ROI_H_SCALE = 1.2f;
+    const float ROI_W_SCALE = 1.0f;
+    const float ROI_H_SCALE = 1.0f;
 
     // 角度补偿，单位：度
     // 先用 0，后面如果图传上角度偏了，再试 2 或 -2

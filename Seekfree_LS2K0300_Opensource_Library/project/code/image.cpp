@@ -3965,7 +3965,7 @@ void image_init(void)
         printf("Camera opened failed!\n");
         return;
     }
-    cam.set_exposure_manual(40);
+    cam.set_exposure_manual(60);
     printf("龙邱摄像头宽度:%d\n",cam.get_camera_width());
     printf("龙邱摄像头高度:%d\n",cam.get_camera_height());
     printf("龙邱摄像头帧率:%d\n",cam.get_camera_fps());
@@ -4507,22 +4507,22 @@ void ImageDeal()
                                       red_pts,
                                       &valid_ratio,
                                     &erase_pts_ready);
-        // if(roi_ok){
-        //     // snapshot(target_roi,70,"firearm0","/home/root/picture");
-        //     camera_server.update_frame_mat(target_roi);
-        // }
-
-        if(roi_ok == true){
-            // for(int i = 0; i<4; i++){
-            //     whole_pts[i].x = whole_rect_pts[i].column;
-            //     whole_pts[i].y = whole_rect_pts[i].row;
-            // }
-            for(int i =0;i<4;i++){
-                cv::line(lq_frame, target_pts[i],target_pts[(i+1)%4] , cv::Scalar(0, 255, 0), 1);
-            }
+        if(roi_ok){
+            snapshot(target_roi,70,"firearm0","/home/root/picture");
+            camera_server.update_frame_mat(target_roi);
         }
-        cv::Mat show_frame = lq_frame.clone();
-        camera_server.update_frame_mat(show_frame);//打开图传服务器
+
+        // if(roi_ok == true){
+        //     // for(int i = 0; i<4; i++){
+        //     //     whole_pts[i].x = whole_rect_pts[i].column;
+        //     //     whole_pts[i].y = whole_rect_pts[i].row;
+        //     // }
+        //     for(int i =0;i<4;i++){
+        //         cv::line(lq_frame, target_pts[i],target_pts[(i+1)%4] , cv::Scalar(0, 255, 0), 1);
+        //     }
+        // }
+        // cv::Mat show_frame = lq_frame.clone();
+        // camera_server.update_frame_mat(show_frame);//打开图传服务器
         
 
         if(Flag.Huandao_L>0||Flag.Huandao_R>0)

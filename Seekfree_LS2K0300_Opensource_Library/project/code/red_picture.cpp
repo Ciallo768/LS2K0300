@@ -1212,7 +1212,7 @@ bool BuildTargetRoiByFixedIpmRemap(const cv::Mat& input_frame,
         return false;
     }
 
-    const int TARGET_ROI_SIZE = 64;//
+    const int TARGET_ROI_SIZE = 96;//
     const float MIN_VALID_RATIO = 0.60f;//
 
     static cv::Mat map_x;
@@ -1592,6 +1592,73 @@ static inline void ImagePointToSmallGuaidian(const cv::Point2f& img_pt,
     out_pt.flag = 1;
 }
 
+//对图片区域做防抖处理
+// 小于这个像素差，认为只是抖动，不更新图片框
+static const float TARGET_QUAD_STABLE_PX = 3.0f;
+
+// 防抖函数：对图片区域 target_bev_pts 做稳定处理
+static void StabilizeTargetQuad(const cv::Mat& input_frame,
+                                cv::Point2f target_bev_pts[4])
+{
+    static bool has_last = false;
+    static cv::Point2f last_bev_pts[4];
+    static cv::Point2f last_img_pts[4];
+
+    cv::Point2f now_img_pts[4];
+
+    // 当前 BEV 四点转回原图坐标，用于和上一帧比较
+    for (int i = 0; i < 4; i++)
+    {
+        now_img_pts[i] = BevPointToImagePoint(target_bev_pts[i], input_frame);
+    }
+
+    OrderTargetStripQuad(now_img_pts);
+
+    // 第一帧直接记录
+    if (!has_last)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            last_bev_pts[i] = target_bev_pts[i];
+            last_img_pts[i] = now_img_pts[i];
+        }
+
+        has_last = true;
+        return;
+    }
+
+    // 计算当前帧和上一帧四个角点的平均距离
+    float dist_sum = 0.0f;
+
+    for (int i = 0; i < 4; i++)
+    {
+        float dx = now_img_pts[i].x - last_img_pts[i].x;
+        float dy = now_img_pts[i].y - last_img_pts[i].y;
+        dist_sum += std::sqrt(dx * dx + dy * dy);
+    }
+
+    float avg_dist = dist_sum / 4.0f;
+
+    // 如果差距很小，认为是抖动，直接使用上一帧
+    if (avg_dist < TARGET_QUAD_STABLE_PX)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            target_bev_pts[i] = last_bev_pts[i];
+        }
+
+        return;
+    }
+
+    // 如果差距明显，认为是真实移动，更新上一帧
+    for (int i = 0; i < 4; i++)
+    {
+        last_bev_pts[i] = target_bev_pts[i];
+        last_img_pts[i] = now_img_pts[i];
+    }
+}
+
+
 //target_roi 输出的目标图片区域
 //修改：新增参数 作为灰度图抹除红块的断点标记 防止因为返回false 而导致整帧不抹
 //修改返回最小外接矩形的四个点 以及图片框的上面两个点
@@ -1782,6 +1849,9 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
     {
         return false;
     }
+
+    //新增图片区域防抖
+    StabilizeTargetQuad(input_frame,target_bev_pts);
 
     // 10. 将 BEV 图片框四点反变换回原图
     cv::Point2f target_img_pts[4];

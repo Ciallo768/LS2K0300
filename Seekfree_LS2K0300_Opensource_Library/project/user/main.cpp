@@ -88,9 +88,7 @@ int main(int, char**)
     // zf_image_init();
 //    tcp_client_dev.init(SERVER_IP, PORT);
     //Flag.picture = 2;
-     pit_timer.init_ms(5, pit_callback);//5ms定时器初始化
-
-    // set_pwm(-3000,-3000);
+    pit_timer.init_ms(5, pit_callback);//5ms定时器初始化
 
     Param_Init();
     while(1)

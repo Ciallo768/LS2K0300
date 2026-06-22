@@ -60,7 +60,7 @@ class lq_camera_ex
 public:
     // 有参构造函数构造函数
     explicit lq_camera_ex(uint16_t _width, uint16_t _height, uint16_t _fps, /* 摄像头宽高和帧率设置 */
-                          lq_camera_format_t _fmt = LQ_CAMERA_HIGH_MJPG,    /* 获取图像方式 */
+                          lq_camera_format_t _fmt = LQ_CAMERA_0CPU_MJPG,    /* 获取图像方式 */
                           const std::string _path = LQ_CAMERA_PATH);        /* 摄像头设备路径 */
     
     lq_camera_ex(const lq_camera_ex&) = delete;             // 禁用拷贝

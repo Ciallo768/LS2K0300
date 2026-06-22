@@ -120,6 +120,7 @@ extern cv::Point center;
 extern cv::Mat lq_frame;
 void ImageDeal(void);
 void image_init(void);
+bool zf_image_init(void);
 void distance_judge(void);
  void DetectRedBlock(cv::Mat &src,int roi_x,int roi_y,int width,int height);
 bool InTrack(int x,int y);

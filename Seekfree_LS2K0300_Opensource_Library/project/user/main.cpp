@@ -70,8 +70,8 @@ void pit_callback()
    
     if(it_time%20==0)
     {
-        printf("ramp_line:%.1f   yaw:%.2f  Flag.picture:%d   Flag.Zebra_cross:%d  PWM_L:%d  imgInfo.top:%d    Flag.ramp:%d  real_distance[red_y_mid]:%.2f Dir_Err:%.1f   Huandao_R:%d    Huandao_L:%d   V_max:%.1f\n"
-            ,ramp_line,icm_data.yaw,Flag.picture,Flag.Zebra_cross,PWM_L,imgInfo.top,Flag.ramp,real_distance[red_y_mid],Dir_err,Flag.Huandao_R,Flag.Huandao_L,MAX(encoder_L.speed,encoder_R.speed));
+        // printf("ramp_line:%.1f   yaw:%.2f  Flag.picture:%d   Flag.Zebra_cross:%d  PWM_L:%d  imgInfo.top:%d    Flag.ramp:%d  real_distance[red_y_mid]:%.2f Dir_Err:%.1f   Huandao_R:%d    Huandao_L:%d   V_max:%.1f\n"
+            // ,ramp_line,icm_data.yaw,Flag.picture,Flag.Zebra_cross,PWM_L,imgInfo.top,Flag.ramp,real_distance[red_y_mid],Dir_err,Flag.Huandao_R,Flag.Huandao_L,MAX(encoder_L.speed,encoder_R.speed));
         // printf("PWM_L:%d.PWM_R:%d\n",PWM_L,-PWM_R);
                         //    printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
     }
@@ -82,25 +82,26 @@ void pit_callback()
 int main(int, char**) 
 { 
     init();
-    //zf_model_init();
+    // zf_model_init();
     pid_init();
     image_init();
+    // zf_image_init();
 //    tcp_client_dev.init(SERVER_IP, PORT);
     //Flag.picture = 2;
-    pit_timer.init_ms(5, pit_callback);//5ms定时器初始化
+     pit_timer.init_ms(5, pit_callback);//5ms定时器初始化
 
-    // set_pwm(3000,3000);
+    // set_pwm(-3000,-3000);
 
     Param_Init();
     while(1)
 
     {
 
-            if(Flag.picture>0||Flag.small_rock!=0||Flag.ramp!=0||Flag.Zebra_cross==1||Flag.Zebra_cross==4
-                ||Flag.Huandao_L==2||Flag.Huandao_R==2 ||Flag.Huandao_L==4||Flag.Huandao_R==4 ||Flag.Huandao_L==6||Flag.Huandao_R==6
-                )//
-            {beep.set_level(1);}
-             else{beep.set_level(0);} 
+            // if(Flag.picture>0||Flag.small_rock!=0||Flag.ramp!=0||Flag.Zebra_cross==1||Flag.Zebra_cross==4
+            //     ||Flag.Huandao_L==2||Flag.Huandao_R==2 ||Flag.Huandao_L==4||Flag.Huandao_R==4 ||Flag.Huandao_L==6||Flag.Huandao_R==6
+            //     )//
+            // {beep.set_level(1);}
+            //  else{beep.set_level(0);} 
 
                 // printf("Yaw:%f   distance_picture:%f   Flag.picture:%d   Flag.Huandao_R:%d  Flag.Huandao_L:%d\n",icm_data.yaw,distance_picture,Flag.picture,Flag.Huandao_R,Flag.Huandao_L);
             // printf("Flag.Redblock:%d   err:%d\n",FlaZXg.Redblock,abs((Right_Sideline[center.y]+Left_Sideline[center.y])-center.x));
@@ -117,7 +118,7 @@ int main(int, char**)
             double fps = frame_count / (elapsed.count() / 1000.0);
             // printf("top:%d,Dir_err:%.1f\n",imgInfo.top,Dir_err);
             //         printf("Yaw:%f,distance=%f\n",icm_data.yaw,distance);
-                   printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
+                //    printf("encoder_L.count_now:%d,encoder_R.count_now:%d\n",encoder_L.count_now,encoder_R.count_now);
     
             
             // 输出帧率信息

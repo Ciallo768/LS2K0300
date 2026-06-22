@@ -15,13 +15,14 @@ const char* class_labels[] = {"materials","traffic","weapon"}; //需要与train.
 zf_device_uvc uvc_dev;//初始化摄像头对象
 uint8_t Image_Zip[LCDH_1][LCDW_1] = {0}; //压缩后的图像数组
 uint8_t Image_Use[LCDH_1][LCDW_1] = {0};//(经过大津法，膨胀，腐蚀后的)二值化的图像
-cv::VideoCapture cap;
 unsigned char Image_IFS[LCDH_1][LCDW_1];
 LQ_NCNN classifier;
 uint8_t Threshold = 0;  //大津法求出的阈值
 struct imageInformation imgInfo;
 struct YuanSu Flag;
 cv::Mat frame, grayFrame, binaryFrame,resizedFrame,flippedFrame,translatedFrame,translationMatrix,float_img,resized_img;
+cv::Mat yuvFrame;        // 原始大小的 YUV 三通道图像，格式 [Y, U, V]
+cv::Mat yuvResizeFrame;  // 94*60 的 YUV 三通道图像
 cv::Mat target_roi;//存储目标图片区域
 TransmissionStreamServer camera_server;
 int roi_x_1= 0;
@@ -3933,7 +3934,11 @@ void protect(void)
 
 // }
 }
-lq_camera_ex cam(320,240,156,LQ_CAMERA_0CPU_MJPG,LQ_CAMERA_PATH);
+
+#define CONVERT_MODE  1   // 1=lq 2=zf
+
+#if CONVERT_MODE == 1
+lq_camera_ex cam(320,240,120,LQ_CAMERA_0CPU_MJPG,LQ_CAMERA_PATH);
 void image_init(void)
 {  
     
@@ -3960,31 +3965,123 @@ void image_init(void)
         printf("Camera opened failed!\n");
         return;
     }
-    cam.set_exposure_manual(40);
+    cam.set_exposure_manual(25);
     printf("龙邱摄像头宽度:%d\n",cam.get_camera_width());
     printf("龙邱摄像头高度:%d\n",cam.get_camera_height());
     printf("龙邱摄像头帧率:%d\n",cam.get_camera_fps());
     //预分配内存
     grayFrame.create(LCDH_0, LCDW_0, CV_8UC1);
     resizedFrame.create(LCDH_1, LCDW_1, CV_8UC1);
-    translatedFrame.create(LCDH_1, LCDW_1, CV_8UC1);
-    binaryFrame.create(LCDH_1, LCDW_1, CV_8UC1);
-    translationMatrix = (cv::Mat_<float>(2, 3) << 1, 0, 0, 0, 1, 0);//将捕获图像向右平移3个像素点
-   camera_server.start_server(8080);//打开图传服务器
+    camera_server.start_server(8080);//打开图传服务器
 
 }
-
+cv::VideoCapture cap;
+#elif CONVERT_MODE == 2
 //逐飞摄像头init代码 用于尝试yuv三色通道
-// void zf_image_init(){
-//     cap.open(/dev/video0);
+bool zf_image_init(){
+ cap.open("/dev/video0", cv::CAP_V4L2);
 
-//     cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'YUYV'));//设置编码格式
-//     cap.set(cv2.CAP_PROP_CONVERT_RGB, 0);  // 禁止自动转 RGB/BGR
-//     cap.set(CAP_PROP_FRAME_WIDTH, UVC_WIDTH);     // 设置摄像头宽度
-//     cap.set(CAP_PROP_FRAME_HEIGHT, UVC_HEIGHT);    // 设置摄像头高度
-//     cap.set(CAP_PROP_FPS, UVC_FPS);              // 显示屏幕帧率
+    if (!cap.isOpened())
+    {
+        printf("camera open failed!\n");
+        return false;
+    }
 
-// }
+    // 设置为 YUYV 原始格式
+    cap.set(cv::CAP_PROP_FOURCC, cv::VideoWriter::fourcc('Y', 'U', 'Y', '2'));
+
+    // 禁止 OpenCV 自动转换成 BGR
+    cap.set(cv::CAP_PROP_CONVERT_RGB, 0);
+
+    // 设置分辨率和帧率
+    cap.set(cv::CAP_PROP_FRAME_WIDTH,  UVC_WIDTH);
+    cap.set(cv::CAP_PROP_FRAME_HEIGHT, UVC_HEIGHT);
+    cap.set(cv::CAP_PROP_FPS,          UVC_FPS);
+
+    // 可选：减少缓存，降低延迟
+    cap.set(cv::CAP_PROP_BUFFERSIZE, 1);
+
+     bool auto_exp_ok = cap.set(cv::CAP_PROP_AUTO_EXPOSURE, 1);
+
+    // 设置曝光值
+    int exposure_value = 50;
+    bool exp_ok = cap.set(cv::CAP_PROP_EXPOSURE, exposure_value);
+
+    printf("set auto exposure manual: %s\n", auto_exp_ok ? "ok" : "failed");
+    printf("set exposure value: %d, result: %s\n",
+           exposure_value,
+           exp_ok ? "ok" : "failed");
+
+    /******************** 打印当前摄像头参数 ********************/
+
+    int fourcc = static_cast<int>(cap.get(cv::CAP_PROP_FOURCC));
+    char fourcc_str[] = {
+        static_cast<char>(fourcc & 0xFF),
+        static_cast<char>((fourcc >> 8) & 0xFF),
+        static_cast<char>((fourcc >> 16) & 0xFF),
+        static_cast<char>((fourcc >> 24) & 0xFF),
+        '\0'
+    };
+
+    printf("camera init success\n");
+    printf("FOURCC   = %s\n", fourcc_str);
+    printf("WIDTH    = %.0f\n", cap.get(cv::CAP_PROP_FRAME_WIDTH));
+    printf("HEIGHT   = %.0f\n", cap.get(cv::CAP_PROP_FRAME_HEIGHT));
+    printf("FPS      = %.0f\n", cap.get(cv::CAP_PROP_FPS));
+    printf("EXPOSURE = %.0f\n", cap.get(cv::CAP_PROP_EXPOSURE));
+    camera_server.start_server(8080);//打开图传服务器
+    return true;
+
+}
+#endif
+//获取每个像素点的YUV三色通道值
+bool get_yuv_frame(cv::Mat& yuv_img)
+{
+    cv::Mat yuyv_frame;
+    cap >> yuyv_frame;
+
+    if (yuyv_frame.empty())
+    {
+        return false;
+    }
+
+    if (yuyv_frame.channels() != 2)
+    {
+        printf("not yuyv/yuy2 raw frame, channels = %d\n",
+               yuyv_frame.channels());
+        return false;
+    }
+
+    int width = yuyv_frame.cols;
+    int height = yuyv_frame.rows;
+
+    yuv_img.create(height, width, CV_8UC3);
+
+    for (int y = 0; y < height; y++)
+    {
+        const uchar* src = yuyv_frame.ptr<uchar>(y);
+        cv::Vec3b* dst = yuv_img.ptr<cv::Vec3b>(y);
+
+        for (int x = 0; x < width; x += 2)
+        {
+            int index = x * 2;
+
+            uchar Y0 = src[index + 0];
+            uchar U  = src[index + 1];
+            uchar Y1 = src[index + 2];
+            uchar V  = src[index + 3];
+
+            dst[x] = cv::Vec3b(Y0, U, V);
+
+            if (x + 1 < width)
+            {
+                dst[x + 1] = cv::Vec3b(Y1, U, V);
+            }
+        }
+    }
+
+    return true;
+}
 
 
 
@@ -4324,6 +4421,39 @@ ClassType id;
 /***************************************************图像处理******************************************************/
 void ImageDeal()
 {   
+
+
+#if CONVERT_MODE == 2
+
+    if (!get_yuv_frame(yuvFrame))
+    {
+        return;
+    }
+
+    if (yuvFrame.empty() || yuvFrame.channels() != 3)
+    {
+        return;
+    }
+
+    //这里让 lq_frame 指向 YUV 原图
+    lq_frame = yuvFrame;
+
+    cv::resize(yuvFrame,
+               yuvResizeFrame,
+               cv::Size(LCDW_1, LCDH_1),
+               0,
+               0,
+               cv::INTER_AREA);
+
+    // 为了兼容你后面原来使用 resizedFrame 的代码
+    // 注意：此时 resizedFrame 也不是 BGR，而是 [Y, U, V]
+    resizedFrame = yuvResizeFrame;
+
+
+    // Y 通道就是亮度通道，可以直接替代原来的 grayFrame
+    cv::extractChannel(yuvResizeFrame, grayFrame, 0);
+
+#else
     lq_frame = cam.get_frame_raw();
     if(lq_frame.empty()){
         return; 
@@ -4332,11 +4462,13 @@ void ImageDeal()
 
     // RedBlockProcess(resizedFrame);
     // camera_server.update_frame_mat(lq_frame);//打开图传服务器
-
-      cv::cvtColor(resizedFrame,grayFrame,cv::COLOR_BGR2GRAY);
-
+    // cv::extractChannel(resizedFrame, grayFrame, 0);
+     cv::cvtColor(resizedFrame,grayFrame,cv::COLOR_BGR2GRAY);
+#endif
     //   cv::warpAffine(grayFrame, translatedFrame, translationMatrix, grayFrame.size(), 
     //                  cv::INTER_LINEAR, cv::BORDER_CONSTANT, 0);
+
+    // camera_server.update_frame_mat(grayFrame);
 
 //   //  将OpenCV图像数据复制到图像数组 采用memcpy函数加快处理速度
     for (int i = 0; i < LCDH_1; i++)
@@ -4375,9 +4507,11 @@ void ImageDeal()
                                       red_pts,
                                       &valid_ratio,
                                     &erase_pts_ready);
-        // if(roi_ok){
-        //     snapshot(target_roi,70,"ambulance","/home/root/picture");
-        // }
+        if(roi_ok){
+            // snapshot(target_roi,70,"firearm0","/home/root/picture");
+            camera_server.update_frame_mat(target_roi);
+        }
+
         // if(roi_ok == true){
         //     for(int i = 0; i<4; i++){
         //         whole_pts[i].x = whole_rect_pts[i].column;

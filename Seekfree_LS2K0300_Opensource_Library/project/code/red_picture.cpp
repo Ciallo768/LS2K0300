@@ -1117,8 +1117,8 @@ bool BuildTargetBevQuadFromRedRect(const cv::Mat& input_frame,
     const float RED_H_RATIO    = 5.0f  / 12.0f;
 
     // 框大小缩放
-    const float ROI_W_SCALE = 1.0f;
-    const float ROI_H_SCALE = 1.0f;
+    const float ROI_W_SCALE = 1.2f;
+    const float ROI_H_SCALE = 1.2f;
 
     // 角度补偿，单位：度
     // 先用 0，后面如果图传上角度偏了，再试 2 或 -2

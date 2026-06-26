@@ -11,6 +11,10 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
                              cv::Point2f* red_pts=nullptr,               // 保留：红块4点，原图坐标
                              float* debug_valid_ratio=nullptr,
                              bool* erase_pts_ready =nullptr);
+                             
+bool IsFirstAidByRedRatio(const cv::Mat& target_roi,
+                          double& red_ratio,
+                          cv::Mat* debug_mask = nullptr);                             
 extern Guaidian  red_point;
 extern Guaidian red_L_L,red_R_L,picture_L_H,picture_R_H;//四个拐点
 extern struct Guaidian red_rect_pts[4];    // 红块四个角点

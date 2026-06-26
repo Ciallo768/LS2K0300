@@ -4508,8 +4508,12 @@ void ImageDeal()
                                       &valid_ratio,
                                     &erase_pts_ready);
         if(roi_ok){
-            snapshot(target_roi,70,"firearm0","/home/root/picture");
-            camera_server.update_frame_mat(target_roi);
+            // snapshot(target_roi,70,"firearm0","/home/root/picture");
+            // camera_server.update_frame_mat(target_roi);
+            double red_ratio = 0.0f;
+            if(IsFirstAidByRedRatio(target_roi,red_ratio,nullptr)){
+                //红色比例大于一定值 判断为急救包
+            }
         }
 
         // if(roi_ok == true){

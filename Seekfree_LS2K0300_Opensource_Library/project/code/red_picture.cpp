@@ -1983,6 +1983,91 @@ bool FindTargetRoiByFixedIpm(const cv::Mat& input_frame,
     return true;
 }
 
+
+#include <opencv2/opencv.hpp>
+
+// 判断 target_roi 中红色像素比例
+// target_roi: 96x96 BGR 图像
+// red_ratio: 输出红色像素比例
+// debug_mask: 可选，用于图传显示红色检测结果
+bool IsFirstAidByRedRatio(const cv::Mat& target_roi,
+                          double& red_ratio,
+                          cv::Mat* debug_mask)
+{
+    red_ratio = 0.0;
+
+    if (target_roi.empty() || target_roi.channels() != 3)
+    {
+        return false;
+    }
+
+    int w = target_roi.cols;
+    int h = target_roi.rows;
+
+    // 如果 target_roi 中可能包含底部红色标记块，建议排除底部区域
+    // 只统计上面 80% 的区域
+    // 如果你的 target_roi 已经完全不包含底部红块，可以把 0.80f 改成 1.0f
+    const float VALID_TOP_RATIO = 1.0f;
+    int valid_h = static_cast<int>(h * VALID_TOP_RATIO);
+
+    cv::Rect valid_rect(0, 0, w, valid_h);
+    cv::Mat valid_roi = target_roi(valid_rect);
+
+    // 转 HSV，检测红色更稳定
+    cv::Mat hsv;
+    cv::cvtColor(valid_roi, hsv, cv::COLOR_BGR2HSV);
+
+    cv::Mat mask1, mask2, red_mask;
+
+    // 红色在 HSV 中分布在两个区间：
+    // H: 0~10 和 165~179
+    cv::inRange(hsv,
+                cv::Scalar(0, 70, 50),
+                cv::Scalar(10, 255, 255),
+                mask1);
+
+    cv::inRange(hsv,
+                cv::Scalar(165, 70, 50),
+                cv::Scalar(179, 255, 255),
+                mask2);
+
+    red_mask = mask1 | mask2;
+
+    // 形态学开运算，去掉小噪点
+    cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
+    cv::morphologyEx(red_mask, red_mask, cv::MORPH_OPEN, kernel);
+
+    int red_count = cv::countNonZero(red_mask);
+    int total_count = red_mask.rows * red_mask.cols;
+
+    if (total_count <= 0)
+    {
+        return false;
+    }
+
+    red_ratio = static_cast<double>(red_count) / static_cast<double>(total_count);
+
+    // 可选：输出完整 96x96 mask，方便图传调试
+    if (debug_mask != nullptr)
+    {
+        *debug_mask = cv::Mat::zeros(target_roi.size(), CV_8UC1);
+        red_mask.copyTo((*debug_mask)(valid_rect));
+    }
+
+    // 急救包通常红十字会占一定比例
+    // 这个阈值需要根据你的实际图像微调
+    const double FIRST_AID_RED_RATIO_MIN = 0.300;  // 30%
+    const double FIRST_AID_RED_RATIO_MAX = 0.800;  // 80%，防止大片红色误判
+
+    if (red_ratio >= FIRST_AID_RED_RATIO_MIN &&
+        red_ratio <= FIRST_AID_RED_RATIO_MAX)
+    {
+        return true;
+    }
+
+    return false;
+}
+
  std::vector<cv::Point2f> orderPoints(cv::Point2f pts[4])
 {
     std::vector<cv::Point2f> p(pts, pts + 4);
